@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 9999;
+}
