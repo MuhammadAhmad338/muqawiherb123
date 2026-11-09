@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": { "type": "title" },
+        "rating_bar": { "type": "muqavi_rating", "settings": {} },
+        "pills": { "type": "muqavi_info_pills", "settings": {} },
+        "price": { "type": "price" },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "pack",
+            "swatch_shape": "none"
+          }
+        },
+        "quantity_selector": { "type": "quantity_selector" },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": { "type": "description" },
+        "collapsible_description": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_benefits": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Benefits",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_ingredients": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_howto": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How to Use Relief+?",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Returns & Exchanges",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "rating_bar",
+        "pills",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "collapsible_description",
+        "collapsible_benefits",
+        "collapsible_ingredients",
+        "collapsible_howto",
+        "collapsible_returns"
+      ],
+      "settings": {
+        "herbliv_layout": true,
+        "enable_sticky_info": true,
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "large",
+        "mobile_thumbnails": "show",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,55 @@
+{%- style -%}
+  .muqavi-badges-{{ section.id }} { padding: 40px 20px; }
+  .muqavi-badges-{{ section.id }} .badge-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .muqavi-badges-{{ section.id }} h3 { margin: 0 0 8px; font-size: 16px; }
+  .muqavi-badges-{{ section.id }} p { margin: 0; color: #555; font-size: 14px; line-height: 1.4; }
+  @media (max-width: 768px) {
+    .muqavi-badges-{{ section.id }} .badge-grid { grid-template-columns: 1fr 1fr; }
+  }
+{%- endstyle -%}
+
+<section class="muqavi-badges-{{ section.id }}">
+  <div class="badge-grid">
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Muqavi trust badges",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Science-backed solutions" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Backed by science, our solutions are proven effective." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Muqavi trust badges",
+      "blocks": [
+        { "type": "badge", "settings": { "title": "Science-backed solutions", "text": "Backed by science, our solutions are proven effective." } },
+        { "type": "badge", "settings": { "title": "Manufacturing transparency", "text": "Openness in production builds trust." } },
+        { "type": "badge", "settings": { "title": "Effective solutions", "text": "Reliable answers to your needs, delivering results with precision and impact." } },
+        { "type": "badge", "settings": { "title": "True sustainability", "text": "Genuine commitment to a greener future." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

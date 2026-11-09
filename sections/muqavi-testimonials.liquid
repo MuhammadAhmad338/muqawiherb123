@@ -1,0 +1,60 @@
+{%- style -%}
+  .muqavi-testimonials-{{ section.id }} { padding: 48px 20px; background: #fafafa; }
+  .muqavi-testimonials-{{ section.id }} h2 { text-align: center; margin-bottom: 28px; }
+  .muqavi-testimonials-{{ section.id }} .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .muqavi-testimonials-{{ section.id }} .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #eee;
+  }
+  .muqavi-testimonials-{{ section.id }} .name { font-weight: 700; margin-top: 12px; }
+{%- endstyle -%}
+
+<section class="muqavi-testimonials-{{ section.id }}">
+  <h2>{{ section.settings.heading | default: 'Voices Of Satisfaction' }}</h2>
+  <div class="grid">
+    {%- for block in section.blocks -%}
+      <div class="card" {{ block.shopify_attributes }}>
+        <p>"{{ block.settings.quote }}"</p>
+        <p class="name">{{ block.settings.name }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Muqavi testimonials",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Voices Of Satisfaction" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "name", "label": "Name" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Muqavi testimonials",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "Mujhe aksar Jisam mian garmi ki wajah se bechaini rehti thi. Is relief+ ko use karne ke baad jism halka mehsoos hua.", "name": "Muhammad Junaid" } },
+        { "type": "review", "settings": { "quote": "Neend bhi disturb thi aur andar se garmi si lagti thi. Relief Plus ke regular use se overall calm feel hua.", "name": "Rizwan" } },
+        { "type": "review", "settings": { "quote": "Peshab mein halki si irritation thi jo garmi mein barh jati thi. Relief Plus lene ke baad noticeable improvement feel hua.", "name": "Qasim" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<div class="cs-rating muqavi-product" {{ block.shopify_attributes }}>
+  <div class="cs-rating__stars-wrap">
+    <div class="cs-rating__stars" style="--cs-rating-fill: 93.6%;" aria-label="4.7 out of 5 stars">
+      <div class="cs-rating__stars-base">
+        {%- for i in (1..5) -%}
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg>
+        {%- endfor -%}
+      </div>
+      <div class="cs-rating__stars-fill">
+        {%- for i in (1..5) -%}
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg>
+        {%- endfor -%}
+      </div>
+    </div>
+    <span class="cs-rating__score">{{ block.settings.rating_score | default: '4.68/5.0' }}</span>
+  </div>
+  <span class="cs-rating__divider" aria-hidden="true"></span>
+  <div class="cs-rating__caption">
+    <p>{{ block.settings.rating_caption | default: '121+ customers reviews' }}</p>
+  </div>
+</div>

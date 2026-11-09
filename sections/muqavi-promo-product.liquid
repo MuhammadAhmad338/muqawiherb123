@@ -1,0 +1,79 @@
+{%- assign product = section.settings.product -%}
+{%- style -%}
+  .muqavi-promo-{{ section.id }} {
+    padding: 40px 20px;
+    background: #15371b;
+    margin: 0 20px;
+    border-radius: 12px;
+    color: #fff;
+  }
+  .muqavi-promo-{{ section.id }} .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .muqavi-promo-{{ section.id }} .title {
+    margin: 0 0 16px;
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .muqavi-promo-{{ section.id }} .cta {
+    display: inline-flex;
+    margin-top: 20px;
+    padding: 16px 24px;
+    border-radius: 50px;
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
+    color: #1a3a15;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .muqavi-promo-{{ section.id }} img { width: 100%; border-radius: 12px; }
+  @media (max-width: 768px) {
+    .muqavi-promo-{{ section.id }} { margin: 0; border-radius: 0; }
+    .muqavi-promo-{{ section.id }} .wrap { grid-template-columns: 1fr; }
+  }
+{%- endstyle -%}
+
+<section class="muqavi-promo-{{ section.id }}">
+  <div class="wrap">
+  <div>
+      {%- if product != blank and product.featured_image -%}
+        {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+      {%- endif -%}
+    </div>
+    <div>
+      <h2 class="title">{{ product.title | default: section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+      {%- if product != blank -%}
+        <a class="cta" href="{{ product.url }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Muqavi promo product",
+  "tag": "section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "title", "label": "Title fallback", "default": "Muqavi Relief Plus" },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "It supports relief from stomach burning, throat irritation, nausea, and uneasiness or anxiety before or after vomiting."
+    },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Buy Relief Plus Now" }
+  ],
+  "presets": [{ "name": "Muqavi promo product" }]
+}
+{% endschema %}

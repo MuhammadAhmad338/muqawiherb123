@@ -1,9 +1,59 @@
 {
   "sections": {
-    "main": {
-      "type": "main-index",
+    "hero": {
+      "type": "muqavi-hero",
+      "blocks": { "slide_1": { "type": "slide", "settings": { "link": "" } } },
+      "block_order": ["slide_1"],
+      "settings": {}
+    },
+    "marquee": {
+      "type": "muqavi-marquee",
+      "settings": { "text": "11:11 Sale is Live Now with Free Delivery ✨" }
+    },
+    "ugc": {
+      "type": "muqavi-ugc-slider",
+      "blocks": {
+        "s1": { "type": "story", "settings": {} },
+        "s2": { "type": "story", "settings": {} },
+        "s3": { "type": "story", "settings": {} },
+        "s4": { "type": "story", "settings": {} }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {}
+    },
+    "badges": {
+      "type": "muqavi-trust-badges",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "title": "Science-backed solutions", "text": "Backed by science, our solutions are proven effective." } },
+        "b2": { "type": "badge", "settings": { "title": "Manufacturing transparency", "text": "Openness in production builds trust." } },
+        "b3": { "type": "badge", "settings": { "title": "Effective solutions", "text": "Reliable answers to your needs, delivering results with precision and impact." } },
+        "b4": { "type": "badge", "settings": { "title": "True sustainability", "text": "Genuine commitment to a greener future." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {}
+    },
+    "promo": {
+      "type": "muqavi-promo-product",
+      "settings": {
+        "title": "Muqavi Relief Plus",
+        "description": "It supports relief from stomach burning, throat irritation, nausea (vomiting), and the feeling of uneasiness or anxiety before or after vomiting.",
+        "button_label": "BUY RELIEF PLUS NOW"
+      }
+    },
+    "testimonials": {
+      "type": "muqavi-testimonials",
+      "blocks": {
+        "t1": { "type": "review", "settings": { "quote": "Mujhe aksar Jisam mian garmi ki wajah se bechaini rehti thi. Is relief+ ko use karne ke baad jism halka mehsoos hua.", "name": "Muhammad Junaid" } },
+        "t2": { "type": "review", "settings": { "quote": "Neend bhi disturb thi aur andar se garmi si lagti thi. Relief Plus ke regular use se overall calm feel hua.", "name": "Rizwan" } },
+        "t3": { "type": "review", "settings": { "quote": "Peshab mein halki si irritation thi jo garmi mein barh jati thi. Relief Plus lene ke baad noticeable improvement feel hua.", "name": "Qasim" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {}
+    },
+    "pcsir": {
+      "type": "muqavi-pcsir",
       "settings": {}
     }
   },
-  "order": ["main"]
+  "order": ["hero", "marquee", "ugc", "badges", "promo", "testimonials", "pcsir"]
 }

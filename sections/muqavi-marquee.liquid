@@ -1,0 +1,48 @@
+{%- style -%}
+  .muqavi-marquee-{{ section.id }} {
+    padding: 13px 0;
+    background-color: #ffe2a0;
+    overflow: hidden;
+  }
+  .muqavi-marquee-{{ section.id }} .marquee-track {
+    display: flex;
+    gap: 48px;
+    animation: muqavi-marquee-scroll 22s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .muqavi-marquee-{{ section.id }} .marquee-item {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  @keyframes muqavi-marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+{%- endstyle -%}
+
+<section class="muqavi-marquee-{{ section.id }}">
+  <div class="marquee-track">
+    {%- for i in (1..8) -%}
+      <span class="marquee-item">{{ section.settings.text | default: 'RECOMMENDED BY HEALTH PROFESSIONALS • LOVED BY 10,000+ CUSTOMERS NATIONWIDE' }}</span>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Muqavi marquee",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee text",
+      "default": "RECOMMENDED BY HEALTH PROFESSIONALS • LOVED BY 10,000+ CUSTOMERS NATIONWIDE"
+    }
+  ],
+  "presets": [{ "name": "Muqavi marquee" }]
+}
+{% endschema %}
