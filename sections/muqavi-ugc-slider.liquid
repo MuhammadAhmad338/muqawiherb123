@@ -1,50 +1,230 @@
+{%- assign product = section.settings.product -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
 {%- style -%}
-  .muqavi-ugc-{{ section.id }} { padding: 36px 0; background: #fff; }
-  .muqavi-ugc-{{ section.id }} h2 { text-align: center; margin: 0 0 24px; font-size: clamp(22px, 4vw, 32px); }
-  .muqavi-ugc-{{ section.id }} .ugc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .section-{{ section.id }}-ugc-padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #fff;
   }
-  .muqavi-ugc-{{ section.id }} .ugc-card {
-    border-radius: 12px;
+  .section-{{ section.id }}-ugc-padding .ugc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-heading {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.25;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-heading .bold { color: #1a1a1a; }
+  .section-{{ section.id }}-ugc-padding .ugc-heading .light { font-weight: 400; color: #9c9c9c; }
+  .section-{{ section.id }}-ugc-padding .ugc-nav button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-slide {
+    border-radius: 14px;
     overflow: hidden;
-    background: #f5f5f5;
-    aspect-ratio: 9/16;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    height: auto;
+    display: flex;
+    flex-direction: column;
   }
-  .muqavi-ugc-{{ section.id }} .ugc-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .section-{{ section.id }}-ugc-padding .ugc-media {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: #111;
+    overflow: hidden;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-product-block {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    right: 12px;
+    z-index: 3;
+    border-radius: 10px;
+    background: rgba(250, 246, 230, 0.92);
+    padding: 6px;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-product {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-product-thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fafafa;
+    flex-shrink: 0;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-product-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-product-row {
+    display: flex;
+  align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-price-current {
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-price-compare {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: #666;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-buy-btn {
+    margin-left: auto;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
+    color: #1a3a15;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
 {%- endstyle -%}
 
-<section class="muqavi-ugc-{{ section.id }}">
-  <h2>{{ section.settings.heading | default: 'See what people say about us.' }}</h2>
-  <div class="ugc-grid">
-    {%- for block in section.blocks -%}
-      <div class="ugc-card" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
-          {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
-        {%- endif -%}
+<section class="section-{{ section.id }}-ugc-padding">
+  <div class="page-width">
+    <div class="ugc-header">
+      <h2 class="ugc-heading">
+        <span class="bold">{{ section.settings.heading_bold }}</span>
+        <span class="light">{{ section.settings.heading_light }}</span>
+      </h2>
+      <div class="ugc-nav">
+        <button type="button" class="ugc-prev-{{ section.id }}" aria-label="Previous slide">‹</button>
+        <button type="button" class="ugc-next-{{ section.id }}" aria-label="Next slide">›</button>
       </div>
-    {%- endfor -%}
+    </div>
+
+    <div class="swiper ugc-swiper-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="swiper-slide ugc-slide" {{ block.shopify_attributes }}>
+            <div class="ugc-media">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'herb-relief-product.png' | asset_url }}" alt="" loading="lazy" width="400" height="533">
+              {%- endif -%}
+              <button type="button" class="ugc-play" aria-label="Play video">▶</button>
+              {%- if product != blank -%}
+                <div class="ugc-product-block">
+                  <div class="ugc-product">
+                    {%- if product.featured_image -%}
+                      {{ product.featured_image | image_url: width: 120 | image_tag: class: 'ugc-product-thumb', loading: 'lazy' }}
+                    {%- endif -%}
+                    <div class="ugc-product-body">
+                      <p class="ugc-product-title">{{ product.title }}</p>
+                      <div class="ugc-product-row">
+                        {%- if variant -%}
+                          <span class="ugc-price-current">{{ variant.price | money }}</span>
+                          {%- if variant.compare_at_price > variant.price -%}
+                            <span class="ugc-price-compare">{{ variant.compare_at_price | money }}</span>
+                          {%- endif -%}
+                        {%- endif -%}
+                        <a class="ugc-buy-btn" href="{{ product.url }}">Buy Now</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
   </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('.ugc-swiper-{{ section.id }}', {
+      slidesPerView: 1.2,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: '.ugc-next-{{ section.id }}',
+        prevEl: '.ugc-prev-{{ section.id }}'
+      },
+      breakpoints: {
+        750: { slidesPerView: 3.2, spaceBetween: 20 },
+        990: { slidesPerView: 4.2, spaceBetween: 24 },
+        1200: { slidesPerView: 5, spaceBetween: 24 }
+      }
+    });
+  });
+</script>
+
 {% schema %}
 {
-  "name": "Muqavi UGC slider",
+  "name": "Herbliv UGC stories",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "See what people say about us." }
+    { "type": "product", "id": "product", "label": "Relief Plus product" },
+    { "type": "text", "id": "heading_bold", "label": "Heading (bold)", "default": "See what people" },
+    { "type": "text", "id": "heading_light", "label": "Heading (light)", "default": "say about us." }
   ],
   "blocks": [
     {
       "type": "story",
       "name": "Story",
-      "settings": [{ "type": "image_picker", "id": "image", "label": "Image" }]
+      "settings": [{ "type": "image_picker", "id": "image", "label": "Poster image / video thumb" }]
     }
   ],
-  "presets": [{ "name": "Muqavi UGC slider", "blocks": [{ "type": "story" }, { "type": "story" }, { "type": "story" }] }]
+  "presets": [
+    {
+      "name": "Herbliv UGC stories",
+      "blocks": [{ "type": "story" }, { "type": "story" }, { "type": "story" }, { "type": "story" }, { "type": "story" }]
+    }
+  ]
 }
 {% endschema %}

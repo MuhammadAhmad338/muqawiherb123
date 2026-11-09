@@ -1,53 +1,178 @@
 {%- style -%}
-  .muqavi-badges-{{ section.id }} { padding: 40px 20px; }
-  .muqavi-badges-{{ section.id }} .badge-grid {
+  .section-{{ section.id }}-badges-padding {
+    padding-top: 0;
+    padding-bottom: 80px;
+    background-color: #faf6e6;
+  }
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-badges-padding {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+  }
+  .section-{{ section.id }}-badges-padding .badges-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+    gap: 24px;
     text-align: center;
   }
-  .muqavi-badges-{{ section.id }} h3 { margin: 0 0 8px; font-size: 16px; }
-  .muqavi-badges-{{ section.id }} p { margin: 0; color: #555; font-size: 14px; line-height: 1.4; }
-  @media (max-width: 768px) {
-    .muqavi-badges-{{ section.id }} .badge-grid { grid-template-columns: 1fr 1fr; }
+  .section-{{ section.id }}-badges-padding .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-{{ section.id }}-badges-padding .badge-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  .section-{{ section.id }}-badges-padding .badge-item__title {
+    color: #194421;
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+  }
+  .section-{{ section.id }}-badges-padding .badge-item__desc {
+    color: #0f2613;
+    margin: 0;
+    font-size: 14px;
+    line-height: 130%;
+    max-width: 250px;
+  }
+  .section-{{ section.id }}-badges-padding .ts-content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-badges-padding .badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .section-{{ section.id }}-badges-padding .badge-item {
+      flex-direction: row;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .section-{{ section.id }}-badges-padding .badge-item__title {
+      text-align: left;
+      color: #010e11;
+      font-weight: 700;
+    }
+    .section-{{ section.id }}-badges-padding .badge-item__desc {
+      text-align: left;
+      font-size: 12px;
+      max-width: 100%;
+    }
+    .section-{{ section.id }}-badges-padding .ts-content-wrap {
+      gap: 8px;
+    }
+    .section-{{ section.id }}-badges-padding .badge-item img {
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .section-{{ section.id }}-badges-padding .badges-grid {
+      grid-template-columns: 1fr;
+    }
   }
 {%- endstyle -%}
 
-<section class="muqavi-badges-{{ section.id }}">
-  <div class="badge-grid">
-    {%- for block in section.blocks -%}
-      <div {{ block.shopify_attributes }}>
-        <h3>{{ block.settings.title }}</h3>
-        <p>{{ block.settings.text }}</p>
-      </div>
-    {%- endfor -%}
+<section class="section-{{ section.id }}-badges-padding">
+  <div class="page-width">
+    <div class="badges-grid">
+      {%- for block in section.blocks -%}
+        <div class="badge-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            {{ block.settings.icon | image_url: width: 96 | image_tag: width: 48, height: 48, loading: 'lazy' }}
+          {%- else -%}
+            {%- case block.settings.icon_key -%}
+              {%- when 'manufacturing' -%}
+                <img src="{{ 'Manufacturing_transparency_96x96.png' | asset_url }}" alt="" width="48" height="48" loading="lazy">
+              {%- when 'effective' -%}
+                <img src="{{ 'Effective_solutions_96x96.png' | asset_url }}" alt="" width="48" height="48" loading="lazy">
+              {%- when 'sustainability' -%}
+                <img src="{{ 'true_96x96.png' | asset_url }}" alt="" width="48" height="48" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'Science-backed_solutions_96x96.png' | asset_url }}" alt="" width="48" height="48" loading="lazy">
+            {%- endcase -%}
+          {%- endif -%}
+          <div class="ts-content-wrap">
+            <p class="badge-item__title">{{ block.settings.title }}</p>
+            <p class="badge-item__desc">{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Muqavi trust badges",
+  "name": "Herbliv trust badges",
   "tag": "section",
   "blocks": [
     {
       "type": "badge",
       "name": "Badge",
       "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        {
+          "type": "select",
+          "id": "icon_key",
+          "label": "Icon (theme assets)",
+          "default": "science",
+          "options": [
+            { "value": "science", "label": "Science-backed" },
+            { "value": "manufacturing", "label": "Manufacturing" },
+            { "value": "effective", "label": "Effective" },
+            { "value": "sustainability", "label": "Sustainability" }
+          ]
+        },
         { "type": "text", "id": "title", "label": "Title", "default": "Science-backed solutions" },
-        { "type": "textarea", "id": "text", "label": "Text", "default": "Backed by science, our solutions are proven effective." }
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Backed by science, our solutions are proven effective." }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Muqavi trust badges",
+      "name": "Herbliv trust badges",
       "blocks": [
-        { "type": "badge", "settings": { "title": "Science-backed solutions", "text": "Backed by science, our solutions are proven effective." } },
-        { "type": "badge", "settings": { "title": "Manufacturing transparency", "text": "Openness in production builds trust." } },
-        { "type": "badge", "settings": { "title": "Effective solutions", "text": "Reliable answers to your needs, delivering results with precision and impact." } },
-        { "type": "badge", "settings": { "title": "True sustainability", "text": "Genuine commitment to a greener future." } }
+        {
+          "type": "badge",
+          "settings": {
+            "icon_key": "science",
+            "title": "Science-backed solutions",
+            "text": "Backed by science, our solutions are proven effective."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_key": "manufacturing",
+            "title": "Manufacturing transparency",
+            "text": "Openness in production builds trust."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_key": "effective",
+            "title": "Effective solutions",
+            "text": "Reliable answers to your needs, delivering results with precision and impact."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_key": "sustainability",
+            "title": "True sustainability",
+            "text": "Genuine commitment to a greener future."
+          }
+        }
       ]
     }
   ]
