@@ -1,82 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "muqavi-hero",
-      "blocks": { "slide_1": { "type": "slide", "settings": { "link": "" } } },
-      "block_order": ["slide_1"],
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/new.jpg",
+            "link": "shopify://products/majoon-e-muqavi"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
       "settings": {}
     },
     "marquee": {
       "type": "muqavi-marquee",
-      "settings": { "text": "RECOMMENDED BY HEALTH PROFESSIONALS • LOVED BY 10,000+ CUSTOMERS NATIONWIDE" }
+      "settings": {
+        "text": "11:11 Sale is Live Now with Free Delivery ✨"
+      }
     },
     "ugc": {
       "type": "muqavi-ugc-slider",
       "blocks": {
-        "s1": { "type": "story", "settings": {} },
-        "s2": { "type": "story", "settings": {} },
-        "s3": { "type": "story", "settings": {} },
-        "s4": { "type": "story", "settings": {} },
-        "s5": { "type": "story", "settings": {} }
+        "s1": {
+          "type": "story",
+          "settings": {}
+        },
+        "s2": {
+          "type": "story",
+          "settings": {}
+        },
+        "s3": {
+          "type": "story",
+          "settings": {}
+        },
+        "s4": {
+          "type": "story",
+          "settings": {}
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4", "s5"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
+        "product": "",
         "heading_bold": "See what people",
-        "heading_light": " say about us."
+        "heading_light": "say about us."
       }
     },
     "badges": {
       "type": "muqavi-trust-badges",
       "blocks": {
-        "b1": { "type": "badge", "settings": { "icon_key": "science", "title": "Science-backed solutions", "text": "Backed by science, our solutions are proven effective." } },
-        "b2": { "type": "badge", "settings": { "icon_key": "manufacturing", "title": "Manufacturing transparency", "text": "Openness in production builds trust." } },
-        "b3": { "type": "badge", "settings": { "icon_key": "effective", "title": "Effective solutions", "text": "Reliable answers to your needs, delivering results with precision and impact." } },
-        "b4": { "type": "badge", "settings": { "icon_key": "sustainability", "title": "True sustainability", "text": "Genuine commitment to a greener future." } }
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "icon_key": "science",
+            "title": "Science-backed solutions",
+            "text": "Backed by science, our solutions are proven effective."
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "icon_key": "science",
+            "title": "Manufacturing transparency",
+            "text": "Openness in production builds trust."
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "icon_key": "science",
+            "title": "Effective solutions",
+            "text": "Reliable answers to your needs, delivering results with precision and impact."
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "icon_key": "science",
+            "title": "True sustainability",
+            "text": "Genuine commitment to a greener future."
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {}
     },
     "promo": {
       "type": "muqavi-promo-product",
-      "blocks": {
-        "g1": { "type": "general_benefit", "settings": { "text": "Balances excess liver heat" } },
-        "g2": { "type": "general_benefit", "settings": { "text": "Relieves burning sensation in hands and feet" } },
-        "g3": { "type": "general_benefit", "settings": { "text": "Creates a cooling effect in the body" } },
-        "g4": { "type": "general_benefit", "settings": { "text": "Strengthens the mind and improves eyesight" } },
-        "g5": { "type": "general_benefit", "settings": { "text": "Beneficial for burning/irritation in the eyes" } },
-        "g6": { "type": "general_benefit", "settings": { "text": "Helps with stomach and intestinal ulcers" } },
-        "m1": { "type": "marital_benefit", "settings": { "text": "Relieves acidity, burning, and pain in the stomach" } },
-        "m2": { "type": "marital_benefit", "settings": { "text": "Beneficial for nausea and vomiting" } },
-        "m3": { "type": "marital_benefit", "settings": { "text": "Helps with pain and burning in bleeding hemorrhoids (piles)" } },
-        "m4": { "type": "marital_benefit", "settings": { "text": "Beneficial for biliary jaundice (yellowing due to bile)" } },
-        "m5": { "type": "marital_benefit", "settings": { "text": "Helpful in insomnia / sleeplessness" } },
-        "m6": { "type": "marital_benefit", "settings": { "text": "Relieves palpitations, anxiety, and restlessness" } }
-      },
-      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "m1", "m2", "m3", "m4", "m5", "m6"],
       "settings": {
+        "product": "",
         "title": "Muqavi Relief Plus",
         "description": "It supports relief from stomach burning, throat irritation, nausea (vomiting), and the feeling of uneasiness or anxiety before or after vomiting.",
-        "rating_score": "4.9",
-        "review_count": "200+",
-        "fallback_price": "2,450.00",
-        "fallback_compare_price": "3,500.00",
         "button_label": "BUY RELIEF PLUS NOW"
       }
     },
     "testimonials": {
       "type": "muqavi-testimonials",
       "blocks": {
-        "t1": { "type": "review", "settings": { "quote": "Mujhe aksar Jisam mian garmi ki wajah se bechaini rehti thi. Is relief+ ko use karne ke baad jism halka halka mehsoos hua. Abhi kuch din sy regular use kr raha hon.", "name": "Muhammad Junaid" } },
-        "t2": { "type": "review", "settings": { "quote": "Neend bhi disturb thi aur andar se garmi si lagti thi. Relief Plus ke regular use se overall calm feel hua.", "name": "Rizwan" } },
-        "t3": { "type": "review", "settings": { "quote": "Peshab mein halki si irritation thi jo garmi mein barh jati thi. Relief Plus lene ke baad noticeable improvement feel hua.", "name": "Qasim" } }
+        "t1": {
+          "type": "review",
+          "settings": {
+            "quote": "Mujhe aksar Jisam mian garmi ki wajah se bechaini rehti thi. Is relief+ ko use karne ke baad jism halka mehsoos hua.",
+            "name": "Muhammad Junaid"
+          }
+        },
+        "t2": {
+          "type": "review",
+          "settings": {
+            "quote": "Neend bhi disturb thi aur andar se garmi si lagti thi. Relief Plus ke regular use se overall calm feel hua.",
+            "name": "Rizwan"
+          }
+        },
+        "t3": {
+          "type": "review",
+          "settings": {
+            "quote": "Peshab mein halki si irritation thi jo garmi mein barh jati thi. Relief Plus lene ke baad noticeable improvement feel hua.",
+            "name": "Qasim"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"],
-      "settings": {}
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "heading": "Voices Of Satisfaction"
+      }
     },
     "pcsir": {
       "type": "muqavi-pcsir",
-      "settings": {}
+      "settings": {
+        "heading": "No Side Effects Trusted By PCSIR",
+        "text": "A 100% natural herbal formula designed to eliminate acidity, cool stomach heat, and restore digestive vitality from within."
+      }
     }
   },
-  "order": ["hero", "marquee", "ugc", "badges", "promo", "testimonials", "pcsir"]
+  "order": [
+    "hero",
+    "marquee",
+    "ugc",
+    "badges",
+    "promo",
+    "testimonials",
+    "pcsir"
+  ]
 }
