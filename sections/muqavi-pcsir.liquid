@@ -6,10 +6,12 @@
 
 {%- style -%}
   .muqavi-pcsir-{{ section.id }} {
+    padding: 50px 20px;
     background: #112d16;
     color: #fff;
-    padding: 64px 20px 72px;
     text-align: center;
+    margin: 0 20px;
+    border-radius: 12px;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__inner {
     max-width: 760px;
@@ -21,18 +23,19 @@
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__kicker {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin: 0;
-    padding: 6px 12px 6px 10px;
-    background: linear-gradient(180deg, #f8e7b4 0%, #e4c56a 100%);
-    color: #3a2e0c;
-    border-radius: 3px;
+    gap: 10px;
+    margin: 0 0 18px;
+    padding: 6px 16px;
+    background: #ffe2a0;
+    color: #000;
+    border-radius: 4px;
     line-height: 1.05;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__kicker-num {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #2f723c;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__kicker-copy {
     display: flex;
@@ -42,32 +45,34 @@
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__kicker-copy strong {
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
+    font-weight: 400;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
+    color: #2f723c;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__kicker-copy span {
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
-    opacity: 0.8;
+    color: #000;
   }
   .muqavi-pcsir-{{ section.id }} h2 {
-    margin: 18px 0 20px;
+    margin: 0 0 22px;
     max-width: 16em;
     color: #fff;
-    font-size: clamp(22px, 2.6vw, 30px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    text-transform: capitalize;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    margin: 0 0 22px;
+    gap: 18px;
+    margin: 0 0 42px;
     padding: 0;
     list-style: none;
   }
@@ -78,32 +83,26 @@
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal {
     display: grid;
     place-items: center;
-    width: 54px;
-    height: 54px;
-    color: #e8c96a;
+    width: 78px;
+    height: 78px;
+    color: #e4c56a;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal svg {
-    width: 54px;
-    height: 54px;
+    width: 78px;
+    height: 78px;
     display: block;
+    overflow: visible;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cert {
-    display: inline-block;
+    display: block;
+    width: min(264px, 72vw);
     line-height: 0;
     text-decoration: none;
     color: inherit;
-    padding: 5px;
-    border: 2px solid #e4c56e;
-    background: #e4c56e;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-    transition: transform 0.2s ease;
-  }
-  .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cert:hover {
-    transform: translateY(-2px);
+    filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.38));
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cert img {
-    width: 240px;
-    max-width: 68vw;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -111,14 +110,13 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: 18px;
+    margin-top: 20px;
     min-width: 240px;
-    padding: 5px 6px 5px 5px;
-    background: linear-gradient(180deg, #ffe7a6 0%, #f0c14b 48%, #d7a33a 100%);
-    color: #1c340f;
-    border-radius: 999px;
+    padding: 8px;
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
+    color: #0f2613;
+    border-radius: 56px;
     text-decoration: none;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta:hover {
     filter: brightness(1.04);
@@ -126,13 +124,14 @@
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-mark {
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: #1c340f;
     color: #f0c14b;
     overflow: hidden;
     flex-shrink: 0;
+    border: 1px solid #0f2613;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-mark img {
     width: 100%;
@@ -140,41 +139,50 @@
     object-fit: cover;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-mark svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-label {
     flex: 1;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    line-height: 1.1;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
     padding-right: 4px;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-arrow {
     display: grid;
     place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1.5px solid #1c340f;
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta-arrow svg {
-    width: 14px;
-    height: 14px;
+    width: 24px;
+    height: 24px;
   }
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 768px) {
     .muqavi-pcsir-{{ section.id }} {
-      padding: 48px 16px 56px;
+      padding: 30px 16px;
+      margin: 0 6px;
+    }
+    .muqavi-pcsir-{{ section.id }} h2 {
+      font-size: 32px;
+      max-width: 315px;
     }
     .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal,
     .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal svg {
-      width: 46px;
-      height: 46px;
+      width: 62px;
+      height: 62px;
     }
     .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals {
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta {
+      gap: 5px;
+      padding: 6px;
     }
   }
 {%- endstyle -%}
@@ -193,38 +201,47 @@
 
     <ul class="muqavi-pcsir__seals" aria-label="Quality seals">
       <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="100% natural">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M32 46c.4-10 6.5-16.5 16-19-1.2 10.5-7.2 17-16 19Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M32 46c-.4-10-6.5-16.5-16-19 1.2 10.5 7.2 17 16 19Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M32 46V28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <span class="muqavi-pcsir__seal" role="img" aria-label="100% herbal">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
+            <text x="40" y="30" text-anchor="middle" fill="#e4c56a" font-size="9" font-weight="700" font-family="Arial, Helvetica, sans-serif">Herbal</text>
+            <text x="40" y="46" text-anchor="middle" fill="#e4c56a" font-size="15" font-weight="800" font-family="Arial, Helvetica, sans-serif">100%</text>
+            <path d="M32 56c2.2-5 6-8 8-8s5.8 3 8 8" stroke="#e4c56a" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M34 58c1.6-3.2 3.8-5 6-5s4.4 1.8 6 5" stroke="#e4c56a" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M28 54c3-7 8-10 12-8" stroke="#e4c56a" stroke-width="2.2" fill="none"/>
+            <path d="M52 54c-3-7-8-10-12-8" stroke="#e4c56a" stroke-width="2.2" fill="none"/>
           </svg>
         </span>
       </li>
       <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="100 percent herbal">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.6"/>
-            <text x="32" y="37" text-anchor="middle" fill="currentColor" font-size="15" font-weight="700" font-family="Arial, Helvetica, sans-serif">100%</text>
+        <span class="muqavi-pcsir__seal" role="img" aria-label="100% organic">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <circle cx="40" cy="46" r="26" stroke="#e4c56a" stroke-width="4.5"/>
+            <path d="M40 8c-9 4-16 16-8 32 2-10 8-16 8-22 0 6 6 12 8 22 8-16 1-28-8-32z" fill="#e4c56a"/>
+            <path d="M32 14c6 2 10 8 8 18" stroke="#112d16" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M48 14c-6 2-10 8-8 18" stroke="#112d16" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <text x="40" y="50" text-anchor="middle" fill="#e4c56a" font-size="15" font-weight="800" font-family="Arial, Helvetica, sans-serif">100%</text>
+            <text x="40" y="64" text-anchor="middle" fill="#e4c56a" font-size="8" font-weight="700" letter-spacing="1.2" font-family="Arial, Helvetica, sans-serif">ORGANIC</text>
           </svg>
         </span>
       </li>
       <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="Chemical free">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M27 18h10M30 18v8L22 42a6 6 0 0 0 5.2 9h9.6A6 6 0 0 0 42 42L34 26v-8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M24 36h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <span class="muqavi-pcsir__seal" role="img" aria-label="Halal">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
+            <circle cx="40" cy="40" r="28" stroke="#e4c56a" stroke-width="1.8"/>
+            <text x="40" y="38" text-anchor="middle" fill="#e4c56a" font-size="16" font-weight="700" font-family="Georgia, 'Times New Roman', serif">حلال</text>
+            <text x="40" y="56" text-anchor="middle" fill="#e4c56a" font-size="11" font-weight="800" letter-spacing="1.4" font-family="Arial, Helvetica, sans-serif">HALAL</text>
           </svg>
         </span>
       </li>
       <li>
         <span class="muqavi-pcsir__seal" role="img" aria-label="Trusted quality">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M32 16l4.2 2.4 4.8-.4 1.6 4.6 4.2 2.4-1.6 4.6.4 4.8-4.6 1.6L38.6 45 32 46.2 25.4 45l-2.4-4.4-4.6-1.6.4-4.8-1.6-4.6 4.2-2.4 1.6-4.6 4.8.4L32 16Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M27.5 32.5l3 3 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
+            <circle cx="40" cy="40" r="27" stroke="#e4c56a" stroke-width="2"/>
+            <circle cx="40" cy="40" r="21" stroke="#e4c56a" stroke-width="1.2"/>
+            <path d="M40 22l3.6 8.4 9.2.8-7 6.2 2.2 9-8-4.6-8 4.6 2.2-9-7-6.2 9.2-.8z" fill="#e4c56a"/>
           </svg>
         </span>
       </li>
@@ -234,8 +251,8 @@
       <a class="muqavi-pcsir__cert" href="{{ section.settings.certificate | image_url: width: 1600 }}" target="_blank" rel="noopener">
         {{
           section.settings.certificate
-          | image_url: width: 800
-          | image_tag: alt: cert_alt, loading: 'lazy', widths: '300, 480, 800'
+          | image_url: width: 900
+          | image_tag: alt: cert_alt, loading: 'lazy', widths: '320, 480, 900'
         }}
       </a>
     {%- else -%}
@@ -243,8 +260,8 @@
         <img
           src="{{ 'muqavi-pcsir-certificate.jpg' | asset_url }}"
           alt="{{ cert_alt | escape }}"
-          width="413"
-          height="601"
+          width="1056"
+          height="1356"
           loading="lazy"
         >
       </a>
@@ -256,8 +273,8 @@
           {{ product.featured_image | image_url: width: 80 | image_tag: alt: '', loading: 'lazy' }}
         {%- else -%}
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 20c.3-6 4-10 10-11.5C20.5 15 16 19 12 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M12 20c-.3-6-4-10-10-11.5C3.5 15 8 19 12 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M12 20c.3-6 4-10 10-11.5C20.5 15 16 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 20c-.3-6-4-10-10-11.5C3.5 15 8 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
           </svg>
         {%- endif -%}
       </span>
@@ -303,7 +320,7 @@
       "type": "text",
       "id": "button_label",
       "label": "Button label",
-      "default": "Muqavi Relief Plus"
+      "default": "Order the Majoon"
     },
     {
       "type": "product",
