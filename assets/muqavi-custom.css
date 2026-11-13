@@ -624,12 +624,96 @@ div#shopify-section-template--20964328243338__promo_product_section_fqWt78{
     background: #FAF6E6;
 }
 /* header style css */
+.announcement-bar-section {
+  position: relative;
+  background: #194421;
+}
+.announcement-bar-section .utility-bar,
+.announcement-bar-section .utility-bar--bottom-border {
+  background: transparent;
+  border-bottom: 0;
+}
+.announcement-bar-section .announcement-bar,
+.announcement-bar-section .announcement-bar__link,
+.announcement-bar-section .announcement-bar__message,
+.announcement-bar-section .announcement-bar__message.h5,
+.announcement-bar-section .announcement-bar__message span {
+  color: #fff;
+  background: transparent;
+}
+.announcement-bar-section .announcement-bar,
+.announcement-bar-section .announcement-bar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.announcement-bar-section .announcement-bar__message {
+  text-align: center;
+}
+.announcement-bar-section .announcement-bar__message,
+.announcement-bar-section .announcement-bar__message.h5 {
+  min-height: 0;
+  margin: 0;
+  padding: 10px 40px;
+  font-family: Suisse Intl, Assistant, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+.announcement-bar-close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.announcement-bar-close:hover {
+  opacity: 0.75;
+}
+.section-header .header.page-width {
+  max-width: none;
+}
+.section-header .header__heading-link {
+  padding: 0.2rem 0.4rem;
+}
+.section-header .header__heading-logo {
+  width: auto;
+  height: 48px;
+  max-height: 48px;
+  object-fit: contain;
+}
+@media screen and (max-width: 749px) {
+  .section-header .header__heading-logo {
+    height: 40px;
+    max-height: 40px;
+  }
+}
+.section-header .header__icon {
+  color: #0f2613;
+}
+.herb-head .header__menu-item {
+  padding: 0.6rem 1rem;
+  color: #0f2613;
+}
 .herb-head .header__menu-item span{
-font-family: Suisse Intl;
+font-family: Suisse Intl, Assistant, sans-serif;
 font-weight: 400;
 font-size: 14px;
 line-height: 130%;
-letter-spacing: 0%;
+letter-spacing: 0;
 vertical-align: middle;
 color:#0F2613;
 }
