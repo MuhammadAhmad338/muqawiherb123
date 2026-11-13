@@ -1,0 +1,16 @@
+{%- liquid
+  assign raw_title = title | strip
+  assign key = raw_title | downcase
+  assign raw_handle = handle | default: '' | downcase
+  assign raw_url = url | default: '' | downcase
+
+  if key contains 'catalog'
+    echo 'Shop'
+  elsif raw_handle == 'catalog' or raw_handle == 'catalogue' or raw_handle == 'catalogs'
+    echo 'Shop'
+  elsif raw_url contains '/collections/all' or raw_url contains '/collections/catalog'
+    echo 'Shop'
+  else
+    echo raw_title | escape
+  endif
+-%}

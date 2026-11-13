@@ -21,7 +21,7 @@
                     class="header__active-menu-item"
                   {% endif %}
                 >
-                  {{- link.title | escape -}}
+                  {%- render 'shop-label', title: link.title, handle: link.handle, url: link.url -%}
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
@@ -44,7 +44,7 @@
                           aria-current="page"
                         {% endif %}
                       >
-                        {{ childlink.title | escape }}
+                        {%- render 'shop-label', title: childlink.title, handle: childlink.handle, url: childlink.url -%}
                       </a>
                       {%- if childlink.links != blank -%}
                         <ul class="list-unstyled" role="list">
@@ -58,7 +58,7 @@
                                   aria-current="page"
                                 {% endif %}
                               >
-                                {{ grandchildlink.title | escape }}
+                                {%- render 'shop-label', title: grandchildlink.title, handle: grandchildlink.handle, url: grandchildlink.url -%}
                               </a>
                             </li>
                           {%- endfor -%}
@@ -84,7 +84,7 @@
                 class="header__active-menu-item"
               {% endif %}
             >
-              {{- link.title | escape -}}
+              {%- render 'shop-label', title: link.title, handle: link.handle, url: link.url -%}
             </span>
           </a>
         {%- endif -%}
