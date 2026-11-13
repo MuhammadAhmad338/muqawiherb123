@@ -1,15 +1,15 @@
 {%- liquid
   assign product = section.settings.product
   assign title_text = section.settings.title
-  if product != blank
+  if title_text == blank and product != blank
     assign title_text = product.title
   endif
   assign description_text = section.settings.description
-  if product != blank and product.description != blank
+  if description_text == blank and product != blank and product.description != blank
     assign description_text = product.description | strip_html | truncate: 280
   endif
   assign variant = product.selected_or_first_available_variant
-  assign product_url = product.url | default: section.settings.button_link
+  assign product_url = product.url | default: section.settings.button_link | default: routes.all_products_collection_url
 -%}
 
 {%- style -%}
@@ -32,11 +32,17 @@
     gap: 40px;
     align-items: center;
   }
+  .section-{{ section.id }}-promo-padding .promo-product-image {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
   .section-{{ section.id }}-promo-padding .promo-product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+    object-fit: contain;
+    background: #fff;
     display: block;
   }
   .section-{{ section.id }}-promo-padding .promo-product-content {
@@ -196,7 +202,7 @@
         {%- elsif product != blank and product.featured_image -%}
           {{ product.featured_image | image_url: width: 1200 | image_tag: alt: title_text, loading: 'lazy' }}
         {%- else -%}
-          <img src="{{ 'herb-relief-product.png' | asset_url }}" alt="{{ title_text }}" loading="lazy" width="800" height="800">
+          <img src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}" alt="{{ title_text }}" loading="lazy" width="1100" height="1100">
         {%- endif -%}
       </div>
 
@@ -292,20 +298,20 @@
   "settings": [
     { "type": "product", "id": "product", "label": "Product" },
     { "type": "image_picker", "id": "image", "label": "Product image (optional)" },
-    { "type": "text", "id": "title", "label": "Title if no product", "default": "Muqavi Relief Plus" },
+    { "type": "text", "id": "title", "label": "Title if no product", "default": "Majoon-e-Muqavi" },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "It supports relief from stomach burning, throat irritation, nausea (vomiting), and the feeling of uneasiness or anxiety before or after vomiting."
+      "default": "A traditional herbal tonic for vitality, stamina and strength"
     },
     { "type": "text", "id": "rating_score", "label": "Rating", "default": "4.9" },
     { "type": "text", "id": "review_count", "label": "Review count label", "default": "200+" },
     { "type": "text", "id": "fallback_price", "label": "Price if no product", "default": "2,450.00" },
     { "type": "text", "id": "fallback_compare_price", "label": "Compare price if no product", "default": "3,500.00" },
     { "type": "text", "id": "general_label", "label": "Left column label", "default": "General Benefits" },
-    { "type": "text", "id": "marital_label", "label": "Right column label", "default": "Marital Benefits" },
-    { "type": "text", "id": "button_label", "label": "Button", "default": "BUY RELIEF PLUS NOW" },
+    { "type": "text", "id": "marital_label", "label": "Right column label", "default": "Benefits for Married Life" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "BUY MAJOON NOW" },
     { "type": "url", "id": "button_link", "label": "Button link if no product" }
   ],
   "blocks": [

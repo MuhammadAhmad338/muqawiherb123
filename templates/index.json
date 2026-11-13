@@ -109,11 +109,30 @@
     },
     "promo": {
       "type": "muqavi-promo-product",
+      "blocks": {
+        "g1": { "type": "general_benefit", "settings": { "text": "Supports natural energy and stamina through the day" } },
+        "g2": { "type": "general_benefit", "settings": { "text": "Helps support healthy blood circulation" } },
+        "g3": { "type": "general_benefit", "settings": { "text": "Supports overall strength and male vitality" } },
+        "g4": { "type": "general_benefit", "settings": { "text": "Traditionally used as a nourishing tonic, made with salep, dry fruits and pure honey" } },
+        "g5": { "type": "general_benefit", "settings": { "text": "Contains ashwagandha, traditionally used to support the body during everyday stress and fatigue" } },
+        "g6": { "type": "general_benefit", "settings": { "text": "Includes saffron and ginseng, traditionally valued for well-being and vitality" } },
+        "g7": { "type": "general_benefit", "settings": { "text": "Prepared in the traditional majoon form from carefully selected natural ingredients" } },
+        "m1": { "type": "marital_benefit", "settings": { "text": "Helps support sexual desire (libido)" } },
+        "m2": { "type": "marital_benefit", "settings": { "text": "Supports male stamina and endurance" } },
+        "m3": { "type": "marital_benefit", "settings": { "text": "Traditionally used to support healthy blood flow for firmer, healthier erections" } },
+        "m4": { "type": "marital_benefit", "settings": { "text": "Beneficial in cases of erectile weakness, as used in traditional Unani practice" } },
+        "m5": { "type": "marital_benefit", "settings": { "text": "Supports confidence and a relaxed, balanced mind" } },
+        "m6": { "type": "marital_benefit", "settings": { "text": "Supports energy and vitality for a more active married life" } },
+        "m7": { "type": "marital_benefit", "settings": { "text": "Supports overall male wellness for a healthier, more balanced married life" } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "m1", "m2", "m3", "m4", "m5", "m6", "m7"],
       "settings": {
-        "product": "",
-        "title": "Muqavi Relief Plus",
-        "description": "It supports relief from stomach burning, throat irritation, nausea (vomiting), and the feeling of uneasiness or anxiety before or after vomiting.",
-        "button_label": "BUY RELIEF PLUS NOW"
+        "product": "majoon-e-muqavi",
+        "title": "Majoon-e-Muqavi",
+        "description": "A traditional herbal tonic for vitality, stamina and strength",
+        "general_label": "General Benefits",
+        "marital_label": "Benefits for Married Life",
+        "button_label": "BUY MAJOON NOW"
       }
     },
     "testimonials": {
