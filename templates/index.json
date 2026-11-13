@@ -77,7 +77,7 @@
         "b2": {
           "type": "badge",
           "settings": {
-            "icon_key": "science",
+            "icon_key": "manufacturing",
             "title": "Manufacturing transparency",
             "text": "Openness in production builds trust."
           }
@@ -85,7 +85,7 @@
         "b3": {
           "type": "badge",
           "settings": {
-            "icon_key": "science",
+            "icon_key": "effective",
             "title": "Effective solutions",
             "text": "Reliable answers to your needs, delivering results with precision and impact."
           }
@@ -93,7 +93,7 @@
         "b4": {
           "type": "badge",
           "settings": {
-            "icon_key": "science",
+            "icon_key": "sustainability",
             "title": "True sustainability",
             "text": "Genuine commitment to a greener future."
           }
