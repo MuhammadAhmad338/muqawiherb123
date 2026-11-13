@@ -6,21 +6,16 @@
 
 {%- style -%}
   .majoon-promo-{{ section.id }} {
-    background: #faf6e6;
-    padding: 8px 20px 40px;
-  }
-  .majoon-promo-{{ section.id }} .majoon-promo__bar {
     background: #15371b;
+    margin: 0 20px 40px;
     border-radius: 12px;
-    padding: 40px;
+    padding: 40px 0;
   }
   .majoon-promo-{{ section.id }} .majoon-promo__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 40px;
     align-items: center;
-    max-width: 1180px;
-    margin: 0 auto;
   }
   .majoon-promo-{{ section.id }} .majoon-promo__photo {
     background: #fff;
@@ -147,11 +142,9 @@
   }
   @media screen and (max-width: 768px) {
     .majoon-promo-{{ section.id }} {
-      padding: 0 0 24px;
-    }
-    .majoon-promo-{{ section.id }} .majoon-promo__bar {
+      margin: 0 0 24px;
       border-radius: 0;
-      padding: 28px 16px;
+      padding: 28px 0;
     }
     .majoon-promo-{{ section.id }} .majoon-promo__grid {
       grid-template-columns: 1fr;
@@ -164,9 +157,6 @@
     .majoon-promo-{{ section.id }} .majoon-promo__cols li {
       font-size: 12px;
     }
-    .majoon-promo-{{ section.id }} .majoon-promo__cols {
-      grid-template-columns: 1fr;
-    }
   }
 {%- endstyle -%}
 
@@ -177,7 +167,7 @@
 {%- endcapture -%}
 
 <section class="majoon-promo-{{ section.id }}">
-  <div class="majoon-promo__bar">
+  <div class="page-width">
     <div class="majoon-promo__grid">
       <div class="majoon-promo__photo">
         <img
