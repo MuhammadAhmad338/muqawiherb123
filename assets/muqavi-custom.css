@@ -118,7 +118,7 @@
 }
     #tib-{{ block.id }} .tib-number {
       font-size: 28px;
-          font-family: 'Suisse Intl';
+          font-family: 'Google Sans Flex';
       font-weight: 800;
       color: #C9A227;
       margin-bottom: 14px;
@@ -127,12 +127,12 @@
     #tib-{{ block.id }} .tib-title {
       font-weight: 700;
       font-size: 18px;
-          font-family: 'Suisse Intl';
+          font-family: 'Google Sans Flex';
       color: #111;
       margin-bottom: 12px;
     }
     #tib-{{ block.id }} .tib-text {
-          font-family: 'Suisse Intl';
+          font-family: 'Google Sans Flex';
       color: #6b6b6b;
       font-size: 16px;
       line-height: 1.5;
@@ -189,12 +189,12 @@
       font-weight: 800;
       color: #111;
       margin-bottom: 8px;
-      font-family: 'Suisse Intl';
+      font-family: 'Google Sans Flex';
     }
     #tib-{{ block.id }} .tib-stat-label {
       color: #6b6b6b;
       font-size: 15px;
-          font-family: 'Suisse Intl';
+          font-family: 'Google Sans Flex';
     }
     @media screen and (max-width: 749px) {
       #tib-{{ block.id }} .tib-stat-grid { 
@@ -245,7 +245,7 @@
     gap: 5px;
         font-size: 16px;
     color: #1a1a1a;
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
     font-weight: 500;
     line-height: 120%;
 }
@@ -474,7 +474,7 @@
     right: 11px;
 }
 .slider-heading{
-  font-family: Suisse Intl;
+  font-family: Google Sans Flex;
 font-weight: 500;
 font-size: 24px;
 line-height: 120%;
@@ -656,7 +656,7 @@ div#shopify-section-template--20964328243338__promo_product_section_fqWt78{
   min-height: 0;
   margin: 0;
   padding: 10px 40px;
-  font-family: Suisse Intl, Assistant, sans-serif;
+  font-family: Google Sans Flex, Assistant, sans-serif;
   font-size: 12px;
   font-weight: 300;
   line-height: 1.35;
@@ -709,7 +709,7 @@ div#shopify-section-template--20964328243338__promo_product_section_fqWt78{
   color: #0f2613;
 }
 .herb-head .header__menu-item span{
-font-family: Suisse Intl, Assistant, sans-serif;
+font-family: Google Sans Flex, Assistant, sans-serif;
 font-weight: 400;
 font-size: 14px;
 line-height: 130%;
@@ -747,7 +747,7 @@ color:#0F2613;
     border: none;
     cursor: pointer;
     width: 100%;
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
@@ -779,7 +779,7 @@ color:#0F2613;
     display:block;
 }
 .sc-rating p {
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
     font-weight: 400;
     font-size: 12px;
     line-height: 140%;
@@ -796,7 +796,7 @@ color:#0F2613;
   font-size:39px !important;
 }
 .cs_ptr_main .product__title h1 {
-    font-family: Suisse Intl;
+    font-family: Google Sans Flex;
     font-weight: 500;
     font-size: 32px;
     line-height: 120%;
@@ -822,7 +822,7 @@ color:#0F2613;
 }
 .trust-text p {
     margin: 0;
-    font-family: Suisse Intl;
+    font-family: Google Sans Flex;
     font-weight: 500;
     font-size: 12px;
     line-height: 140%;
@@ -852,7 +852,7 @@ color:#0F2613;
     background: #FAF6E6;
 }
 .cs_ptr_main .price--on-sale .price-item--regular{
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
     color:black;
 font-weight: 500;
 font-style: Medium;
@@ -863,7 +863,7 @@ vertical-align: middle;
 text-decoration: line-through;
 }
 .cs_ptr_main span.price-item.price-item--sale.price-item--last{
- font-family: Suisse Intl;
+ font-family: Google Sans Flex;
     font-weight: 500;
     font-size: 24px;
     color: #fff;
@@ -875,7 +875,7 @@ text-decoration: line-through;
     line-height: normal;
 }
 .cs_ptr_main .price--sold-out .price__badge-sold-out, .price--on-sale .price__badge-sale, .volume-pricing--sale-badge .price__badge-sale{
-        font-family: 'Suisse Intl';
+        font-family: 'Google Sans Flex';
     background: #183018;
 }
 .cs_ptr_main .product-form__input{
@@ -896,7 +896,7 @@ max-width:100%;
     box-shadow:none;
 }
 .quantity__input{
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
 }
 .quantity__button:focus-visible, 
 .quantity__input:focus-visible{
@@ -916,7 +916,7 @@ max-width:100%;
     background: linear-gradient(180deg, #FFE2A0 0%, #FDD271 50%, #C6983B 100%);
     border-radius: 110px;
     color: black;
-    font-family: Suisse Intl;
+    font-family: Google Sans Flex;
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
@@ -929,7 +929,7 @@ max-width:100%;
     background: linear-gradient(180deg, #FFE2A0 0%, #FDD271 50%, #C6983B 100%);
     border-radius: 110px;
     color: black;
-    font-family: Suisse Intl;
+    font-family: Google Sans Flex;
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
@@ -950,7 +950,7 @@ max-width:100%;
     display: block;
 }
 .shi-txt p {
-    font-family: 'Suisse Intl';
+    font-family: 'Google Sans Flex';
     font-weight: 500;
     font-size: 12px;
     line-height: 140%;
@@ -973,7 +973,7 @@ max-width:100%;
     display:none;
 }
 .cs_ptr_main .accordion__title{
-    font-family: Suisse Intl;
+    font-family: Google Sans Flex;
     font-weight: 500;
     font-size: 16px;
     line-height: 140%;

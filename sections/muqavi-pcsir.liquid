@@ -71,27 +71,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
     margin: 0 0 42px;
-    padding: 0;
-    list-style: none;
   }
-  .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals li {
-    margin: 0;
-    padding: 0;
-  }
-  .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal {
-    display: grid;
-    place-items: center;
-    width: 78px;
-    height: 78px;
-    color: #e4c56a;
-  }
-  .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal svg {
-    width: 78px;
-    height: 78px;
+  .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals img {
     display: block;
-    overflow: visible;
+    height: 100px;
+    width: auto;
+    max-width: min(420px, 90vw);
+    object-fit: contain;
   }
   .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cert {
     display: block;
@@ -171,14 +158,11 @@
       font-size: 32px;
       max-width: 315px;
     }
-    .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal,
-    .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seal svg {
-      width: 62px;
-      height: 62px;
-    }
     .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals {
-      gap: 12px;
       margin-bottom: 28px;
+    }
+    .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__seals img {
+      height: 68px;
     }
     .muqavi-pcsir-{{ section.id }} .muqavi-pcsir__cta {
       gap: 5px;
@@ -199,53 +183,15 @@
 
     <h2>{{ section.settings.heading }}</h2>
 
-    <ul class="muqavi-pcsir__seals" aria-label="Quality seals">
-      <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="100% herbal">
-          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
-            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
-            <text x="40" y="30" text-anchor="middle" fill="#e4c56a" font-size="9" font-weight="700" font-family="Arial, Helvetica, sans-serif">Herbal</text>
-            <text x="40" y="46" text-anchor="middle" fill="#e4c56a" font-size="15" font-weight="800" font-family="Arial, Helvetica, sans-serif">100%</text>
-            <path d="M32 56c2.2-5 6-8 8-8s5.8 3 8 8" stroke="#e4c56a" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M34 58c1.6-3.2 3.8-5 6-5s4.4 1.8 6 5" stroke="#e4c56a" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M28 54c3-7 8-10 12-8" stroke="#e4c56a" stroke-width="2.2" fill="none"/>
-            <path d="M52 54c-3-7-8-10-12-8" stroke="#e4c56a" stroke-width="2.2" fill="none"/>
-          </svg>
-        </span>
-      </li>
-      <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="100% organic">
-          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
-            <circle cx="40" cy="46" r="26" stroke="#e4c56a" stroke-width="4.5"/>
-            <path d="M40 8c-9 4-16 16-8 32 2-10 8-16 8-22 0 6 6 12 8 22 8-16 1-28-8-32z" fill="#e4c56a"/>
-            <path d="M32 14c6 2 10 8 8 18" stroke="#112d16" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-            <path d="M48 14c-6 2-10 8-8 18" stroke="#112d16" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-            <text x="40" y="50" text-anchor="middle" fill="#e4c56a" font-size="15" font-weight="800" font-family="Arial, Helvetica, sans-serif">100%</text>
-            <text x="40" y="64" text-anchor="middle" fill="#e4c56a" font-size="8" font-weight="700" letter-spacing="1.2" font-family="Arial, Helvetica, sans-serif">ORGANIC</text>
-          </svg>
-        </span>
-      </li>
-      <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="Halal">
-          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
-            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
-            <circle cx="40" cy="40" r="28" stroke="#e4c56a" stroke-width="1.8"/>
-            <text x="40" y="38" text-anchor="middle" fill="#e4c56a" font-size="16" font-weight="700" font-family="Georgia, 'Times New Roman', serif">حلال</text>
-            <text x="40" y="56" text-anchor="middle" fill="#e4c56a" font-size="11" font-weight="800" letter-spacing="1.4" font-family="Arial, Helvetica, sans-serif">HALAL</text>
-          </svg>
-        </span>
-      </li>
-      <li>
-        <span class="muqavi-pcsir__seal" role="img" aria-label="Trusted quality">
-          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
-            <circle cx="40" cy="40" r="34" stroke="#e4c56a" stroke-width="4.5"/>
-            <circle cx="40" cy="40" r="27" stroke="#e4c56a" stroke-width="2"/>
-            <circle cx="40" cy="40" r="21" stroke="#e4c56a" stroke-width="1.2"/>
-            <path d="M40 22l3.6 8.4 9.2.8-7 6.2 2.2 9-8-4.6-8 4.6 2.2-9-7-6.2 9.2-.8z" fill="#e4c56a"/>
-          </svg>
-        </span>
-      </li>
-    </ul>
+    <div class="muqavi-pcsir__seals">
+      <img
+        src="{{ 'muqavi-trust-seals.png' | asset_url }}"
+        alt="100% Herbal, 100% Organic, Halal, Pakistan Council of Scientific and Industrial Research"
+        width="1588"
+        height="407"
+        loading="lazy"
+      >
+    </div>
 
     {%- if section.settings.certificate != blank -%}
       <a class="muqavi-pcsir__cert" href="{{ section.settings.certificate | image_url: width: 1600 }}" target="_blank" rel="noopener">
