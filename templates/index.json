@@ -185,10 +185,10 @@
   },
   "order": [
     "hero",
+    "majoon_banner",
     "marquee",
     "ugc",
     "badges",
-    "majoon_banner",
     "testimonials",
     "pcsir"
   ]
