@@ -107,6 +107,12 @@
       ],
       "settings": {}
     },
+    "majoon_banner": {
+      "type": "muqavi-majoon-promo",
+      "settings": {
+        "product": "majoon-e-muqavi"
+      }
+    },
     "promo": {
       "type": "muqavi-promo-product",
       "blocks": {
@@ -182,7 +188,7 @@
     "marquee",
     "ugc",
     "badges",
-    "promo",
+    "majoon_banner",
     "testimonials",
     "pcsir"
   ]
