@@ -101,16 +101,19 @@
   }
   .majoon-promo-{{ section.id }} .majoon-promo__cols li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 120%;
   }
   .majoon-promo-{{ section.id }} .majoon-promo__cols li svg {
-    flex-shrink: 0;
-    margin-top: 1px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    flex: 0 0 22px;
   }
   .majoon-promo-{{ section.id }} .majoon-promo__btn {
     display: inline-flex;
@@ -160,12 +163,6 @@
   }
 {%- endstyle -%}
 
-{%- capture check_icon -%}
-<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-  <path d="M11 1.83C5.95 1.83 1.83 5.95 1.83 11S5.95 20.17 11 20.17 20.17 16.05 20.17 11 16.05 1.83 11 1.83Zm4.38 7.06-5.2 5.2a.7.7 0 0 1-.98 0l-2.6-2.6a.7.7 0 0 1 .99-.97l2.1 2.11 4.71-4.71a.7.7 0 0 1 .98.97Z" fill="#53b648"/>
-</svg>
-{%- endcapture -%}
-
 <section class="majoon-promo-{{ section.id }}">
   <div class="page-width">
     <div class="majoon-promo__grid">
@@ -211,25 +208,25 @@
           <div>
             <p class="majoon-promo__col-title">General Benefits</p>
             <ul>
-              <li>{{ check_icon }} Supports natural energy and stamina through the day</li>
-              <li>{{ check_icon }} Helps support healthy blood circulation</li>
-              <li>{{ check_icon }} Supports overall strength and male vitality</li>
-              <li>{{ check_icon }} Traditionally used as a nourishing tonic, made with salep, dry fruits and pure honey</li>
-              <li>{{ check_icon }} Contains ashwagandha, traditionally used to support the body during everyday stress and fatigue</li>
-              <li>{{ check_icon }} Includes saffron and ginseng, traditionally valued for well-being and vitality</li>
-              <li>{{ check_icon }} Prepared in the traditional majoon form from carefully selected natural ingredients</li>
+              <li>{% render 'promo-check-icon' %} Supports natural energy and stamina through the day</li>
+              <li>{% render 'promo-check-icon' %} Helps support healthy blood circulation</li>
+              <li>{% render 'promo-check-icon' %} Supports overall strength and male vitality</li>
+              <li>{% render 'promo-check-icon' %} Traditionally used as a nourishing tonic, made with salep, dry fruits and pure honey</li>
+              <li>{% render 'promo-check-icon' %} Contains ashwagandha, traditionally used to support the body during everyday stress and fatigue</li>
+              <li>{% render 'promo-check-icon' %} Includes saffron and ginseng, traditionally valued for well-being and vitality</li>
+              <li>{% render 'promo-check-icon' %} Prepared in the traditional majoon form from carefully selected natural ingredients</li>
             </ul>
           </div>
           <div>
             <p class="majoon-promo__col-title">Benefits for Married Life</p>
             <ul>
-              <li>{{ check_icon }} Helps support sexual desire (libido)</li>
-              <li>{{ check_icon }} Supports male stamina and endurance</li>
-              <li>{{ check_icon }} Traditionally used to support healthy blood flow for firmer, healthier erections</li>
-              <li>{{ check_icon }} Beneficial in cases of erectile weakness, as used in traditional Unani practice</li>
-              <li>{{ check_icon }} Supports confidence and a relaxed, balanced mind</li>
-              <li>{{ check_icon }} Supports energy and vitality for a more active married life</li>
-              <li>{{ check_icon }} Supports overall male wellness for a healthier, more balanced married life</li>
+              <li>{% render 'promo-check-icon' %} Helps support sexual desire (libido)</li>
+              <li>{% render 'promo-check-icon' %} Supports male stamina and endurance</li>
+              <li>{% render 'promo-check-icon' %} Traditionally used to support healthy blood flow for firmer, healthier erections</li>
+              <li>{% render 'promo-check-icon' %} Beneficial in cases of erectile weakness, as used in traditional Unani practice</li>
+              <li>{% render 'promo-check-icon' %} Supports confidence and a relaxed, balanced mind</li>
+              <li>{% render 'promo-check-icon' %} Supports energy and vitality for a more active married life</li>
+              <li>{% render 'promo-check-icon' %} Supports overall male wellness for a healthier, more balanced married life</li>
             </ul>
           </div>
         </div>

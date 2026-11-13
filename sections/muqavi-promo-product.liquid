@@ -123,12 +123,19 @@
   }
   .section-{{ section.id }}-promo-padding .promo-bullets-col ul li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
     color: #fff;
     font-weight: 500;
     font-size: 14px;
     line-height: 120%;
+  }
+  .section-{{ section.id }}-promo-padding .promo-bullets-col ul li svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    flex: 0 0 22px;
   }
   .section-{{ section.id }}-promo-padding .promo-cta-btn {
     display: inline-flex;
