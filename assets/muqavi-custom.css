@@ -1338,26 +1338,30 @@ border-top: .1rem solid #C1CDC0;
   
 
       .info-pills-block__list {
-          display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start;
-    gap: 14px;
-    flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 14px;
+      width: 100%;
     }
-    .info-pills-block__row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 22px;
+    .info-pills-block--majoon .info-pill {
+      background: #fff;
+      border-color: rgba(17, 24, 39, 0.14);
+      padding: 12px 14px;
     }
     .info-pill {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 10px;
+      gap: 10px;
+      padding: 10px 12px;
       border: 1px solid rgba(17, 24, 39, 0.12);
       border-radius: 999px;
-      background: #FAF6E6;
+      background: #faf6e6;
+      min-width: 0;
+      width: 100%;
+    }
+    .info-pill__icon--gold {
+      width: 22px;
+      height: 22px;
     }
     .nutrition-trigger .info-pill__icon {
       display: flex;
@@ -1385,8 +1389,8 @@ border-top: .1rem solid #C1CDC0;
       font-size: 14px;
       font-weight: 600;
       color: #1b2540;
-      line-height: 1.2;
-      white-space: nowrap;
+      line-height: 1.25;
+      white-space: normal;
     }
     .nutrition-trigger {
       display: inline-flex;
@@ -1436,7 +1440,9 @@ border-top: .1rem solid #C1CDC0;
     @media screen and (max-width: 749px) {
       .info-pill { padding: 12px 18px; }
       .info-pill__text { font-size: 15px; white-space: normal; }
-      .info-pills-block__row { gap: 12px; }
+      .info-pills-block__list {
+        grid-template-columns: 1fr;
+      }
     }
 
 .muqavi-majoon-desc {

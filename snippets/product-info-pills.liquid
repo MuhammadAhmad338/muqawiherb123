@@ -1,30 +1,62 @@
-<div class="info-pills-block" {{ block.shopify_attributes }}>
+{%- liquid
+  assign is_majoon = false
+  if product.handle contains 'majoon'
+    assign is_majoon = true
+  endif
+-%}
+
+<div class="info-pills-block{% if is_majoon %} info-pills-block--majoon{% endif %}" {{ block.shopify_attributes }}>
   <div class="info-pills-block__list">
-    <div class="info-pill">
-      <span class="info-pill__icon">
-        <img src="{{ 'icon_1.svg' | asset_url }}" alt="" width="60" height="55" loading="lazy">
-      </span>
-      <span class="info-pill__text">Supports Liver &amp; Stomach Cooling</span>
-    </div>
-    <div class="info-pill">
-      <span class="info-pill__icon">
-        <img src="{{ 'icon_2.svg' | asset_url }}" alt="" width="60" height="57" loading="lazy">
-      </span>
-      <span class="info-pill__text">Acidity, Heartburn &amp; Ulcer Support</span>
-    </div>
-    <div class="info-pill">
-      <span class="info-pill__icon">
-        <img src="{{ 'icon_3.svg' | asset_url }}" alt="" width="60" height="71" loading="lazy">
-      </span>
-      <span class="info-pill__text">Refreshes Burning Hands &amp; Feet</span>
-    </div>
-    <div class="info-pills-block__row">
+    {%- if is_majoon -%}
+      <div class="info-pill">
+        <span class="info-pill__icon info-pill__icon--gold">
+          {% render 'majoon-pill-icons', icon: 'vitality' %}
+        </span>
+        <span class="info-pill__text">Supports Men's Daily Vitality</span>
+      </div>
+      <div class="info-pill">
+        <span class="info-pill__icon info-pill__icon--gold">
+          {% render 'majoon-pill-icons', icon: 'wellness' %}
+        </span>
+        <span class="info-pill__text">Supports Overall Physical Wellness</span>
+      </div>
+      <div class="info-pill">
+        <span class="info-pill__icon info-pill__icon--gold">
+          {% render 'majoon-pill-icons', icon: 'unani' %}
+        </span>
+        <span class="info-pill__text">Traditional Herbal Unani Formula</span>
+      </div>
+      <div class="info-pill">
+        <span class="info-pill__icon info-pill__icon--gold">
+          {% render 'majoon-pill-icons', icon: 'herbal' %}
+        </span>
+        <span class="info-pill__text">Made with Traditional Herbal Ingredients</span>
+      </div>
+    {%- else -%}
+      <div class="info-pill">
+        <span class="info-pill__icon">
+          <img src="{{ 'icon_1.svg' | asset_url }}" alt="" width="60" height="55" loading="lazy">
+        </span>
+        <span class="info-pill__text">Supports Liver &amp; Stomach Cooling</span>
+      </div>
+      <div class="info-pill">
+        <span class="info-pill__icon">
+          <img src="{{ 'icon_2.svg' | asset_url }}" alt="" width="60" height="57" loading="lazy">
+        </span>
+        <span class="info-pill__text">Acidity, Heartburn &amp; Ulcer Support</span>
+      </div>
+      <div class="info-pill">
+        <span class="info-pill__icon">
+          <img src="{{ 'icon_3.svg' | asset_url }}" alt="" width="60" height="71" loading="lazy">
+        </span>
+        <span class="info-pill__text">Refreshes Burning Hands &amp; Feet</span>
+      </div>
       <div class="info-pill">
         <span class="info-pill__icon">
           <img src="{{ 'icon_4.svg' | asset_url }}" alt="" width="60" height="60" loading="lazy">
         </span>
         <span class="info-pill__text">100% Herbal. No Harmful Chemicals</span>
       </div>
-    </div>
+    {%- endif -%}
   </div>
 </div>
