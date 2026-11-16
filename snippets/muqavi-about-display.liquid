@@ -7,7 +7,7 @@
   assign use_defaults = use_defaults | default: false
 
   assign page_title = 'About Us'
-  assign about_intro_heading = 'Why Choose Majoon-e-Muqavi?'
+  assign mission_heading = 'Our Mission'
   assign intro_heading = 'Discover the Power of Traditional Herbal Wellness'
   assign intro_para_1 = 'Our mission is to bring the benefits of traditional Unani herbal formulations to modern lifestyles through carefully selected ingredients, quality-focused preparations, and affordable wellness solutions.'
   assign intro_para_2 = 'At Muqavi Herbs, we believe in combining traditional herbal wisdom with a commitment to quality and customer satisfaction. We aim to make natural wellness a part of everyday life while supporting strength, vitality, and overall well-being.'
@@ -27,7 +27,10 @@
 
   if use_defaults == false and section != blank
     assign page_title = section.settings.page_title | default: page_title
-    assign about_intro_heading = section.settings.about_intro_heading | default: about_intro_heading
+    assign mission_heading = section.settings.mission_heading | default: mission_heading
+    if section.settings.about_intro_heading != blank
+      assign mission_heading = section.settings.about_intro_heading
+    endif
     assign intro_heading = section.settings.intro_heading | default: intro_heading
     assign intro_para_1 = section.settings.intro_para_1 | default: intro_para_1
     assign intro_para_2 = section.settings.intro_para_2 | default: intro_para_2
@@ -132,7 +135,7 @@
     <article class="muqavi-about__rte rte">
       <h1>{{ page_title }}</h1>
 
-      <h2>{{ about_intro_heading }}</h2>
+      <h2>{{ mission_heading }}</h2>
       <p><em class="muqavi-about__em">{{ intro_heading }}</em></p>
       <p>{{ intro_para_1 }}</p>
       <p>{{ intro_para_2 }}</p>
