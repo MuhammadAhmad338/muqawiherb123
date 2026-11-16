@@ -233,16 +233,22 @@
                         assign accordion_heading = block.settings.heading | downcase
                         assign show_majoon_ingredients = false
                         assign show_majoon_description = false
+                        assign show_majoon_benefits = false
                         if product.handle contains 'majoon'
                           if accordion_heading contains 'ingredient'
                             assign show_majoon_ingredients = true
                           elsif accordion_heading contains 'description'
                             assign show_majoon_description = true
+                          elsif accordion_heading contains 'benefit'
+                            assign show_majoon_benefits = true
                           endif
                         endif
                       -%}
                       {%- if show_majoon_description -%}
                         {% render 'muqavi-majoon-description' %}
+                      {%- endif -%}
+                      {%- if show_majoon_benefits -%}
+                        {% render 'muqavi-majoon-benefits' %}
                       {%- endif -%}
                       {%- if show_majoon_ingredients -%}
                         <div class="muqavi-ingredients">

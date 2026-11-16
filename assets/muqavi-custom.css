@@ -1365,6 +1365,27 @@ border-top: .1rem solid #C1CDC0;
   margin-bottom: 0;
 }
 
+.muqavi-majoon-benefits {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3d4a3a;
+}
+.muqavi-majoon-benefits ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.muqavi-majoon-benefits li {
+  margin: 0 0 10px;
+}
+.muqavi-majoon-benefits li:last-child {
+  margin-bottom: 0;
+}
+.muqavi-majoon-benefits strong {
+  color: #1a3a15;
+  font-weight: 700;
+}
+
 .muqavi-ingredients {
   margin-top: 4px;
   color: #3d4a3a;
