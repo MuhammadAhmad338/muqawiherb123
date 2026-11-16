@@ -1,0 +1,183 @@
+{% comment %}
+  Shared customer reviews grid (homepage + product page).
+  Accepts:
+  - scope_id: {String} unique id for scoped CSS
+  - heading: {String}
+  - blocks: {Array} optional section.blocks; uses bundled defaults when empty
+{% endcomment %}
+{%- liquid
+  assign review_scope = scope_id | default: 'muqavi-reviews'
+  assign review_heading = heading | default: 'What Our Customers Say'
+  assign use_blocks = false
+  if blocks != blank and blocks.size > 0
+    assign use_blocks = true
+  endif
+-%}
+
+{%- style -%}
+  .muqavi-reviews-{{ review_scope }} {
+    padding: 56px 20px 64px;
+    background: #fafafa;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonials__heading {
+    text-align: center;
+    margin: 0 auto 36px;
+    max-width: 720px;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1100px) {
+    .muqavi-reviews-{{ review_scope }} .testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 749px) {
+    .muqavi-reviews-{{ review_scope }} .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+  @media (max-width: 480px) {
+    .muqavi-reviews-{{ review_scope }} .testimonials__grid {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+    }
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__media {
+    aspect-ratio: 1;
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__body {
+    padding: 14px 14px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__stars {
+    color: #f5a623;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__quote {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.45;
+    color: #333;
+    flex: 1;
+  }
+  .muqavi-reviews-{{ review_scope }} .testimonial-card__name {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+{%- endstyle -%}
+
+<div class="muqavi-reviews-{{ review_scope }}">
+  <h2 class="testimonials__heading">{{ review_heading }}</h2>
+  <div class="testimonials__grid">
+    {%- if use_blocks -%}
+      {%- for block in blocks -%}
+        {%- liquid
+          assign review_alt = block.settings.name | default: 'Customer review'
+          assign bundled_asset = 'customer-review-' | append: forloop.index | append: '.jpg'
+          if block.settings.image_asset != blank
+            assign bundled_asset = block.settings.image_asset
+          endif
+          assign review_quote = block.settings.quote
+          assign review_name = block.settings.name
+        -%}
+        <article class="testimonial-card" {{ block.shopify_attributes }}>
+          <div class="testimonial-card__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 640
+                | image_tag: loading: 'lazy', alt: review_alt, widths: '320, 480, 640', sizes: '(min-width: 990px) 220px, 50vw'
+              }}
+            {%- else -%}
+              <img
+                src="{{ bundled_asset | asset_url }}"
+                alt="{{ review_alt | escape }}"
+                width="640"
+                height="640"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+          <div class="testimonial-card__body">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"{{ review_quote }}"</p>
+            {%- if review_name != blank -%}
+              <p class="testimonial-card__name">{{ review_name }}</p>
+            {%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    {%- else -%}
+      {%- assign default_quote_1 = 'Maine pehli dafa order kiya tha, honestly product quality achi lagi. Abhi use kar raha hun. Or mujhy kafi farq mahsoos horha ha' -%}
+      {%- assign default_quote_2 = 'Bohat se herbal products try kiye hain lekin isky bad mujhy waqai apnay andr change nazar aya ha or improvement feel hoi ha perfromance ma.' -%}
+      {%- assign default_quote_3 = 'Yaar main te pehlan soch reha si pata nahi ki hovega, par product da overall experience changa lagga. Desi cheezan di gal hi wakhri ae. Kamal hogia g' -%}
+      {%- assign default_quote_4 = 'Bhai mujhe 3 weeks ho gaye use karte hue, honestly energy mein kaafi farq feel ho raha hai. Bed time bhi pehle se better feel ho raha hai. Alhamdulillah!' -%}
+      {%- assign default_quote_5 = 'Bhai pehle din se nahi lekin regular use ke baad mujhe apni daily energy aur freshness mein change feel hua hai.' -%}
+      {%- for i in (1..5) -%}
+        {%- liquid
+          assign bundled_asset = 'customer-review-' | append: i | append: '.jpg'
+          assign review_quote = default_quote_1
+          if i == 2
+            assign review_quote = default_quote_2
+          elsif i == 3
+            assign review_quote = default_quote_3
+          elsif i == 4
+            assign review_quote = default_quote_4
+          elsif i == 5
+            assign review_quote = default_quote_5
+          endif
+        -%}
+        <article class="testimonial-card">
+          <div class="testimonial-card__media">
+            <img
+              src="{{ bundled_asset | asset_url }}"
+              alt="Customer review {{ i }}"
+              width="640"
+              height="640"
+              loading="lazy"
+            >
+          </div>
+          <div class="testimonial-card__body">
+            <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
+            <p class="testimonial-card__quote">"{{ review_quote }}"</p>
+          </div>
+        </article>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>

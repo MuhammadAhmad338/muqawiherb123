@@ -93,7 +93,56 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "customer_reviews": {
+      "type": "muqavi-testimonials",
+      "blocks": {
+        "t1": {
+          "type": "review",
+          "settings": {
+            "image_asset": "customer-review-1.jpg",
+            "quote": "Maine pehli dafa order kiya tha, honestly product quality achi lagi. Abhi use kar raha hun. Or mujhy kafi farq mahsoos horha ha",
+            "name": ""
+          }
+        },
+        "t2": {
+          "type": "review",
+          "settings": {
+            "image_asset": "customer-review-2.jpg",
+            "quote": "Bohat se herbal products try kiye hain lekin isky bad mujhy waqai apnay andr change nazar aya ha or improvement feel hoi ha perfromance ma.",
+            "name": ""
+          }
+        },
+        "t3": {
+          "type": "review",
+          "settings": {
+            "image_asset": "customer-review-3.jpg",
+            "quote": "Yaar main te pehlan soch reha si pata nahi ki hovega, par product da overall experience changa lagga. Desi cheezan di gal hi wakhri ae. Kamal hogia g",
+            "name": ""
+          }
+        },
+        "t4": {
+          "type": "review",
+          "settings": {
+            "image_asset": "customer-review-4.jpg",
+            "quote": "Bhai mujhe 3 weeks ho gaye use karte hue, honestly energy mein kaafi farq feel ho raha hai. Bed time bhi pehle se better feel ho raha hai. Alhamdulillah!",
+            "name": ""
+          }
+        },
+        "t5": {
+          "type": "review",
+          "settings": {
+            "image_asset": "customer-review-5.jpg",
+            "quote": "Bhai pehle din se nahi lekin regular use ke baad mujhe apni daily energy aur freshness mein change feel hua hai.",
+            "name": ""
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5"],
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
     }
   },
-  "order": ["main"]
+  "order": ["main", "customer_reviews"]
 }

@@ -1,140 +1,16 @@
-{%- style -%}
-  .muqavi-testimonials-{{ section.id }} {
-    padding: 56px 20px 64px;
-    background: #fafafa;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonials__heading {
-    text-align: center;
-    margin: 0 auto 36px;
-    max-width: 720px;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: #1a1a1a;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    max-width: 1240px;
-    margin: 0 auto;
-  }
-  @media (max-width: 1100px) {
-    .muqavi-testimonials-{{ section.id }} .testimonials__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  @media (max-width: 749px) {
-    .muqavi-testimonials-{{ section.id }} .testimonials__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-  }
-  @media (max-width: 480px) {
-    .muqavi-testimonials-{{ section.id }} .testimonials__grid {
-      grid-template-columns: 1fr;
-      max-width: 360px;
-    }
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card {
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid #e8e8e8;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__media {
-    aspect-ratio: 1;
-    background: #f0f0f0;
-    overflow: hidden;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__body {
-    padding: 14px 14px 16px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__stars {
-    color: #f5a623;
-    font-size: 1.2rem;
-    letter-spacing: 0.08em;
-    line-height: 1;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__quote {
-    margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.45;
-    color: #333;
-    flex: 1;
-  }
-  .muqavi-testimonials-{{ section.id }} .testimonial-card__name {
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #1a1a1a;
-  }
-{%- endstyle -%}
-
-<section class="muqavi-testimonials-{{ section.id }}">
-  <h2 class="testimonials__heading">
-    {{ section.settings.heading | default: 'What Our Customers Say' }}
-  </h2>
-  <div class="testimonials__grid">
-    {%- for block in section.blocks -%}
-      {%- liquid
-        assign review_alt = block.settings.name | default: 'Customer review'
-        assign bundled_asset = ''
-        if forloop.index <= 5
-          assign bundled_asset = 'customer-review-' | append: forloop.index | append: '.jpg'
-        endif
-        if block.settings.image_asset != blank
-          assign bundled_asset = block.settings.image_asset
-        endif
-      -%}
-      <article class="testimonial-card" {{ block.shopify_attributes }}>
-        <div class="testimonial-card__media">
-          {%- if block.settings.image != blank -%}
-            {{
-              block.settings.image
-              | image_url: width: 640
-              | image_tag: loading: 'lazy', alt: review_alt, widths: '320, 480, 640', sizes: '(min-width: 990px) 220px, 50vw'
-            }}
-          {%- elsif bundled_asset != blank -%}
-            <img
-              src="{{ bundled_asset | asset_url }}"
-              alt="{{ review_alt | escape }}"
-              width="640"
-              height="640"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="testimonial-card__body">
-          <div class="testimonial-card__stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-card__quote">"{{ block.settings.quote }}"</p>
-          {%- if block.settings.name != blank -%}
-            <p class="testimonial-card__name">{{ block.settings.name }}</p>
-          {%- endif -%}
-        </div>
-      </article>
-    {%- endfor -%}
-  </div>
+<section class="muqavi-testimonials-section">
+  {% render 'muqavi-customer-reviews',
+    scope_id: section.id,
+    heading: section.settings.heading,
+    blocks: section.blocks
+  %}
 </section>
 
 {% schema %}
 {
   "name": "Muqavi testimonials",
   "tag": "section",
+  "class": "section",
   "settings": [
     {
       "type": "text",
@@ -204,6 +80,9 @@
         }
       ]
     }
-  ]
+  ],
+  "enabled_on": {
+    "templates": ["index", "product"]
+  }
 }
 {% endschema %}
