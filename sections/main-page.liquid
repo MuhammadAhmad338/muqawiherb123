@@ -1,5 +1,17 @@
-{%- if page.handle == 'about-us' -%}
-  {% render 'muqavi-about-display', scope_id: section.id, use_defaults: true %}
+{%- liquid
+  assign is_about_page = false
+  if page.handle == 'about-us' or page.handle == 'about'
+    assign is_about_page = true
+  endif
+  if template.suffix == 'about' or template.suffix == 'about-us'
+    assign is_about_page = true
+  endif
+  if page.title == 'About Us'
+    assign is_about_page = true
+  endif
+-%}
+{%- if is_about_page -%}
+  {% render 'muqavi-about-display', scope_id: section.id %}
 {%- else -%}
   {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
