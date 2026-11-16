@@ -4,56 +4,48 @@
 {% endcomment %}
 {%- if section.settings.show_about_link -%}
   {%- liquid
+    assign already_in_menu = false
+    for link in section.settings.menu.links
+      assign lt = link.title | downcase | strip
+      if lt == 'about us' or lt == 'about' or link.handle == 'about-us' or link.handle == 'aboutus' or link.url contains 'aboutus' or link.url contains 'about-us'
+        assign already_in_menu = true
+        break
+      endif
+    endfor
+
     assign about_url = ''
-    assign about_active = false
     assign about_label = section.settings.about_link_label | default: 'About Us'
     assign homepage_about_anchor = routes.root_url | append: '#about-us'
 
-    if section.settings.about_page != blank
-      assign about_url = section.settings.about_page.url
-      if page.handle != blank and section.settings.about_page.handle == page.handle
-        assign about_active = true
+    unless already_in_menu
+      if section.settings.about_page != blank
+        assign about_url = section.settings.about_page.url
+      elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us' and section.settings.about_link_url != '/pages/aboutus'
+        assign about_url = section.settings.about_link_url
+      else
+        assign about_url = homepage_about_anchor
       endif
-    elsif pages['about-us'] != blank
-      assign about_url = pages['about-us'].url
-      if page.handle == 'about-us'
-        assign about_active = true
-      endif
-    elsif pages['aboutus'] != blank
-      assign about_url = pages['aboutus'].url
-      if page.handle == 'aboutus'
-        assign about_active = true
-      endif
-    elsif pages['about'] != blank
-      assign about_url = pages['about'].url
-      if page.handle == 'about'
-        assign about_active = true
-      endif
-    elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us' and section.settings.about_link_url != '/pages/aboutus'
-      assign about_url = section.settings.about_link_url
-    else
-      assign about_url = homepage_about_anchor
-    endif
+    endunless
   -%}
   {%- if about_url != blank -%}
-  {%- if drawer -%}
-    <li>
-      <a
-        href="{{ about_url }}"
-        class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if about_active %} menu-drawer__menu-item--active{% endif %}"
-      >
-        {{ about_label | escape }}
-      </a>
-    </li>
-  {%- else -%}
-    <li>
-      <a
-        href="{{ about_url }}"
-        class="header__menu-item list-menu__item link link--text focus-inset{% if about_active %} header__active-menu-item{% endif %}"
-      >
-        <span{% if about_active %} class="header__active-menu-item"{% endif %}>{{ about_label | escape }}</span>
-      </a>
-    </li>
+    {%- if drawer -%}
+      <li>
+        <a
+          href="{{ about_url }}"
+          class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+        >
+          {{ about_label | escape }}
+        </a>
+      </li>
+    {%- else -%}
+      <li>
+        <a
+          href="{{ about_url }}"
+          class="header__menu-item list-menu__item link link--text focus-inset"
+        >
+          <span>{{ about_label | escape }}</span>
+        </a>
+      </li>
+    {%- endif -%}
   {%- endif -%}
-{%- endif -%}
 {%- endif -%}

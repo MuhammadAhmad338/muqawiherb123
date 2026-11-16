@@ -388,5 +388,64 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      #about-us, .muqavi-about-anchor {
+        scroll-margin-top: 90px;
+      }
+      @media screen and (min-width: 990px) {
+        #about-us, .muqavi-about-anchor {
+          scroll-margin-top: 110px;
+        }
+      }
+    </style>
+
+    <script>
+      (function() {
+        function scrollToAbout(e) {
+          var target = document.getElementById('about-us');
+          if (!target) return;
+          var isHomePage = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname === '{{ routes.root_url }}';
+          if (isHomePage) {
+            if (e && e.preventDefault) e.preventDefault();
+            var header = document.querySelector('sticky-header') || document.querySelector('.header-wrapper') || document.querySelector('.header');
+            var offset = header ? header.offsetHeight + 24 : 100;
+            var elementPosition = target.getBoundingClientRect().top;
+            var offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({
+              top: Math.max(0, offsetPosition),
+              behavior: 'smooth'
+            });
+            if (history.pushState) {
+              history.pushState(null, null, '#about-us');
+            } else {
+              window.location.hash = '#about-us';
+            }
+          }
+        }
+
+        document.addEventListener('click', function(e) {
+          var a = e.target.closest('a');
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          var text = (a.textContent || '').trim().toLowerCase();
+          if (href.indexOf('#about-us') !== -1 || text === 'about us' || text === 'about') {
+            var isHomePage = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname === '{{ routes.root_url }}';
+            if (isHomePage) {
+              scrollToAbout(e);
+            }
+          }
+        });
+
+        if (window.location.hash === '#about-us') {
+          window.addEventListener('load', function() {
+            setTimeout(scrollToAbout, 350);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

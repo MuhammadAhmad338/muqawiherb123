@@ -120,9 +120,16 @@
                       </div>
                     </details>
                   {%- else -%}
+                    {%- liquid
+                      assign link_url = link.url
+                      assign link_title_down = link.title | downcase | strip
+                      if link_title_down == 'about us' or link_title_down == 'about' or link.handle == 'about-us' or link.handle == 'aboutus' or link.url contains 'aboutus' or link.url contains 'about-us'
+                        assign link_url = routes.root_url | append: '#about-us'
+                      endif
+                    -%}
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
-                      href="{{ link.url }}"
+                      href="{{ link_url }}"
                       class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
                       {% if link.current %}
                         aria-current="page"
