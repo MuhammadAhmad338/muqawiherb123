@@ -149,10 +149,24 @@
         {%- for block in section.blocks -%}
           <div class="swiper-slide ugc-slide" {{ block.shopify_attributes }}>
             <div class="ugc-media">
+              {%- liquid
+                assign ugc_asset = ''
+                if forloop.index <= 5
+                  assign ugc_asset = 'customer-review-' | append: forloop.index | append: '.jpg'
+                endif
+              -%}
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {%- elsif ugc_asset != blank -%}
+                <img
+                  src="{{ ugc_asset | asset_url }}"
+                  alt="Customer photo {{ forloop.index }}"
+                  loading="lazy"
+                  width="600"
+                  height="800"
+                >
               {%- else -%}
-                <img src="{{ 'herb-relief-product.png' | asset_url }}" alt="" loading="lazy" width="400" height="533">
+                <img src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}" alt="" loading="lazy" width="400" height="533">
               {%- endif -%}
               <button type="button" class="ugc-play" aria-label="Play video">▶</button>
               {%- if product != blank -%}

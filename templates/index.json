@@ -49,16 +49,21 @@
         "s4": {
           "type": "story",
           "settings": {}
+        },
+        "s5": {
+          "type": "story",
+          "settings": {}
         }
       },
       "block_order": [
         "s1",
         "s2",
         "s3",
-        "s4"
+        "s4",
+        "s5"
       ],
       "settings": {
-        "product": "",
+        "product": "majoon-e-muqavi",
         "heading_bold": "See what people",
         "heading_light": "say about us."
       }
