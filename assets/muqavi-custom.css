@@ -1353,38 +1353,38 @@ border-top: .1rem solid #C1CDC0;
       .info-pills-block__row { gap: 12px; }
     }
 
-.product__description .muqavi-ingredients {
-  margin-top: 12px;
+.muqavi-ingredients {
+  margin-top: 4px;
   color: #3d4a3a;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.45;
 }
-.product__description .muqavi-ingredients__label,
-.product__description .muqavi-ingredients__note {
+.muqavi-ingredients__label,
+.muqavi-ingredients__note {
   margin: 0 0 4px;
   font-size: 12px;
   font-weight: 600;
   color: #1a3a15;
 }
-.product__description .muqavi-ingredients ol {
+.muqavi-ingredients ol {
   margin: 0 0 8px;
   padding: 0;
   list-style: none;
   columns: 2;
   column-gap: 18px;
 }
-.product__description .muqavi-ingredients li {
+.muqavi-ingredients li {
   break-inside: avoid;
   margin: 0 0 2px;
 }
 @media screen and (max-width: 749px) {
-  .product__description .muqavi-ingredients,
-  .product__description .muqavi-ingredients__label,
-  .product__description .muqavi-ingredients__note {
+  .muqavi-ingredients,
+  .muqavi-ingredients__label,
+  .muqavi-ingredients__note {
     font-size: 11px;
   }
-  .product__description .muqavi-ingredients ol {
+  .muqavi-ingredients ol {
     columns: 1;
   }
 }

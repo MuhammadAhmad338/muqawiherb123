@@ -197,44 +197,9 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                {%- liquid
-                  assign show_majoon_ingredients = false
-                  if product.handle contains 'majoon'
-                    assign show_majoon_ingredients = true
-                  endif
-                -%}
-                {%- if product.description != blank or show_majoon_ingredients -%}
+                {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
-                    {%- if show_majoon_ingredients -%}
-                      <div class="muqavi-ingredients">
-                        <p class="muqavi-ingredients__label">Ingredients</p>
-                        <ol>
-                          <li>1: Salab Panja — Salep Orchid Tuber</li>
-                          <li>2: Salab Misri — Egyptian Salep</li>
-                          <li>3: Aqarqarha — Pellitory Root</li>
-                          <li>4: Musli Sufaid — White Musli</li>
-                          <li>5: Mustagi Roumi — Mastic Gum</li>
-                          <li>6: Mochras — Silk Cotton Tree Gum</li>
-                          <li>7: Singhara — Water Chestnut</li>
-                          <li>8: Jadwar Khatai — Jadwar Khatai</li>
-                          <li>9: Satavar — Wild Asparagus</li>
-                          <li>10: Jinsing — Ginseng</li>
-                          <li>11: Asghandh Nagori — Ashwagandha</li>
-                          <li>12: Kozah Misri — Rock Sugar</li>
-                          <li>13: Chhilka — Psyllium Husk</li>
-                          <li>14: Jaifal — Nutmeg</li>
-                          <li>15: Long — Clove</li>
-                          <li>16: Darchini — Cinnamon</li>
-                          <li>17: Shehad — Pure Honey</li>
-                          <li>20: Zafran — Saffron</li>
-                          <li>21: Salajeet — Mineral Pitch</li>
-                          <li>22: Assorted Dry Fruits</li>
-                        </ol>
-                        <p class="muqavi-ingredients__note">Various Kushta Preparations</p>
-                        <p class="muqavi-ingredients__note">45+ Additional Natural Herbal Ingredients</p>
-                      </div>
-                    {%- endif -%}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -264,6 +229,42 @@
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
+                      {%- liquid
+                        assign accordion_heading = block.settings.heading | downcase
+                        assign show_majoon_ingredients = false
+                        if product.handle contains 'majoon' and accordion_heading contains 'description'
+                          assign show_majoon_ingredients = true
+                        endif
+                      -%}
+                      {%- if show_majoon_ingredients -%}
+                        <div class="muqavi-ingredients">
+                          <p class="muqavi-ingredients__label">Ingredients</p>
+                          <ol>
+                            <li>1: Salab Panja — Salep Orchid Tuber</li>
+                            <li>2: Salab Misri — Egyptian Salep</li>
+                            <li>3: Aqarqarha — Pellitory Root</li>
+                            <li>4: Musli Sufaid — White Musli</li>
+                            <li>5: Mustagi Roumi — Mastic Gum</li>
+                            <li>6: Mochras — Silk Cotton Tree Gum</li>
+                            <li>7: Singhara — Water Chestnut</li>
+                            <li>8: Jadwar Khatai — Jadwar Khatai</li>
+                            <li>9: Satavar — Wild Asparagus</li>
+                            <li>10: Jinsing — Ginseng</li>
+                            <li>11: Asghandh Nagori — Ashwagandha</li>
+                            <li>12: Kozah Misri — Rock Sugar</li>
+                            <li>13: Chhilka — Psyllium Husk</li>
+                            <li>14: Jaifal — Nutmeg</li>
+                            <li>15: Long — Clove</li>
+                            <li>16: Darchini — Cinnamon</li>
+                            <li>17: Shehad — Pure Honey</li>
+                            <li>20: Zafran — Saffron</li>
+                            <li>21: Salajeet — Mineral Pitch</li>
+                            <li>22: Assorted Dry Fruits</li>
+                          </ol>
+                          <p class="muqavi-ingredients__note">Various Kushta Preparations</p>
+                          <p class="muqavi-ingredients__note">45+ Additional Natural Herbal Ingredients</p>
+                        </div>
+                      {%- endif -%}
                     </div>
                   </details>
                 </div>
