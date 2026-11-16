@@ -48,21 +48,25 @@
       },
       "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
       "settings": {
-        "page_title": "About Us",
+        "welcome_heading": "Welcome to Muqavi Herbs",
+        "welcome_subheading": "Tradition Meets Natural Wellness",
+        "welcome_para_1": "Muqavi Herbs is dedicated to bringing the wisdom of traditional Unani herbal formulations to modern lifestyles. We believe in the power of nature and carefully selected herbal ingredients to support overall wellness, vitality, and a healthier lifestyle.",
+        "welcome_para_2": "Our formulations are inspired by traditional herbal knowledge and prepared using a blend of carefully selected natural ingredients. With a commitment to quality, authenticity, and customer satisfaction, we aim to make traditional herbal wellness accessible to everyone.",
+        "welcome_para_3": "At Muqavi Herbs, our mission is simple: to promote natural wellness through thoughtfully prepared herbal formulations that bring together traditional wisdom and modern quality standards.",
+        "welcome_tagline": "Discover the Tradition. Experience Natural Wellness.",
+        "welcome_btn_label": "Buy Now",
+        "why_heading": "Why Choose Majoon-e-Muqavi?",
+        "closing_line": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life.",
         "mission_heading": "Our Mission",
         "intro_heading": "Discover the Power of Traditional Herbal Wellness",
         "intro_para_1": "Our mission is to bring the benefits of traditional Unani herbal formulations to modern lifestyles through carefully selected ingredients, quality-focused preparations, and affordable wellness solutions.",
         "intro_para_2": "At Muqavi Herbs, we believe in combining traditional herbal wisdom with a commitment to quality and customer satisfaction. We aim to make natural wellness a part of everyday life while supporting strength, vitality, and overall well-being.",
         "cta_lead": "Start Your Journey Towards Natural Wellness Today.",
         "cta_text": "Explore Majoon-e-Muqavi and discover a formulation inspired by traditional herbal knowledge.",
-        "why_heading": "Why Choose Majoon-e-Muqavi?",
-        "closing_line": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life.",
-        "show_product_button": true,
         "button_label": "Explore Majoon-e-Muqavi",
         "product": "majoon-e-muqavi",
-        "show_contact": false,
-        "padding_top": 36,
-        "padding_bottom": 48
+        "padding_top": 40,
+        "padding_bottom": 60
       }
     }
   },
