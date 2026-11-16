@@ -1,12 +1,20 @@
 {%- liquid
   assign is_about_404 = false
+  assign is_contact_404 = false
   assign normalized_path = request.path | downcase
+
   if normalized_path == '/pages/aboutus' or normalized_path == '/pages/about-us' or normalized_path == '/pages/about' or normalized_path == '/about' or normalized_path == '/about-us' or normalized_path == '/aboutus'
     assign is_about_404 = true
+  endif
+
+  if normalized_path == '/pages/contactus' or normalized_path == '/pages/contact-us' or normalized_path == '/pages/contact' or normalized_path == '/contactus' or normalized_path == '/contact-us' or normalized_path == '/contact'
+    assign is_contact_404 = true
   endif
 -%}
 {%- if is_about_404 -%}
   {% render 'muqavi-about-display', scope_id: '404-about' %}
+{%- elsif is_contact_404 -%}
+  {% render 'muqavi-contact-display' %}
 {%- else -%}
   <style type="text/css">
     .template-404 .title + * {

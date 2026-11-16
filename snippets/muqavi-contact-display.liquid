@@ -1,0 +1,202 @@
+{%- liquid
+  assign wa_number = settings.whatsapp_number | default: '923390091552'
+  assign phone_display = '+92 339 0091552'
+  assign email = 'support@muqaviherbsofficial.com'
+-%}
+
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .muqavi-contact-wrap {
+    max-width: 82rem;
+    margin: 0 auto;
+    padding: 3.6rem 1.6rem 6rem;
+  }
+  .muqavi-contact-header {
+    text-align: center;
+    margin-bottom: 3.2rem;
+  }
+  .muqavi-contact-header h1 {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 700;
+    margin: 0 0 1.2rem;
+    color: #0f2613;
+  }
+  .muqavi-contact-header p {
+    font-size: 1.6rem;
+    color: #4a5568;
+    max-width: 60rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .muqavi-contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap: 1.6rem;
+    margin-bottom: 3.6rem;
+  }
+  .muqavi-contact-card {
+    background: #f8faf7;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .muqavi-contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(15, 38, 19, 0.08);
+  }
+  .muqavi-contact-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+    color: #0f2613;
+  }
+  .muqavi-contact-card p, .muqavi-contact-card a {
+    font-size: 1.5rem;
+    color: #194421;
+    text-decoration: none;
+    margin: 0;
+    font-weight: 600;
+  }
+  .muqavi-contact-card small {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+    color: #718096;
+  }
+  .muqavi-contact-form-box {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 3.2rem 2.4rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  }
+  .muqavi-contact-form-box h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 2rem;
+    color: #0f2613;
+    text-align: center;
+  }
+  .muqavi-contact-form-box .button {
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%) !important;
+    color: #0f2613 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 1.4rem 3.2rem !important;
+    font-size: 1.5rem !important;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+{%- endstyle -%}
+
+<div class="muqavi-contact-wrap">
+  <div class="muqavi-contact-header">
+    <h1>Contact Us</h1>
+    <p>Our team is available to assist you with product information, usage guidance and order queries across Pakistan.</p>
+  </div>
+
+  <div class="muqavi-contact-cards">
+    <div class="muqavi-contact-card">
+      <h3>WhatsApp & Phone</h3>
+      <a href="https://wa.me/{{ wa_number }}" target="_blank" rel="noopener">{{ phone_display }}</a>
+      <small>Fastest support via WhatsApp</small>
+    </div>
+    <div class="muqavi-contact-card">
+      <h3>Email Support</h3>
+      <a href="mailto:{{ email }}">{{ email }}</a>
+      <small>We respond within 24 hours</small>
+    </div>
+    <div class="muqavi-contact-card">
+      <h3>Availability</h3>
+      <p>Nationwide Delivery</p>
+      <small>Across all cities in Pakistan</small>
+    </div>
+  </div>
+
+  <div class="muqavi-contact-form-box">
+    <h2>Send Us a Message</h2>
+
+    {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus style="color: #2e7d32; text-align: center; margin-bottom: 2rem;">
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message" style="margin-bottom: 2rem;">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus style="color: #c62828;">
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+      {%- endif -%}
+
+      <div class="contact__fields">
+        <div class="field" style="margin-bottom: 1.6rem;">
+          <input
+            class="field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.name' | t }}"
+            required
+          >
+          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+        </div>
+        <div class="field" style="margin-bottom: 1.6rem;">
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            placeholder="{{ 'templates.contact.form.email' | t }}"
+            required
+          >
+          <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} *</label>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom: 1.6rem;">
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="field__input"
+          autocomplete="tel"
+          name="contact[{{ 'templates.contact.form.phone' | t }}]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          placeholder="{{ 'templates.contact.form.phone' | t }}"
+        >
+        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+      </div>
+
+      <div class="field" style="margin-bottom: 2rem;">
+        <textarea
+          rows="6"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="{{ 'templates.contact.form.comment' | t }}"
+          required
+        >{{- form.body -}}</textarea>
+        <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }} *</label>
+      </div>
+
+      <div class="contact__button" style="text-align: center;">
+        <button type="submit" class="button">
+          Send Message
+        </button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>

@@ -9,9 +9,18 @@
   if page.title == 'About Us' or page.title == 'About us' or page.title == 'About'
     assign is_about_page = true
   endif
+
+  assign is_contact_fallback = false
+  if page.handle == 'contactus' or page.handle == 'contact-us' or page.handle == 'contact'
+    if page.content == blank and template.suffix != 'contact' and template.suffix != 'contactus'
+      assign is_contact_fallback = true
+    endif
+  endif
 -%}
 {%- if is_about_page -%}
   {% render 'muqavi-about-display', scope_id: section.id %}
+{%- elsif is_contact_fallback -%}
+  {% render 'muqavi-contact-display' %}
 {%- else -%}
   {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
