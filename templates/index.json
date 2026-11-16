@@ -154,7 +154,8 @@
           "settings": {
             "image_asset": "customer-review-1.jpg",
             "quote": "Maine pehli dafa order kiya tha, honestly product quality achi lagi. Abhi use kar raha hun. Or mujhy kafi farq mahsoos horha ha",
-            "name": ""
+            "name": "Muhammad Usman",
+            "stars_fill": 100
           }
         },
         "t2": {
@@ -162,7 +163,8 @@
           "settings": {
             "image_asset": "customer-review-2.jpg",
             "quote": "Bohat se herbal products try kiye hain lekin isky bad mujhy waqai apnay andr change nazar aya ha or improvement feel hoi ha perfromance ma.",
-            "name": ""
+            "name": "Ahmed Hassan",
+            "stars_fill": 100
           }
         },
         "t3": {
@@ -170,7 +172,8 @@
           "settings": {
             "image_asset": "customer-review-3.jpg",
             "quote": "Yaar main te pehlan soch reha si pata nahi ki hovega, par product da overall experience changa lagga. Desi cheezan di gal hi wakhri ae. Kamal hogia g",
-            "name": ""
+            "name": "Gurpreet Singh",
+            "stars_fill": 90
           }
         },
         "t4": {
@@ -178,7 +181,8 @@
           "settings": {
             "image_asset": "customer-review-4.jpg",
             "quote": "Bhai mujhe 3 weeks ho gaye use karte hue, honestly energy mein kaafi farq feel ho raha hai. Bed time bhi pehle se better feel ho raha hai. Alhamdulillah!",
-            "name": ""
+            "name": "Rizwan Ali",
+            "stars_fill": 100
           }
         },
         "t5": {
@@ -186,7 +190,8 @@
           "settings": {
             "image_asset": "customer-review-5.jpg",
             "quote": "Bhai pehle din se nahi lekin regular use ke baad mujhe apni daily energy aur freshness mein change feel hua hai.",
-            "name": ""
+            "name": "Bilal Khan",
+            "stars_fill": 80
           }
         }
       },

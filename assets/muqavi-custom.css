@@ -26,12 +26,38 @@
       top: 0;
       left: 0;
       overflow: hidden;
-      width: 100%;
-      color: #7cb305;
+      width: var(--cs-rating-fill, 93.6%);
+      color: #f5a623;
       display: flex;
       gap: 0.1rem;
       white-space: nowrap;
     }
+
+/* Shared star row (PDP + review cards) */
+.muqavi-stars {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+.muqavi-stars__base {
+  color: rgba(18, 18, 18, 0.18);
+  display: flex;
+  gap: 0.1rem;
+}
+.muqavi-stars__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: var(--cs-rating-fill, 100%);
+  color: #f5a623;
+  display: flex;
+  gap: 0.1rem;
+  white-space: nowrap;
+}
+.testimonial-card__stars .muqavi-stars__fill {
+  color: #e8a020;
+}
     .muqavi-product .cs-rating__score {
       font-size: 1.6rem;
       font-weight: 700;

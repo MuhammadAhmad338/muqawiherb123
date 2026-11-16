@@ -1,0 +1,38 @@
+{% comment %}
+  Star rating row (gray base + colored fill).
+  Accepts:
+  - fill_percent: {Number} 0–100
+  - size: {Number} optional SVG size, default 16
+  - modifier_class: {String} extra BEM modifier on root
+{% endcomment %}
+{%- liquid
+  assign star_fill = fill_percent | default: 100 | plus: 0
+  if star_fill > 100
+    assign star_fill = 100
+  endif
+  if star_fill < 0
+    assign star_fill = 0
+  endif
+  assign star_size = size | default: 16
+-%}
+<div
+  class="muqavi-stars{% if modifier_class != blank %} {{ modifier_class }}{% endif %}"
+  style="--cs-rating-fill: {{ star_fill }}%;"
+  role="img"
+  aria-label="Rating {{ star_fill }} percent"
+>
+  <div class="muqavi-stars__base">
+    {%- for star in (1..5) -%}
+      <svg viewBox="0 0 24 24" width="{{ star_size }}" height="{{ star_size }}" fill="currentColor" aria-hidden="true">
+        <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/>
+      </svg>
+    {%- endfor -%}
+  </div>
+  <div class="muqavi-stars__fill">
+    {%- for star in (1..5) -%}
+      <svg viewBox="0 0 24 24" width="{{ star_size }}" height="{{ star_size }}" fill="currentColor" aria-hidden="true">
+        <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/>
+      </svg>
+    {%- endfor -%}
+  </div>
+</div>
