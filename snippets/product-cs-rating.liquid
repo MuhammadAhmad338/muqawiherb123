@@ -6,7 +6,7 @@
 -%}
 <div class="cs-rating muqavi-product" {{ block.shopify_attributes }}>
   <div class="cs-rating__stars-wrap">
-    {% render 'muqavi-star-rating', fill_percent: rating_fill, size: 20, modifier_class: 'cs-rating__stars muqavi-stars--pdp' %}
+    {% render 'muqavi-star-rating', mode: 'bar', fill_percent: rating_fill, size: 20, modifier_class: 'cs-rating__stars' %}
     <span class="cs-rating__score">{{ block.settings.rating_score | default: '4.68/5.0' }}</span>
   </div>
   <span class="cs-rating__divider" aria-hidden="true"></span>

@@ -131,19 +131,17 @@
           assign review_quote = default_quote_5
         endif
         assign review_name = default_name_1
-        assign review_stars_fill = 100
+        assign review_filled_stars = 5
         if i == 2
           assign review_name = default_name_2
-          assign review_stars_fill = 100
         elsif i == 3
           assign review_name = default_name_3
-          assign review_stars_fill = 90
+          assign review_filled_stars = 5
         elsif i == 4
           assign review_name = default_name_4
-          assign review_stars_fill = 100
         elsif i == 5
           assign review_name = default_name_5
-          assign review_stars_fill = 80
+          assign review_filled_stars = 4
         endif
         assign review_alt = review_name
         assign review_image_picker = blank
@@ -158,8 +156,21 @@
                 assign review_name = block.settings.name
                 assign review_alt = block.settings.name
               endif
-              if block.settings.stars_fill != blank
-                assign review_stars_fill = block.settings.stars_fill | plus: 0
+              if block.settings.filled_stars != blank
+                assign review_filled_stars = block.settings.filled_stars | plus: 0
+              elsif block.settings.stars_fill != blank
+                assign stars_pct = block.settings.stars_fill | plus: 0
+                if stars_pct >= 100
+                  assign review_filled_stars = 5
+                elsif stars_pct >= 80
+                  assign review_filled_stars = 4
+                elsif stars_pct >= 60
+                  assign review_filled_stars = 3
+                elsif stars_pct >= 40
+                  assign review_filled_stars = 2
+                else
+                  assign review_filled_stars = 1
+                endif
               endif
               assign review_image_picker = block.settings.image
               if block.settings.image_asset != blank
@@ -191,7 +202,7 @@
         </div>
         <div class="testimonial-card__body">
           <div class="testimonial-card__stars">
-            {% render 'muqavi-star-rating', fill_percent: review_stars_fill, size: 14 %}
+            {% render 'muqavi-star-rating', mode: 'discrete', filled_stars: review_filled_stars, size: 15 %}
           </div>
           <p class="testimonial-card__quote">"{{ review_quote }}"</p>
           <p class="testimonial-card__name">
