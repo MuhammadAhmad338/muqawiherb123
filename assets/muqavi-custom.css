@@ -1346,18 +1346,21 @@ border-top: .1rem solid #C1CDC0;
     .info-pills-block--majoon .info-pill {
       background: #fff;
       border-color: rgba(17, 24, 39, 0.14);
-      padding: 12px 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      min-height: 52px;
     }
     .info-pill {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
+      gap: 12px;
+      padding: 12px 14px;
       border: 1px solid rgba(17, 24, 39, 0.12);
-      border-radius: 999px;
+      border-radius: 12px;
       background: #faf6e6;
       min-width: 0;
       width: 100%;
+      box-sizing: border-box;
     }
     .info-pill__icon--gold {
       width: 22px;
