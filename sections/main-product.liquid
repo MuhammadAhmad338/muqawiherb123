@@ -232,13 +232,12 @@
                       {%- liquid
                         assign accordion_heading = block.settings.heading | downcase
                         assign show_majoon_ingredients = false
-                        if product.handle contains 'majoon' and accordion_heading contains 'description'
+                        if product.handle contains 'majoon' and accordion_heading contains 'ingredient'
                           assign show_majoon_ingredients = true
                         endif
                       -%}
                       {%- if show_majoon_ingredients -%}
                         <div class="muqavi-ingredients">
-                          <p class="muqavi-ingredients__label">Ingredients</p>
                           <ol>
                             <li>1: Salab Panja — Salep Orchid Tuber</li>
                             <li>2: Salab Misri — Egyptian Salep</li>
