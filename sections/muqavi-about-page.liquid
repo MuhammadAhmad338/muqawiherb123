@@ -1,53 +1,96 @@
 {%- liquid
   assign product = section.settings.product
   assign cta_url = product.url | default: routes.all_products_collection_url
+  assign wa_number = settings.whatsapp_number | default: '923390091552'
+  assign wa_display = section.settings.phone | default: '+92 339 0091552'
 -%}
+
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .muqavi-about-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     background: #fff;
-    color: #0f2613;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__intro {
-    padding: 48px 20px 56px;
-    background: linear-gradient(180deg, #f4faf5 0%, #fff 100%);
+  @media screen and (min-width: 750px) {
+    .muqavi-about-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__intro-inner {
-    max-width: 780px;
+  .muqavi-about-{{ section.id }} .muqavi-about__rte {
+    max-width: 82rem;
     margin: 0 auto;
-    text-align: center;
+    color: #121212;
+    font-size: 1.6rem;
+    line-height: 1.7;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__page-title {
-    margin: 0 0 12px;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+  .muqavi-about-{{ section.id }} .muqavi-about__rte h1 {
+    font-size: clamp(2.8rem, 4vw, 4rem);
     font-weight: 700;
+    margin: 0 0 2rem;
     letter-spacing: -0.02em;
+    text-align: left;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte h2 {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    font-weight: 700;
+    margin: 3.2rem 0 1.6rem;
+    letter-spacing: -0.01em;
     color: #0f2613;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__tagline {
-    margin: 0 0 24px;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+  .muqavi-about-{{ section.id }} .muqavi-about__rte h2:first-of-type {
+    margin-top: 0.4rem;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__lead {
+    font-size: 1.75rem;
     font-weight: 600;
-    color: #194421;
     font-style: italic;
+    color: #194421;
+    margin: 0 0 1.6rem;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__text {
-    margin: 0 0 18px;
-    font-size: 1.6rem;
-    line-height: 1.65;
-    color: #2a3a2c;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__cta-lead {
-    margin: 28px 0 10px;
-    font-size: 1.7rem;
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__mission-kicker {
+    font-size: 1.8rem;
     font-weight: 600;
+    margin: 0 0 1.2rem;
     color: #194421;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__cta-text {
-    margin: 0 0 20px;
-    font-size: 1.55rem;
-    line-height: 1.55;
-    color: #2a3a2c;
+  .muqavi-about-{{ section.id }} .muqavi-about__rte p {
+    margin: 0 0 1.6rem;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte ul {
+    margin: 0 0 2rem;
+    padding-left: 2rem;
+    list-style: disc;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte ul li {
+    margin-bottom: 1.2rem;
+    padding-left: 0.4rem;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte ul li strong {
+    color: #0f2613;
+    font-weight: 700;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end {
+    font-weight: 600;
+    margin: 2rem 0 0;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__contact-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__contact-list li {
+    margin-bottom: 0.8rem;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte a {
+    color: #194421;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__btn-wrap {
+    margin-top: 2.4rem;
   }
   .muqavi-about-{{ section.id }} .muqavi-about__btn {
     display: inline-flex;
@@ -63,107 +106,76 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__why {
-    padding: 52px 20px 64px;
-    background: #faf6e6;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__why-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__why-title {
-    margin: 0 0 32px;
-    text-align: center;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    color: #194421;
-    letter-spacing: -0.02em;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-  @media (max-width: 749px) {
-    .muqavi-about-{{ section.id }} .muqavi-about__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__card {
-    background: #fff;
-    border: 1px solid rgba(25, 68, 33, 0.12);
-    border-radius: 14px;
-    padding: 22px 20px;
-    box-shadow: 0 2px 10px rgba(15, 38, 19, 0.06);
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__card-title {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #194421;
-    line-height: 1.35;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__card-text {
-    margin: 0;
-    font-size: 1.4rem;
-    line-height: 1.55;
-    color: #333;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__footer-line {
-    margin: 40px 0 0;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #0f2613;
-  }
 {%- endstyle -%}
 
-<div class="muqavi-about-{{ section.id }}">
-  <div class="muqavi-about__intro">
-    <div class="page-width muqavi-about__intro-inner">
-      <h1 class="muqavi-about__page-title">{{ section.settings.page_title | default: 'About Us' }}</h1>
+<section class="muqavi-about-{{ section.id }}">
+  <div class="page-width page-width--narrow">
+    <article class="muqavi-about__rte rte">
+      <h1>{{ section.settings.page_title | default: 'About Us' }}</h1>
+
+      <h2>{{ section.settings.welcome_heading | default: 'Welcome to Muqavi Herbs' }}</h2>
       {%- if section.settings.intro_heading != blank -%}
-        <p class="muqavi-about__tagline">{{ section.settings.intro_heading }}</p>
+        <p class="muqavi-about__lead">{{ section.settings.intro_heading }}</p>
       {%- endif -%}
       {%- if section.settings.intro_para_1 != blank -%}
-        <p class="muqavi-about__text">{{ section.settings.intro_para_1 }}</p>
+        <p>{{ section.settings.intro_para_1 }}</p>
       {%- endif -%}
       {%- if section.settings.intro_para_2 != blank -%}
-        <p class="muqavi-about__text">{{ section.settings.intro_para_2 }}</p>
+        <p>{{ section.settings.intro_para_2 }}</p>
       {%- endif -%}
+
+      <h2>{{ section.settings.why_heading | default: 'Why Choose Majoon-e-Muqavi?' }}</h2>
+      <ul>
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <strong>{{ block.settings.title }}</strong>
+            {%- endif -%}
+            {{ block.settings.text }}
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.closing_line != blank -%}
+        <p class="muqavi-about__tagline-end">{{ section.settings.closing_line }}</p>
+      {%- endif -%}
+
+      <h2>{{ section.settings.mission_heading | default: 'Our Mission' }}</h2>
       {%- if section.settings.cta_lead != blank -%}
-        <p class="muqavi-about__cta-lead">{{ section.settings.cta_lead }}</p>
+        <p class="muqavi-about__mission-kicker">{{ section.settings.cta_lead }}</p>
+      {%- endif -%}
+      {%- if section.settings.mission_text != blank -%}
+        <p>{{ section.settings.mission_text }}</p>
       {%- endif -%}
       {%- if section.settings.cta_text != blank -%}
-        <p class="muqavi-about__cta-text">{{ section.settings.cta_text }}</p>
+        <p>{{ section.settings.cta_text }}</p>
       {%- endif -%}
       {%- if section.settings.show_product_button -%}
-        <a class="muqavi-about__btn" href="{{ cta_url }}">{{ section.settings.button_label }}</a>
+        <div class="muqavi-about__btn-wrap">
+          <a class="muqavi-about__btn" href="{{ cta_url }}">{{ section.settings.button_label }}</a>
+        </div>
       {%- endif -%}
-    </div>
-  </div>
 
-  <div class="muqavi-about__why">
-    <div class="page-width muqavi-about__why-inner">
-      <h2 class="muqavi-about__why-title">{{ section.settings.why_heading }}</h2>
-      <div class="muqavi-about__grid">
-        {%- for block in section.blocks -%}
-          <article class="muqavi-about__card" {{ block.shopify_attributes }}>
-            {%- if block.settings.title != blank -%}
-              <h3 class="muqavi-about__card-title">{{ block.settings.title }}</h3>
-            {%- endif -%}
-            {%- if block.settings.text != blank -%}
-              <p class="muqavi-about__card-text">{{ block.settings.text }}</p>
-            {%- endif -%}
-          </article>
-        {%- endfor -%}
-      </div>
-      {%- if section.settings.closing_line != blank -%}
-        <p class="muqavi-about__footer-line">{{ section.settings.closing_line }}</p>
+      {%- if section.settings.show_contact -%}
+        <h2>{{ section.settings.contact_heading | default: 'Contact us' }}</h2>
+        <ul class="muqavi-about__contact-list">
+          {%- if section.settings.phone != blank -%}
+            <li>
+              <a href="https://wa.me/{{ wa_number }}" target="_blank" rel="noopener">{{ wa_display }}</a>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.email != blank -%}
+            <li>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.address != blank -%}
+            <li>{{ section.settings.address }}</li>
+          {%- endif -%}
+        </ul>
       {%- endif -%}
-    </div>
+    </article>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
@@ -174,8 +186,18 @@
     {
       "type": "text",
       "id": "page_title",
-      "label": "Page title",
+      "label": "Page title (H1)",
       "default": "About Us"
+    },
+    {
+      "type": "header",
+      "content": "Welcome section"
+    },
+    {
+      "type": "text",
+      "id": "welcome_heading",
+      "label": "Welcome heading",
+      "default": "Welcome to Muqavi Herbs"
     },
     {
       "type": "text",
@@ -197,14 +219,42 @@
     },
     {
       "type": "text",
+      "id": "why_heading",
+      "label": "Why choose heading",
+      "default": "Why Choose Majoon-e-Muqavi?"
+    },
+    {
+      "type": "text",
+      "id": "closing_line",
+      "label": "Line after why choose list",
+      "default": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life."
+    },
+    {
+      "type": "header",
+      "content": "Mission section"
+    },
+    {
+      "type": "text",
+      "id": "mission_heading",
+      "label": "Mission heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "text",
       "id": "cta_lead",
-      "label": "CTA headline",
+      "label": "Mission subheading",
       "default": "Start Your Journey Towards Natural Wellness Today."
     },
     {
       "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission paragraph",
+      "default": "To provide individuals with affordable, natural, and effective traditional herbal formulations that encourage healthier living, vitality, strength, and overall well-being."
+    },
+    {
+      "type": "textarea",
       "id": "cta_text",
-      "label": "CTA text",
+      "label": "Mission closing text",
       "default": "Explore Majoon-e-Muqavi and discover a formulation inspired by traditional herbal knowledge."
     },
     {
@@ -225,16 +275,58 @@
       "label": "Product link"
     },
     {
-      "type": "text",
-      "id": "why_heading",
-      "label": "Why choose heading",
-      "default": "Why Choose Majoon-e-Muqavi?"
+      "type": "header",
+      "content": "Contact section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show contact section",
+      "default": true
     },
     {
       "type": "text",
-      "id": "closing_line",
-      "label": "Closing line",
-      "default": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life."
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "Contact us"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone display",
+      "default": "+92 339 0091552"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "support@muqaviherbsofficial.com"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "Pakistan"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
     }
   ],
   "blocks": [
@@ -242,7 +334,7 @@
       "type": "reason",
       "name": "Reason",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "title", "label": "Title (with colon)" },
         { "type": "textarea", "id": "text", "label": "Description" }
       ]
     }
@@ -255,42 +347,42 @@
           "type": "reason",
           "settings": {
             "title": "Traditional Unani Formulation:",
-            "text": "Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
+            "text": " Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "45+ Natural Herbal Ingredients:",
-            "text": "Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
+            "text": " Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Male Vitality & Wellness:",
-            "text": "Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
+            "text": " Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Carefully Selected Ingredients:",
-            "text": "Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
+            "text": " Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Commitment to Quality:",
-            "text": "We focus on ingredient selection, product quality and customer satisfaction in every formulation."
+            "text": " We focus on ingredient selection, product quality and customer satisfaction in every formulation."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Dedicated Customer Support:",
-            "text": "Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
+            "text": " Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
           }
         }
       ]
