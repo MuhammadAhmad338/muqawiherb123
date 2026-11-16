@@ -72,8 +72,14 @@
     color: #0f2613;
     font-weight: 700;
   }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end {
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end,
+  .muqavi-about-{{ section.id }} .muqavi-about__rte em.muqavi-about__em {
+    font-style: italic;
     font-weight: 600;
+    color: #194421;
+  }
+  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end {
+    display: block;
     margin: 2rem 0 0;
   }
   .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__contact-list {
@@ -113,15 +119,21 @@
     <article class="muqavi-about__rte rte">
       <h1>{{ section.settings.page_title | default: 'About Us' }}</h1>
 
-      <h2>{{ section.settings.welcome_heading | default: 'Welcome to Muqavi Herbs' }}</h2>
+      <h2>{{ section.settings.about_intro_heading | default: 'Why Choose Majoon-e-Muqavi?' }}</h2>
       {%- if section.settings.intro_heading != blank -%}
-        <p class="muqavi-about__lead">{{ section.settings.intro_heading }}</p>
+        <p><em class="muqavi-about__em">{{ section.settings.intro_heading }}</em></p>
       {%- endif -%}
       {%- if section.settings.intro_para_1 != blank -%}
         <p>{{ section.settings.intro_para_1 }}</p>
       {%- endif -%}
       {%- if section.settings.intro_para_2 != blank -%}
         <p>{{ section.settings.intro_para_2 }}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_lead != blank -%}
+        <p><em class="muqavi-about__em">{{ section.settings.cta_lead }}</em></p>
+      {%- endif -%}
+      {%- if section.settings.cta_text != blank -%}
+        <p>{{ section.settings.cta_text }}</p>
       {%- endif -%}
 
       <h2>{{ section.settings.why_heading | default: 'Why Choose Majoon-e-Muqavi?' }}</h2>
@@ -131,24 +143,16 @@
             {%- if block.settings.title != blank -%}
               <strong>{{ block.settings.title }}</strong>
             {%- endif -%}
-            {{ block.settings.text }}
+            {%- if block.settings.text != blank -%}
+              {{ ' ' }}{{ block.settings.text }}
+            {%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
       {%- if section.settings.closing_line != blank -%}
-        <p class="muqavi-about__tagline-end">{{ section.settings.closing_line }}</p>
+        <p><em class="muqavi-about__tagline-end">{{ section.settings.closing_line }}</em></p>
       {%- endif -%}
 
-      <h2>{{ section.settings.mission_heading | default: 'Our Mission' }}</h2>
-      {%- if section.settings.cta_lead != blank -%}
-        <p class="muqavi-about__mission-kicker">{{ section.settings.cta_lead }}</p>
-      {%- endif -%}
-      {%- if section.settings.mission_text != blank -%}
-        <p>{{ section.settings.mission_text }}</p>
-      {%- endif -%}
-      {%- if section.settings.cta_text != blank -%}
-        <p>{{ section.settings.cta_text }}</p>
-      {%- endif -%}
       {%- if section.settings.show_product_button -%}
         <div class="muqavi-about__btn-wrap">
           <a class="muqavi-about__btn" href="{{ cta_url }}">{{ section.settings.button_label }}</a>
@@ -191,13 +195,13 @@
     },
     {
       "type": "header",
-      "content": "Welcome section"
+      "content": "About intro"
     },
     {
       "type": "text",
-      "id": "welcome_heading",
-      "label": "Welcome heading",
-      "default": "Welcome to Muqavi Herbs"
+      "id": "about_intro_heading",
+      "label": "Intro section heading",
+      "default": "Why Choose Majoon-e-Muqavi?"
     },
     {
       "type": "text",
@@ -230,31 +234,15 @@
       "default": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life."
     },
     {
-      "type": "header",
-      "content": "Mission section"
-    },
-    {
-      "type": "text",
-      "id": "mission_heading",
-      "label": "Mission heading",
-      "default": "Our Mission"
-    },
-    {
       "type": "text",
       "id": "cta_lead",
-      "label": "Mission subheading",
+      "label": "Journey line (italic)",
       "default": "Start Your Journey Towards Natural Wellness Today."
     },
     {
       "type": "textarea",
-      "id": "mission_text",
-      "label": "Mission paragraph",
-      "default": "To provide individuals with affordable, natural, and effective traditional herbal formulations that encourage healthier living, vitality, strength, and overall well-being."
-    },
-    {
-      "type": "textarea",
       "id": "cta_text",
-      "label": "Mission closing text",
+      "label": "Explore line",
       "default": "Explore Majoon-e-Muqavi and discover a formulation inspired by traditional herbal knowledge."
     },
     {
@@ -347,42 +335,42 @@
           "type": "reason",
           "settings": {
             "title": "Traditional Unani Formulation:",
-            "text": " Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
+            "text": "Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "45+ Natural Herbal Ingredients:",
-            "text": " Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
+            "text": "Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Male Vitality & Wellness:",
-            "text": " Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
+            "text": "Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Carefully Selected Ingredients:",
-            "text": " Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
+            "text": "Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Commitment to Quality:",
-            "text": " We focus on ingredient selection, product quality and customer satisfaction in every formulation."
+            "text": "We focus on ingredient selection, product quality and customer satisfaction in every formulation."
           }
         },
         {
           "type": "reason",
           "settings": {
             "title": "Dedicated Customer Support:",
-            "text": " Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
+            "text": "Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
           }
         }
       ]
