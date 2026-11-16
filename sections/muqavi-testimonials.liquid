@@ -92,26 +92,29 @@
   <div class="testimonials__grid">
     {%- for block in section.blocks -%}
       {%- liquid
-        assign review_image = block.settings.image
-        if review_image == blank and block.settings.image_asset != blank
-          assign review_image = block.settings.image_asset
+        assign review_alt = block.settings.name | default: 'Customer review'
+        assign bundled_asset = ''
+        if forloop.index <= 5
+          assign bundled_asset = 'customer-review-' | append: forloop.index | append: '.jpg'
+        endif
+        if block.settings.image_asset != blank
+          assign bundled_asset = block.settings.image_asset
         endif
       -%}
       <article class="testimonial-card" {{ block.shopify_attributes }}>
         <div class="testimonial-card__media">
           {%- if block.settings.image != blank -%}
-            {%- assign review_alt = block.settings.name | default: 'Customer review' -%}
             {{
               block.settings.image
-              | image_url: width: 600
-              | image_tag: loading: 'lazy', alt: review_alt
+              | image_url: width: 640
+              | image_tag: loading: 'lazy', alt: review_alt, widths: '320, 480, 640', sizes: '(min-width: 990px) 220px, 50vw'
             }}
-          {%- elsif block.settings.image_asset != blank -%}
+          {%- elsif bundled_asset != blank -%}
             <img
-              src="{{ block.settings.image_asset | asset_url }}"
-              alt="{{ block.settings.name | default: 'Customer review' | escape }}"
-              width="600"
-              height="600"
+              src="{{ bundled_asset | asset_url }}"
+              alt="{{ review_alt | escape }}"
+              width="640"
+              height="640"
               loading="lazy"
             >
           {%- endif -%}
