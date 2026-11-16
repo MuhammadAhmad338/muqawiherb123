@@ -213,24 +213,26 @@
       </a>
     {%- endif -%}
 
-    <a class="muqavi-pcsir__cta" href="{{ cta_url }}">
-      <span class="muqavi-pcsir__cta-mark">
-        {%- if product != blank and product.featured_image -%}
-          {{ product.featured_image | image_url: width: 80 | image_tag: alt: '', loading: 'lazy' }}
-        {%- else -%}
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 20c.3-6 4-10 10-11.5C20.5 15 16 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M12 20c-.3-6-4-10-10-11.5C3.5 15 8 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    {%- if section.settings.show_order_button -%}
+      <a class="muqavi-pcsir__cta" href="{{ cta_url }}">
+        <span class="muqavi-pcsir__cta-mark">
+          {%- if product != blank and product.featured_image -%}
+            {{ product.featured_image | image_url: width: 80 | image_tag: alt: '', loading: 'lazy' }}
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20c.3-6 4-10 10-11.5C20.5 15 16 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M12 20c-.3-6-4-10-10-11.5C3.5 15 8 19 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          {%- endif -%}
+        </span>
+        <span class="muqavi-pcsir__cta-label">{{ section.settings.button_label }}</span>
+        <span class="muqavi-pcsir__cta-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        {%- endif -%}
-      </span>
-      <span class="muqavi-pcsir__cta-label">{{ section.settings.button_label }}</span>
-      <span class="muqavi-pcsir__cta-arrow" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </a>
+        </span>
+      </a>
+    {%- endif -%}
   </div>
 </section>
 
@@ -263,6 +265,12 @@
       "label": "Certificate image"
     },
     {
+      "type": "checkbox",
+      "id": "show_order_button",
+      "label": "Show order button",
+      "default": true
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": "Button label",
@@ -279,6 +287,9 @@
       "label": "Button link if no product"
     }
   ],
-  "presets": [{ "name": "Muqavi PCSIR trust" }]
+  "presets": [{ "name": "Muqavi PCSIR trust" }],
+  "enabled_on": {
+    "templates": ["index", "product"]
+  }
 }
 {% endschema %}

@@ -94,6 +94,15 @@
         "padding_bottom": 28
       }
     },
+    "pcsir": {
+      "type": "muqavi-pcsir",
+      "settings": {
+        "heading": "No Side Effects Trusted By PCSIR",
+        "button_label": "Order the Majoon",
+        "show_order_button": false,
+        "product": "majoon-e-muqavi"
+      }
+    },
     "customer_reviews": {
       "type": "muqavi-testimonials",
       "blocks": {
@@ -149,5 +158,5 @@
       }
     }
   },
-  "order": ["main", "customer_reviews"]
+  "order": ["main", "pcsir", "customer_reviews"]
 }
