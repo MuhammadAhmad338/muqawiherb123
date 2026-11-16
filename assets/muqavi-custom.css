@@ -1353,6 +1353,18 @@ border-top: .1rem solid #C1CDC0;
       .info-pills-block__row { gap: 12px; }
     }
 
+.muqavi-majoon-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #3d4a3a;
+}
+.muqavi-majoon-desc p {
+  margin: 0 0 12px;
+}
+.muqavi-majoon-desc p:last-child {
+  margin-bottom: 0;
+}
+
 .muqavi-ingredients {
   margin-top: 4px;
   color: #3d4a3a;
