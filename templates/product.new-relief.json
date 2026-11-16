@@ -41,7 +41,7 @@
         },
         "collapsible_returns": {
           "type": "collapsible_tab",
-          "settings": { "heading": "Returns & Exchanges", "icon": "none", "content": "", "page": "" }
+          "settings": { "heading": "Return & Exchange Policy", "icon": "none", "content": "", "page": "" }
         }
       },
       "block_order": [

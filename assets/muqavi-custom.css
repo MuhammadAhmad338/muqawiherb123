@@ -1388,3 +1388,31 @@ border-top: .1rem solid #C1CDC0;
     columns: 1;
   }
 }
+
+.muqavi-returns {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #3d4a3a;
+}
+.muqavi-returns h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a3a15;
+}
+.muqavi-returns h4 {
+  margin: 14px 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3a15;
+}
+.muqavi-returns p {
+  margin: 0 0 8px;
+}
+.muqavi-returns ul {
+  margin: 0 0 8px;
+  padding-left: 18px;
+}
+.muqavi-returns li {
+  margin: 0 0 6px;
+}

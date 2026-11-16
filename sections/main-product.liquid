@@ -265,6 +265,9 @@
                           <p class="muqavi-ingredients__note">45+ Additional Natural Herbal Ingredients</p>
                         </div>
                       {%- endif -%}
+                      {%- if accordion_heading contains 'return' -%}
+                        {% render 'muqavi-returns-policy' %}
+                      {%- endif -%}
                     </div>
                   </details>
                 </div>
