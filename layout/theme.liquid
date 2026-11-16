@@ -398,53 +398,46 @@
       }
       @media screen and (min-width: 990px) {
         #about-us, .muqavi-about-anchor {
-          scroll-margin-top: 110px;
+          scroll-margin-top: 120px;
         }
       }
     </style>
 
     <script>
       (function() {
-        function scrollToAbout(e) {
+        function scrollToAbout() {
           var target = document.getElementById('about-us');
           if (!target) return;
-          var isHomePage = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname === '{{ routes.root_url }}';
-          if (isHomePage) {
-            if (e && e.preventDefault) e.preventDefault();
-            var header = document.querySelector('sticky-header') || document.querySelector('.header-wrapper') || document.querySelector('.header');
-            var offset = header ? header.offsetHeight + 24 : 100;
-            var elementPosition = target.getBoundingClientRect().top;
-            var offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({
-              top: Math.max(0, offsetPosition),
-              behavior: 'smooth'
-            });
-            if (history.pushState) {
-              history.pushState(null, null, '#about-us');
-            } else {
-              window.location.hash = '#about-us';
-            }
-          }
+          var header = document.querySelector('sticky-header') || document.querySelector('.section-header') || document.querySelector('header');
+          var offset = header ? header.getBoundingClientRect().height + 20 : 110;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          history.replaceState(null, null, '#about-us');
         }
 
+        /* On any page load, if hash is #about-us, scroll after content settles */
+        if (window.location.hash === '#about-us') {
+          window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(scrollToAbout, 400);
+          });
+        }
+
+        /* Intercept clicks on About Us links */
         document.addEventListener('click', function(e) {
           var a = e.target.closest('a');
           if (!a) return;
-          var href = a.getAttribute('href') || '';
+          var href = (a.getAttribute('href') || '').trim();
           var text = (a.textContent || '').trim().toLowerCase();
-          if (href.indexOf('#about-us') !== -1 || text === 'about us' || text === 'about') {
-            var isHomePage = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname === '{{ routes.root_url }}';
-            if (isHomePage) {
-              scrollToAbout(e);
-            }
-          }
-        });
+          var isAboutLink = href === '#about-us' || href === '/#about-us' || href.endsWith('#about-us') || text === 'about us';
+          if (!isAboutLink) return;
 
-        if (window.location.hash === '#about-us') {
-          window.addEventListener('load', function() {
-            setTimeout(scrollToAbout, 350);
-          });
-        }
+          var onHome = window.location.pathname === '/' || window.location.pathname === '';
+          if (onHome) {
+            e.preventDefault();
+            scrollToAbout();
+          }
+          /* If not on homepage, let the browser navigate to /#about-us — the DOMContentLoaded handler above will scroll */
+        });
       })();
     </script>
   </body>
