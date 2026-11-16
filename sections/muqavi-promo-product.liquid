@@ -1,10 +1,10 @@
 {%- liquid
   assign product = section.settings.product
-  assign title_text = 'Majoon-e-Muqavi'
+  assign title_text = 'Majoon-e-Muqavi — Traditional Power Formula'
   assign description_text = 'A traditional herbal tonic for vitality, stamina and strength'
   assign variant = product.selected_or_first_available_variant
   assign product_url = product.url | default: section.settings.button_link | default: routes.all_products_collection_url
-  assign button_label = 'BUY MAJOON NOW'
+  assign button_label = 'ORDER NOW — CASH ON DELIVERY'
 -%}
 
 {%- style -%}
@@ -292,7 +292,7 @@
   "settings": [
     { "type": "product", "id": "product", "label": "Product" },
     { "type": "image_picker", "id": "image", "label": "Product image (optional)" },
-    { "type": "text", "id": "title", "label": "Title if no product", "default": "Majoon-e-Muqavi" },
+    { "type": "text", "id": "title", "label": "Title if no product", "default": "Majoon-e-Muqavi — Traditional Power Formula" },
     {
       "type": "textarea",
       "id": "description",
@@ -305,7 +305,7 @@
     { "type": "text", "id": "fallback_compare_price", "label": "Compare price if no product", "default": "3,500.00" },
     { "type": "text", "id": "general_label", "label": "Left column label", "default": "General Benefits" },
     { "type": "text", "id": "marital_label", "label": "Right column label", "default": "Benefits for Married Life" },
-    { "type": "text", "id": "button_label", "label": "Button", "default": "BUY MAJOON NOW" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "ORDER NOW — CASH ON DELIVERY" },
     { "type": "url", "id": "button_link", "label": "Button link if no product" }
   ],
   "blocks": [
