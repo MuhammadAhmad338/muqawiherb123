@@ -422,21 +422,19 @@
           });
         }
 
-        /* Intercept clicks on About Us links */
+        /* Intercept clicks on anchor links only */
         document.addEventListener('click', function(e) {
           var a = e.target.closest('a');
           if (!a) return;
           var href = (a.getAttribute('href') || '').trim();
-          var text = (a.textContent || '').trim().toLowerCase();
-          var isAboutLink = href === '#about-us' || href === '/#about-us' || href.endsWith('#about-us') || text === 'about us';
-          if (!isAboutLink) return;
+          var isAnchorLink = href === '#about-us' || href === '/#about-us';
+          if (!isAnchorLink) return;
 
           var onHome = window.location.pathname === '/' || window.location.pathname === '';
           if (onHome) {
             e.preventDefault();
             scrollToAbout();
           }
-          /* If not on homepage, let the browser navigate to /#about-us — the DOMContentLoaded handler above will scroll */
         });
       })();
     </script>

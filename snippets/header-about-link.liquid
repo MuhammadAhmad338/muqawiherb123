@@ -20,10 +20,10 @@
     unless already_in_menu
       if section.settings.about_page != blank
         assign about_url = section.settings.about_page.url
-      elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us' and section.settings.about_link_url != '/pages/aboutus'
+      elsif section.settings.about_link_url != blank
         assign about_url = section.settings.about_link_url
       else
-        assign about_url = homepage_about_anchor
+        assign about_url = '/pages/about-us'
       endif
     endunless
   -%}

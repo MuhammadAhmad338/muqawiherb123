@@ -75,7 +75,7 @@
             assign link_url = link.url
             assign link_title_down = link.title | downcase | strip
             if link_title_down == 'about us' or link_title_down == 'about' or link.handle == 'about-us' or link.handle == 'aboutus' or link.url contains 'aboutus' or link.url contains 'about-us'
-              assign link_url = routes.root_url | append: '#about-us'
+              assign link_url = '/pages/about-us'
             endif
           -%}
           <a
