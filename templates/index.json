@@ -197,6 +197,71 @@
         "heading": "No Side Effects Trusted By PCSIR",
         "button_label": "Order the Majoon"
       }
+    },
+    "about_us": {
+      "type": "muqavi-about-page",
+      "blocks": {
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "title": "Traditional Unani Formulation:",
+            "text": "Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "title": "45+ Natural Herbal Ingredients:",
+            "text": "Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "title": "Male Vitality & Wellness:",
+            "text": "Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
+          }
+        },
+        "r4": {
+          "type": "reason",
+          "settings": {
+            "title": "Carefully Selected Ingredients:",
+            "text": "Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
+          }
+        },
+        "r5": {
+          "type": "reason",
+          "settings": {
+            "title": "Commitment to Quality:",
+            "text": "We focus on ingredient selection, product quality and customer satisfaction in every formulation."
+          }
+        },
+        "r6": {
+          "type": "reason",
+          "settings": {
+            "title": "Dedicated Customer Support:",
+            "text": "Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "settings": {
+        "page_title": "About Us",
+        "mission_heading": "Our Mission",
+        "intro_heading": "Discover the Power of Traditional Herbal Wellness",
+        "intro_para_1": "Our mission is to bring the benefits of traditional Unani herbal formulations to modern lifestyles through carefully selected ingredients, quality-focused preparations, and affordable wellness solutions.",
+        "intro_para_2": "At Muqavi Herbs, we believe in combining traditional herbal wisdom with a commitment to quality and customer satisfaction. We aim to make natural wellness a part of everyday life while supporting strength, vitality, and overall well-being.",
+        "cta_lead": "Start Your Journey Towards Natural Wellness Today.",
+        "cta_text": "Explore Majoon-e-Muqavi and discover a formulation inspired by traditional herbal knowledge.",
+        "why_heading": "Why Choose Majoon-e-Muqavi?",
+        "closing_line": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life.",
+        "show_product_button": true,
+        "button_label": "Explore Majoon-e-Muqavi",
+        "product": "majoon-e-muqavi",
+        "show_contact": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
@@ -206,6 +271,7 @@
     "badges",
     "majoon_banner",
     "testimonials",
-    "pcsir"
+    "pcsir",
+    "about_us"
   ]
 }
