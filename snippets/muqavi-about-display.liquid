@@ -1,0 +1,175 @@
+{% comment %}
+  About Us page body. Used by muqavi-about-page section and main-page fallback.
+  Pass section object when available; otherwise defaults apply (use_defaults: true).
+{% endcomment %}
+{%- liquid
+  assign scope_id = scope_id | default: 'about'
+  assign use_defaults = use_defaults | default: false
+
+  assign page_title = 'About Us'
+  assign about_intro_heading = 'Why Choose Majoon-e-Muqavi?'
+  assign intro_heading = 'Discover the Power of Traditional Herbal Wellness'
+  assign intro_para_1 = 'Our mission is to bring the benefits of traditional Unani herbal formulations to modern lifestyles through carefully selected ingredients, quality-focused preparations, and affordable wellness solutions.'
+  assign intro_para_2 = 'At Muqavi Herbs, we believe in combining traditional herbal wisdom with a commitment to quality and customer satisfaction. We aim to make natural wellness a part of everyday life while supporting strength, vitality, and overall well-being.'
+  assign cta_lead = 'Start Your Journey Towards Natural Wellness Today.'
+  assign cta_text = 'Explore Majoon-e-Muqavi and discover a formulation inspired by traditional herbal knowledge.'
+  assign why_heading = 'Why Choose Majoon-e-Muqavi?'
+  assign closing_line = 'Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life.'
+  assign show_product_button = true
+  assign button_label = 'Explore Majoon-e-Muqavi'
+  assign show_contact = false
+  assign contact_heading = 'Contact us'
+  assign phone_display = '+92 339 0091552'
+  assign email = 'support@muqaviherbsofficial.com'
+  assign address = 'Pakistan'
+  assign padding_top = 36
+  assign padding_bottom = 48
+
+  if use_defaults == false and section != blank
+    assign page_title = section.settings.page_title | default: page_title
+    assign about_intro_heading = section.settings.about_intro_heading | default: about_intro_heading
+    assign intro_heading = section.settings.intro_heading | default: intro_heading
+    assign intro_para_1 = section.settings.intro_para_1 | default: intro_para_1
+    assign intro_para_2 = section.settings.intro_para_2 | default: intro_para_2
+    assign cta_lead = section.settings.cta_lead | default: cta_lead
+    assign cta_text = section.settings.cta_text | default: cta_text
+    assign why_heading = section.settings.why_heading | default: why_heading
+    assign closing_line = section.settings.closing_line | default: closing_line
+    assign show_product_button = section.settings.show_product_button
+    assign button_label = section.settings.button_label | default: button_label
+    assign show_contact = section.settings.show_contact
+    assign contact_heading = section.settings.contact_heading | default: contact_heading
+    assign phone_display = section.settings.phone | default: phone_display
+    assign email = section.settings.email | default: email
+    assign address = section.settings.address | default: address
+    assign padding_top = section.settings.padding_top | default: padding_top
+    assign padding_bottom = section.settings.padding_bottom | default: padding_bottom
+  endif
+
+  assign majoon_product = all_products['majoon-e-muqavi']
+  if section != blank and section.settings.product != blank
+    assign majoon_product = section.settings.product
+  endif
+  assign cta_url = majoon_product.url | default: routes.all_products_collection_url
+  assign wa_number = settings.whatsapp_number | default: '923390091552'
+-%}
+
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .muqavi-about-{{ scope_id }} {
+    padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
+    background: #fff;
+  }
+  @media screen and (min-width: 750px) {
+    .muqavi-about-{{ scope_id }} {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+    }
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte {
+    max-width: 82rem;
+    margin: 0 auto;
+    color: #121212;
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte h1 {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 700;
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte h2 {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    font-weight: 700;
+    margin: 3.2rem 0 1.6rem;
+    color: #0f2613;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte h2:first-of-type {
+    margin-top: 0.4rem;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte p {
+    margin: 0 0 1.6rem;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte em.muqavi-about__em {
+    font-style: italic;
+    font-weight: 600;
+    color: #194421;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte ul {
+    margin: 0 0 2rem;
+    padding-left: 2rem;
+    list-style: disc;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte ul li {
+    margin-bottom: 1.2rem;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__rte ul li strong {
+    font-weight: 700;
+    color: #0f2613;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__contact-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .muqavi-about-{{ scope_id }} .muqavi-about__btn {
+    display: inline-flex;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
+    color: #0f2613;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+{%- endstyle -%}
+
+<div class="muqavi-about-{{ scope_id }}">
+  <div class="page-width page-width--narrow">
+    <article class="muqavi-about__rte rte">
+      <h1>{{ page_title }}</h1>
+
+      <h2>{{ about_intro_heading }}</h2>
+      <p><em class="muqavi-about__em">{{ intro_heading }}</em></p>
+      <p>{{ intro_para_1 }}</p>
+      <p>{{ intro_para_2 }}</p>
+      <p><em class="muqavi-about__em">{{ cta_lead }}</em></p>
+      <p>{{ cta_text }}</p>
+
+      <h2>{{ why_heading }}</h2>
+      <ul>
+        {%- if section != blank and section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <li {% if block.shopify_attributes %}{{ block.shopify_attributes }}{% endif %}>
+              <strong>{{ block.settings.title }}</strong>{{ ' ' }}{{ block.settings.text }}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><strong>Traditional Unani Formulation:</strong> Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients.</li>
+          <li><strong>45+ Natural Herbal Ingredients:</strong> Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients.</li>
+          <li><strong>Male Vitality & Wellness:</strong> Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness.</li>
+          <li><strong>Carefully Selected Ingredients:</strong> Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit.</li>
+          <li><strong>Commitment to Quality:</strong> We focus on ingredient selection, product quality and customer satisfaction in every formulation.</li>
+          <li><strong>Dedicated Customer Support:</strong> Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan.</li>
+        {%- endif -%}
+      </ul>
+      <p><em class="muqavi-about__em">{{ closing_line }}</em></p>
+
+      {%- if show_product_button -%}
+        <p><a class="muqavi-about__btn" href="{{ cta_url }}">{{ button_label }}</a></p>
+      {%- endif -%}
+
+      {%- if show_contact -%}
+        <h2>{{ contact_heading }}</h2>
+        <ul class="muqavi-about__contact-list">
+          <li><a href="https://wa.me/{{ wa_number }}">{{ phone_display }}</a></li>
+          <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+          <li>{{ address }}</li>
+        </ul>
+      {%- endif -%}
+    </article>
+  </div>
+</div>

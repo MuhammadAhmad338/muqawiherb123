@@ -1,185 +1,4 @@
-{%- liquid
-  assign product = section.settings.product
-  assign cta_url = product.url | default: routes.all_products_collection_url
-  assign wa_number = settings.whatsapp_number | default: '923390091552'
-  assign wa_display = section.settings.phone | default: '+92 339 0091552'
--%}
-
-{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .muqavi-about-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    background: #fff;
-  }
-  @media screen and (min-width: 750px) {
-    .muqavi-about-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte {
-    max-width: 82rem;
-    margin: 0 auto;
-    color: #121212;
-    font-size: 1.6rem;
-    line-height: 1.7;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte h1 {
-    font-size: clamp(2.8rem, 4vw, 4rem);
-    font-weight: 700;
-    margin: 0 0 2rem;
-    letter-spacing: -0.02em;
-    text-align: left;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte h2 {
-    font-size: clamp(2rem, 3.2vw, 2.8rem);
-    font-weight: 700;
-    margin: 3.2rem 0 1.6rem;
-    letter-spacing: -0.01em;
-    color: #0f2613;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte h2:first-of-type {
-    margin-top: 0.4rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__lead {
-    font-size: 1.75rem;
-    font-weight: 600;
-    font-style: italic;
-    color: #194421;
-    margin: 0 0 1.6rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__mission-kicker {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 0 0 1.2rem;
-    color: #194421;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte p {
-    margin: 0 0 1.6rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte ul {
-    margin: 0 0 2rem;
-    padding-left: 2rem;
-    list-style: disc;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte ul li {
-    margin-bottom: 1.2rem;
-    padding-left: 0.4rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte ul li strong {
-    color: #0f2613;
-    font-weight: 700;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end,
-  .muqavi-about-{{ section.id }} .muqavi-about__rte em.muqavi-about__em {
-    font-style: italic;
-    font-weight: 600;
-    color: #194421;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__tagline-end {
-    display: block;
-    margin: 2rem 0 0;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__contact-list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte .muqavi-about__contact-list li {
-    margin-bottom: 0.8rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__rte a {
-    color: #194421;
-    text-decoration: underline;
-    text-underline-offset: 0.2rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__btn-wrap {
-    margin-top: 2.4rem;
-  }
-  .muqavi-about-{{ section.id }} .muqavi-about__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    border-radius: 50px;
-    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
-    color: #0f2613;
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-{%- endstyle -%}
-
-<section class="muqavi-about-{{ section.id }}">
-  <div class="page-width page-width--narrow">
-    <article class="muqavi-about__rte rte">
-      <h1>{{ section.settings.page_title | default: 'About Us' }}</h1>
-
-      <h2>{{ section.settings.about_intro_heading | default: 'Why Choose Majoon-e-Muqavi?' }}</h2>
-      {%- if section.settings.intro_heading != blank -%}
-        <p><em class="muqavi-about__em">{{ section.settings.intro_heading }}</em></p>
-      {%- endif -%}
-      {%- if section.settings.intro_para_1 != blank -%}
-        <p>{{ section.settings.intro_para_1 }}</p>
-      {%- endif -%}
-      {%- if section.settings.intro_para_2 != blank -%}
-        <p>{{ section.settings.intro_para_2 }}</p>
-      {%- endif -%}
-      {%- if section.settings.cta_lead != blank -%}
-        <p><em class="muqavi-about__em">{{ section.settings.cta_lead }}</em></p>
-      {%- endif -%}
-      {%- if section.settings.cta_text != blank -%}
-        <p>{{ section.settings.cta_text }}</p>
-      {%- endif -%}
-
-      <h2>{{ section.settings.why_heading | default: 'Why Choose Majoon-e-Muqavi?' }}</h2>
-      <ul>
-        {%- for block in section.blocks -%}
-          <li {{ block.shopify_attributes }}>
-            {%- if block.settings.title != blank -%}
-              <strong>{{ block.settings.title }}</strong>
-            {%- endif -%}
-            {%- if block.settings.text != blank -%}
-              {{ ' ' }}{{ block.settings.text }}
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-      {%- if section.settings.closing_line != blank -%}
-        <p><em class="muqavi-about__tagline-end">{{ section.settings.closing_line }}</em></p>
-      {%- endif -%}
-
-      {%- if section.settings.show_product_button -%}
-        <div class="muqavi-about__btn-wrap">
-          <a class="muqavi-about__btn" href="{{ cta_url }}">{{ section.settings.button_label }}</a>
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.show_contact -%}
-        <h2>{{ section.settings.contact_heading | default: 'Contact us' }}</h2>
-        <ul class="muqavi-about__contact-list">
-          {%- if section.settings.phone != blank -%}
-            <li>
-              <a href="https://wa.me/{{ wa_number }}" target="_blank" rel="noopener">{{ wa_display }}</a>
-            </li>
-          {%- endif -%}
-          {%- if section.settings.email != blank -%}
-            <li>
-              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
-            </li>
-          {%- endif -%}
-          {%- if section.settings.address != blank -%}
-            <li>{{ section.settings.address }}</li>
-          {%- endif -%}
-        </ul>
-      {%- endif -%}
-    </article>
-  </div>
-</section>
+{% render 'muqavi-about-display', scope_id: section.id, section: section, use_defaults: false %}
 
 {% schema %}
 {
@@ -263,14 +82,10 @@
       "label": "Product link"
     },
     {
-      "type": "header",
-      "content": "Contact section"
-    },
-    {
       "type": "checkbox",
       "id": "show_contact",
       "label": "Show contact section",
-      "default": true
+      "default": false
     },
     {
       "type": "text",
@@ -314,7 +129,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding bottom",
-      "default": 36
+      "default": 48
     }
   ],
   "blocks": [
@@ -327,55 +142,7 @@
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Muqavi About page",
-      "blocks": [
-        {
-          "type": "reason",
-          "settings": {
-            "title": "Traditional Unani Formulation:",
-            "text": "Inspired by traditional Unani wisdom and formulated with carefully selected herbal ingredients."
-          }
-        },
-        {
-          "type": "reason",
-          "settings": {
-            "title": "45+ Natural Herbal Ingredients:",
-            "text": "Enriched with a blend of traditional herbs, dry fruits, pure honey and other carefully selected ingredients."
-          }
-        },
-        {
-          "type": "reason",
-          "settings": {
-            "title": "Male Vitality & Wellness:",
-            "text": "Traditionally formulated to support male vitality, stamina, strength and overall intimate wellness."
-          }
-        },
-        {
-          "type": "reason",
-          "settings": {
-            "title": "Carefully Selected Ingredients:",
-            "text": "Contains traditional ingredients such as Ashwagandha, Ginseng, Salab Panja, Saffron and Shilajit."
-          }
-        },
-        {
-          "type": "reason",
-          "settings": {
-            "title": "Commitment to Quality:",
-            "text": "We focus on ingredient selection, product quality and customer satisfaction in every formulation."
-          }
-        },
-        {
-          "type": "reason",
-          "settings": {
-            "title": "Dedicated Customer Support:",
-            "text": "Our team is available to assist you with product information, usage guidance and order-related queries across Pakistan."
-          }
-        }
-      ]
-    }
-  ],
+  "presets": [{ "name": "Muqavi About page" }],
   "enabled_on": {
     "templates": ["page"]
   }
