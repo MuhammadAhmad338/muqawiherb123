@@ -91,21 +91,53 @@
   if section != blank and section.settings.product != blank
     assign majoon_product = section.settings.product
   endif
+  if majoon_product == blank
+    assign majoon_product = collections['all'].products.first
+  endif
   assign cta_url = majoon_product.url | default: '/products/majoon-e-muqavi'
+
+  assign prod_img_1 = nil
+  assign prod_img_2 = nil
+  assign prod_img_3 = nil
+
+  if majoon_product != blank and majoon_product.media.size > 0
+    for media in majoon_product.media
+      if media.media_type == 'image'
+        if prod_img_1 == nil
+          assign prod_img_1 = media.preview_image
+        elsif prod_img_2 == nil
+          assign prod_img_2 = media.preview_image
+        elsif prod_img_3 == nil
+          assign prod_img_3 = media.preview_image
+          break
+        endif
+      endif
+    endfor
+  endif
 
   assign img1_url = 'majoon-e-muqavi-product.jpg' | asset_url
   if section != blank and section.settings.image_1 != blank
     assign img1_url = section.settings.image_1 | image_url: width: 1200
+  elsif prod_img_1 != nil
+    assign img1_url = prod_img_1 | image_url: width: 1200
   endif
 
   assign img2_url = 'customer-review-1.jpg' | asset_url
   if section != blank and section.settings.image_2 != blank
     assign img2_url = section.settings.image_2 | image_url: width: 1200
+  elsif prod_img_2 != nil
+    assign img2_url = prod_img_2 | image_url: width: 1200
+  elsif prod_img_1 != nil
+    assign img2_url = prod_img_1 | image_url: width: 1200
   endif
 
   assign img3_url = 'customer-review-2.jpg' | asset_url
   if section != blank and section.settings.image_3 != blank
     assign img3_url = section.settings.image_3 | image_url: width: 1200
+  elsif prod_img_3 != nil
+    assign img3_url = prod_img_3 | image_url: width: 1200
+  elsif prod_img_1 != nil
+    assign img3_url = prod_img_1 | image_url: width: 1200
   endif
 -%}
 
