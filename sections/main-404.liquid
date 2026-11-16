@@ -1,23 +1,34 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
-
-  @media screen and (min-width: 750px) {
+{%- liquid
+  assign is_about_404 = false
+  assign normalized_path = request.path | downcase
+  if normalized_path == '/pages/aboutus' or normalized_path == '/pages/about-us' or normalized_path == '/pages/about' or normalized_path == '/about' or normalized_path == '/about-us' or normalized_path == '/aboutus'
+    assign is_about_404 = true
+  endif
+-%}
+{%- if is_about_404 -%}
+  {% render 'muqavi-about-display', scope_id: '404-about' %}
+{%- else -%}
+  <style type="text/css">
     .template-404 .title + * {
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
-  }
-</style>
 
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
-</div>
+    @media screen and (min-width: 750px) {
+      .template-404 .title + * {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+
+  <div class="template-404 page-width page-margin center">
+    <p>
+      {{ 'templates.404.subtext' | t }}
+    </p>
+    <h1 class="title">
+      {{ 'templates.404.title' | t }}
+    </h1>
+    <a href="{{ routes.all_products_collection_url }}" class="button">
+      {{ 'general.continue_shopping' | t }}
+    </a>
+  </div>
+{%- endif -%}

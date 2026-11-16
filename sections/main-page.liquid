@@ -1,12 +1,12 @@
 {%- liquid
   assign is_about_page = false
-  if page.handle == 'about-us' or page.handle == 'about'
+  if page.handle == 'about-us' or page.handle == 'about' or page.handle == 'aboutus'
     assign is_about_page = true
   endif
-  if template.suffix == 'about' or template.suffix == 'about-us'
+  if template.suffix == 'about' or template.suffix == 'about-us' or template.suffix == 'aboutus'
     assign is_about_page = true
   endif
-  if page.title == 'About Us'
+  if page.title == 'About Us' or page.title == 'About us' or page.title == 'About'
     assign is_about_page = true
   endif
 -%}

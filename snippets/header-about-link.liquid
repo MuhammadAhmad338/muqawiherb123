@@ -19,7 +19,17 @@
       if page.handle == 'about-us'
         assign about_active = true
       endif
-    elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us'
+    elsif pages['aboutus'] != blank
+      assign about_url = pages['aboutus'].url
+      if page.handle == 'aboutus'
+        assign about_active = true
+      endif
+    elsif pages['about'] != blank
+      assign about_url = pages['about'].url
+      if page.handle == 'about'
+        assign about_active = true
+      endif
+    elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us' and section.settings.about_link_url != '/pages/aboutus'
       assign about_url = section.settings.about_link_url
     else
       assign about_url = homepage_about_anchor
