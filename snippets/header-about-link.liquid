@@ -1,0 +1,42 @@
+{% comment %}
+  Optional About Us link in header (desktop + drawer).
+  Requires header section settings: show_about_link, about_link_label, about_page.
+{% endcomment %}
+{%- if section.settings.show_about_link -%}
+  {%- liquid
+    assign about_url = ''
+    assign about_active = false
+    if section.settings.about_page != blank
+      assign about_url = section.settings.about_page.url
+      if page.handle != blank and section.settings.about_page.handle == page.handle
+        assign about_active = true
+      endif
+    elsif section.settings.about_link_url != blank
+      assign about_url = section.settings.about_link_url
+    else
+      assign about_url = '/pages/about-us'
+    endif
+    assign about_label = section.settings.about_link_label | default: 'About Us'
+  -%}
+  {%- if about_url != blank -%}
+  {%- if drawer -%}
+    <li>
+      <a
+        href="{{ about_url }}"
+        class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if about_active %} menu-drawer__menu-item--active{% endif %}"
+      >
+        {{ about_label | escape }}
+      </a>
+    </li>
+  {%- else -%}
+    <li>
+      <a
+        href="{{ about_url }}"
+        class="header__menu-item list-menu__item link link--text focus-inset{% if about_active %} header__active-menu-item{% endif %}"
+      >
+        <span{% if about_active %} class="header__active-menu-item"{% endif %}>{{ about_label | escape }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+{%- endif -%}
+{%- endif -%}
