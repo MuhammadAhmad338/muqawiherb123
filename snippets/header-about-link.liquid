@@ -6,17 +6,24 @@
   {%- liquid
     assign about_url = ''
     assign about_active = false
+    assign about_label = section.settings.about_link_label | default: 'About Us'
+    assign homepage_about_anchor = routes.root_url | append: '#about-us'
+
     if section.settings.about_page != blank
       assign about_url = section.settings.about_page.url
       if page.handle != blank and section.settings.about_page.handle == page.handle
         assign about_active = true
       endif
-    elsif section.settings.about_link_url != blank
+    elsif pages['about-us'] != blank
+      assign about_url = pages['about-us'].url
+      if page.handle == 'about-us'
+        assign about_active = true
+      endif
+    elsif section.settings.about_link_url != blank and section.settings.about_link_url != '/pages/about-us'
       assign about_url = section.settings.about_link_url
     else
-      assign about_url = '/pages/about-us'
+      assign about_url = homepage_about_anchor
     endif
-    assign about_label = section.settings.about_link_label | default: 'About Us'
   -%}
   {%- if about_url != blank -%}
   {%- if drawer -%}

@@ -1,4 +1,6 @@
-{% render 'muqavi-about-display', scope_id: section.id, section: section %}
+<div id="about-us" class="muqavi-about-anchor">
+  {% render 'muqavi-about-display', scope_id: section.id, section: section %}
+</div>
 
 {% schema %}
 {
@@ -211,7 +213,7 @@
     }
   ],
   "enabled_on": {
-    "templates": ["page"]
+    "templates": ["page", "index"]
   }
 }
 {% endschema %}
