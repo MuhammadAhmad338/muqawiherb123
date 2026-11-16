@@ -83,33 +83,6 @@
     font-size: 16px;
     line-height: 140%;
   }
-  .section-{{ section.id }}-promo-padding .promo-ingredients {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 11px;
-    line-height: 1.45;
-  }
-  .section-{{ section.id }}-promo-padding .promo-ingredients p {
-    margin: 0 0 6px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #fff;
-  }
-  .section-{{ section.id }}-promo-padding .promo-ingredients ol {
-    margin: 0 0 8px;
-    padding: 0;
-    columns: 2;
-    column-gap: 16px;
-    list-style: none;
-  }
-  .section-{{ section.id }}-promo-padding .promo-ingredients li {
-    break-inside: avoid;
-    margin: 0 0 2px;
-  }
-  .section-{{ section.id }}-promo-padding .promo-ingredients .promo-ingredients__note {
-    margin: 0 0 2px;
-    font-weight: 600;
-  }
   .section-{{ section.id }}-promo-padding .promo-price-wrap {
     display: flex;
     align-items: center;
@@ -244,33 +217,6 @@
 
         <h2 class="promo-product-title">{{ title_text }}</h2>
         <p class="promo-product-desc">{{ description_text }}</p>
-        <div class="promo-ingredients">
-          <p>Ingredients</p>
-          <ol>
-            <li>1: Salab Panja — Salep Orchid Tuber</li>
-            <li>2: Salab Misri — Egyptian Salep</li>
-            <li>3: Aqarqarha — Pellitory Root</li>
-            <li>4: Musli Sufaid — White Musli</li>
-            <li>5: Mustagi Roumi — Mastic Gum</li>
-            <li>6: Mochras — Silk Cotton Tree Gum</li>
-            <li>7: Singhara — Water Chestnut</li>
-            <li>8: Jadwar Khatai — Jadwar Khatai</li>
-            <li>9: Satavar — Wild Asparagus</li>
-            <li>10: Jinsing — Ginseng</li>
-            <li>11: Asghandh Nagori — Ashwagandha</li>
-            <li>12: Kozah Misri — Rock Sugar</li>
-            <li>13: Chhilka — Psyllium Husk</li>
-            <li>14: Jaifal — Nutmeg</li>
-            <li>15: Long — Clove</li>
-            <li>16: Darchini — Cinnamon</li>
-            <li>17: Shehad — Pure Honey</li>
-            <li>20: Zafran — Saffron</li>
-            <li>21: Salajeet — Mineral Pitch</li>
-            <li>22: Assorted Dry Fruits</li>
-          </ol>
-          <p class="promo-ingredients__note">Various Kushta Preparations</p>
-          <p class="promo-ingredients__note">45+ Additional Natural Herbal Ingredients</p>
-        </div>
 
         <div class="promo-price-wrap">
           {%- if product != blank and variant -%}
