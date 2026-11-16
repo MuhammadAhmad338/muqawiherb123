@@ -62,6 +62,34 @@
     line-height: 1.4;
     color: #fff;
   }
+  .majoon-promo-{{ section.id }} .majoon-promo__ingredients {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+  .majoon-promo-{{ section.id }} .majoon-promo__ingredients p {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .majoon-promo-{{ section.id }} .majoon-promo__ingredients ol {
+    margin: 0 0 8px;
+    padding: 0;
+    columns: 2;
+    column-gap: 16px;
+    list-style: none;
+  }
+  .majoon-promo-{{ section.id }} .majoon-promo__ingredients li {
+    break-inside: avoid;
+    margin: 0 0 2px;
+  }
+  .majoon-promo-{{ section.id }} .majoon-promo__ingredients .majoon-promo__ingredients-note {
+    margin: 0 0 2px;
+    font-weight: 600;
+  }
   .majoon-promo-{{ section.id }} .majoon-promo__price {
     display: flex;
     align-items: center;
@@ -191,6 +219,33 @@
 
         <h2 class="majoon-promo__title">Majoon-e-Muqavi — Traditional Power Formula</h2>
         <p class="majoon-promo__desc">A traditional herbal tonic for vitality, stamina and strength</p>
+        <div class="majoon-promo__ingredients">
+          <p>Ingredients</p>
+          <ol>
+            <li>1: Salab Panja — Salep Orchid Tuber</li>
+            <li>2: Salab Misri — Egyptian Salep</li>
+            <li>3: Aqarqarha — Pellitory Root</li>
+            <li>4: Musli Sufaid — White Musli</li>
+            <li>5: Mustagi Roumi — Mastic Gum</li>
+            <li>6: Mochras — Silk Cotton Tree Gum</li>
+            <li>7: Singhara — Water Chestnut</li>
+            <li>8: Jadwar Khatai — Jadwar Khatai</li>
+            <li>9: Satavar — Wild Asparagus</li>
+            <li>10: Jinsing — Ginseng</li>
+            <li>11: Asghandh Nagori — Ashwagandha</li>
+            <li>12: Kozah Misri — Rock Sugar</li>
+            <li>13: Chhilka — Psyllium Husk</li>
+            <li>14: Jaifal — Nutmeg</li>
+            <li>15: Long — Clove</li>
+            <li>16: Darchini — Cinnamon</li>
+            <li>17: Shehad — Pure Honey</li>
+            <li>20: Zafran — Saffron</li>
+            <li>21: Salajeet — Mineral Pitch</li>
+            <li>22: Assorted Dry Fruits</li>
+          </ol>
+          <p class="majoon-promo__ingredients-note">Various Kushta Preparations</p>
+          <p class="majoon-promo__ingredients-note">45+ Additional Natural Herbal Ingredients</p>
+        </div>
 
         <div class="majoon-promo__price">
           {%- if product != blank and variant -%}
