@@ -36,34 +36,18 @@
       "blocks": {
         "s1": {
           "type": "story",
-          "settings": {}
-        },
-        "s2": {
-          "type": "story",
-          "settings": {}
-        },
-        "s3": {
-          "type": "story",
-          "settings": {}
-        },
-        "s4": {
-          "type": "story",
-          "settings": {}
-        },
-        "s5": {
-          "type": "story",
-          "settings": {}
+          "settings": {
+            "video_asset": "muqavi-customer-ugc.mp4"
+          }
         }
       },
       "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5"
+        "s1"
       ],
       "settings": {
         "product": "majoon-e-muqavi",
+        "show_product_card": false,
+        "default_video_asset": "muqavi-customer-ugc.mp4",
         "heading_bold": "See what people",
         "heading_light": "say about us."
       }

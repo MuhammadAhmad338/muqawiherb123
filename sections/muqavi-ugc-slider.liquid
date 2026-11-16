@@ -1,5 +1,28 @@
-{%- assign product = section.settings.product -%}
-{%- assign variant = product.selected_or_first_available_variant -%}
+{%- liquid
+  assign product = section.settings.product
+  assign variant = product.selected_or_first_available_variant
+  assign slide_count = 0
+
+  for block in section.blocks
+    assign video_asset_chk = block.settings.video_asset | strip
+    assign video_url_chk = block.settings.video_url | strip
+    assign slide_has_video = false
+    if video_url_chk != blank
+      assign slide_has_video = true
+    elsif video_asset_chk != blank
+      assign slide_has_video = true
+    elsif forloop.first and section.settings.default_video_asset != blank
+      assign slide_has_video = true
+    endif
+    if slide_has_video or block.settings.image != blank
+      assign slide_count = slide_count | plus: 1
+    endif
+  endfor
+
+  if slide_count == 0 and section.settings.default_video_asset != blank
+    assign slide_count = 1
+  endif
+-%}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
@@ -33,6 +56,9 @@
     background: #fff;
     cursor: pointer;
   }
+  .section-{{ section.id }}-ugc-padding .ugc-header--single .ugc-nav {
+    display: none;
+  }
   .section-{{ section.id }}-ugc-padding .ugc-slide {
     border-radius: 14px;
     overflow: hidden;
@@ -48,11 +74,15 @@
     background: #111;
     overflow: hidden;
   }
-  .section-{{ section.id }}-ugc-padding .ugc-media img {
+  .section-{{ section.id }}-ugc-padding .ugc-media img,
+  .section-{{ section.id }}-ugc-padding .ugc-media video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-video {
+    background: #000;
   }
   .section-{{ section.id }}-ugc-padding .ugc-play {
     position: absolute;
@@ -67,6 +97,12 @@
     color: #fff;
     font-size: 22px;
     cursor: pointer;
+    z-index: 2;
+    transition: opacity 0.2s ease;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-play.is-hidden {
+    opacity: 0;
+    pointer-events: none;
   }
   .section-{{ section.id }}-ugc-padding .ugc-product-block {
     position: absolute;
@@ -77,6 +113,7 @@
     border-radius: 10px;
     background: rgba(250, 246, 230, 0.92);
     padding: 6px;
+    pointer-events: auto;
   }
   .section-{{ section.id }}-ugc-padding .ugc-product {
     display: flex;
@@ -102,7 +139,7 @@
   }
   .section-{{ section.id }}-ugc-padding .ugc-product-row {
     display: flex;
-  align-items: center;
+    align-items: center;
     gap: 8px;
     flex-wrap: wrap;
     margin-top: 6px;
@@ -129,11 +166,90 @@
     text-decoration: none;
     white-space: nowrap;
   }
+  .section-{{ section.id }}-ugc-padding .ugc-swiper--single {
+    max-width: 360px;
+    margin: 0 auto;
+  }
 {%- endstyle -%}
+
+{%- capture ugc_slides -%}
+  {%- for block in section.blocks -%}
+    {%- liquid
+      assign video_asset = block.settings.video_asset | strip
+      assign video_url = block.settings.video_url | strip
+      assign has_video = false
+      if video_url != blank
+        assign has_video = true
+      elsif video_asset != blank
+        assign has_video = true
+      elsif forloop.first and section.settings.default_video_asset != blank
+        assign video_asset = section.settings.default_video_asset
+        assign has_video = true
+      endif
+      assign has_image = false
+      if block.settings.image != blank
+        assign has_image = true
+      endif
+    -%}
+    {%- if has_video or has_image -%}
+      <div class="swiper-slide ugc-slide" {{ block.shopify_attributes }} data-ugc-slide>
+        <div class="ugc-media">
+          {%- if has_video -%}
+            {%- liquid
+              assign video_src = video_url
+              if video_src == blank and video_asset != blank
+                assign video_src = video_asset | asset_url
+              endif
+            -%}
+            <video
+              class="ugc-video"
+              playsinline
+              webkit-playsinline
+              preload="metadata"
+              {% if block.settings.poster != blank %}
+                poster="{{ block.settings.poster | image_url: width: 800 }}"
+              {% endif %}
+            >
+              <source src="{{ video_src }}" type="video/mp4">
+            </video>
+            <button type="button" class="ugc-play" aria-label="Play video" data-ugc-play>▶</button>
+          {%- else -%}
+            {{
+              block.settings.image
+              | image_url: width: 800
+              | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 280px, 45vw', widths: '400, 600, 800'
+            }}
+          {%- endif -%}
+          {%- if product != blank and section.settings.show_product_card -%}
+            <div class="ugc-product-block">
+              <div class="ugc-product">
+                {%- if product.featured_image -%}
+                  {{ product.featured_image | image_url: width: 120 | image_tag: class: 'ugc-product-thumb', loading: 'lazy' }}
+                {%- endif -%}
+                <div class="ugc-product-body">
+                  <p class="ugc-product-title">{{ product.title }}</p>
+                  <div class="ugc-product-row">
+                    {%- if variant -%}
+                      <span class="ugc-price-current">{{ variant.price | money }}</span>
+                      {%- if variant.compare_at_price > variant.price -%}
+                        <span class="ugc-price-compare">{{ variant.compare_at_price | money }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                    <a class="ugc-buy-btn" href="{{ product.url }}">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
 
 <section class="section-{{ section.id }}-ugc-padding">
   <div class="page-width">
-    <div class="ugc-header">
+    <div class="ugc-header{% if slide_count <= 1 %} ugc-header--single{% endif %}">
       <h2 class="ugc-heading">
         <span class="bold">{{ section.settings.heading_bold }}</span>
         <span class="light">{{ section.settings.heading_light }}</span>
@@ -144,55 +260,20 @@
       </div>
     </div>
 
-    <div class="swiper ugc-swiper-{{ section.id }}">
+    <div class="swiper ugc-swiper-{{ section.id }}{% if slide_count <= 1 %} ugc-swiper--single{% endif %}">
       <div class="swiper-wrapper">
-        {%- for block in section.blocks -%}
-          <div class="swiper-slide ugc-slide" {{ block.shopify_attributes }}>
+        {%- if slide_count > 0 -%}
+          {{ ugc_slides }}
+        {%- elsif section.settings.default_video_asset != blank -%}
+          <div class="swiper-slide ugc-slide">
             <div class="ugc-media">
-              {%- liquid
-                assign ugc_asset = ''
-                if forloop.index <= 5
-                  assign ugc_asset = 'customer-review-' | append: forloop.index | append: '.jpg'
-                endif
-              -%}
-              {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
-              {%- elsif ugc_asset != blank -%}
-                <img
-                  src="{{ ugc_asset | asset_url }}"
-                  alt="Customer photo {{ forloop.index }}"
-                  loading="lazy"
-                  width="600"
-                  height="800"
-                >
-              {%- else -%}
-                <img src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}" alt="" loading="lazy" width="400" height="533">
-              {%- endif -%}
-              <button type="button" class="ugc-play" aria-label="Play video">▶</button>
-              {%- if product != blank -%}
-                <div class="ugc-product-block">
-                  <div class="ugc-product">
-                    {%- if product.featured_image -%}
-                      {{ product.featured_image | image_url: width: 120 | image_tag: class: 'ugc-product-thumb', loading: 'lazy' }}
-                    {%- endif -%}
-                    <div class="ugc-product-body">
-                      <p class="ugc-product-title">{{ product.title }}</p>
-                      <div class="ugc-product-row">
-                        {%- if variant -%}
-                          <span class="ugc-price-current">{{ variant.price | money }}</span>
-                          {%- if variant.compare_at_price > variant.price -%}
-                            <span class="ugc-price-compare">{{ variant.compare_at_price | money }}</span>
-                          {%- endif -%}
-                        {%- endif -%}
-                        <a class="ugc-buy-btn" href="{{ product.url }}">Buy Now</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              {%- endif -%}
+              <video class="ugc-video" playsinline webkit-playsinline preload="metadata">
+                <source src="{{ section.settings.default_video_asset | asset_url }}" type="video/mp4">
+              </video>
+              <button type="button" class="ugc-play" aria-label="Play video" data-ugc-play>▶</button>
             </div>
           </div>
-        {%- endfor -%}
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -201,20 +282,53 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const root = document.querySelector('.ugc-swiper-{{ section.id }}');
+    if (!root) return;
+
+    root.querySelectorAll('[data-ugc-play]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const video = btn.closest('.ugc-media')?.querySelector('.ugc-video');
+        if (!video) return;
+        video.controls = true;
+        video.muted = false;
+        const playPromise = video.play();
+        if (playPromise && playPromise.then) {
+          playPromise.then(() => btn.classList.add('is-hidden')).catch(() => {});
+        } else {
+          btn.classList.add('is-hidden');
+        }
+      });
+    });
+
+    root.querySelectorAll('.ugc-video').forEach((video) => {
+      video.addEventListener('pause', () => {
+        const btn = video.closest('.ugc-media')?.querySelector('[data-ugc-play]');
+        if (btn && video.currentTime < 0.1) btn.classList.remove('is-hidden');
+      });
+      video.addEventListener('ended', () => {
+        const btn = video.closest('.ugc-media')?.querySelector('[data-ugc-play]');
+        if (btn) btn.classList.remove('is-hidden');
+      });
+    });
+
     if (typeof Swiper === 'undefined') return;
-    new Swiper('.ugc-swiper-{{ section.id }}', {
-      slidesPerView: 1.2,
+    const slideTotal = root.querySelectorAll('.swiper-slide').length;
+    const swiperOpts = {
+      slidesPerView: slideTotal <= 1 ? 1 : 1.2,
       spaceBetween: 16,
       navigation: {
         nextEl: '.ugc-next-{{ section.id }}',
         prevEl: '.ugc-prev-{{ section.id }}'
-      },
-      breakpoints: {
+      }
+    };
+    if (slideTotal > 1) {
+      swiperOpts.breakpoints = {
         750: { slidesPerView: 3.2, spaceBetween: 20 },
         990: { slidesPerView: 4.2, spaceBetween: 24 },
-        1200: { slidesPerView: 5, spaceBetween: 24 }
-      }
-    });
+        1200: { slidesPerView: Math.min(5, slideTotal), spaceBetween: 24 }
+      };
+    }
+    new Swiper(root, swiperOpts);
   });
 </script>
 
@@ -223,7 +337,20 @@
   "name": "Herbliv UGC stories",
   "tag": "section",
   "settings": [
-    { "type": "product", "id": "product", "label": "Relief Plus product" },
+    { "type": "product", "id": "product", "label": "Product (optional buy card)" },
+    {
+      "type": "checkbox",
+      "id": "show_product_card",
+      "label": "Show product buy card on slides",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "default_video_asset",
+      "label": "Default theme video filename",
+      "info": "e.g. muqavi-customer-ugc.mp4 (used when block has no media)",
+      "default": "muqavi-customer-ugc.mp4"
+    },
     { "type": "text", "id": "heading_bold", "label": "Heading (bold)", "default": "See what people" },
     { "type": "text", "id": "heading_light", "label": "Heading (light)", "default": "say about us." }
   ],
@@ -231,13 +358,28 @@
     {
       "type": "story",
       "name": "Story",
-      "settings": [{ "type": "image_picker", "id": "image", "label": "Poster image / video thumb" }]
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (if no video)" },
+        { "type": "image_picker", "id": "poster", "label": "Video poster image" },
+        {
+          "type": "text",
+          "id": "video_asset",
+          "label": "Theme video filename",
+          "info": "MP4 in theme assets folder"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL",
+          "info": "Shopify Files or CDN URL if file is too large for theme assets"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "Herbliv UGC stories",
-      "blocks": [{ "type": "story" }, { "type": "story" }, { "type": "story" }, { "type": "story" }, { "type": "story" }]
+      "blocks": [{ "type": "story", "settings": { "video_asset": "muqavi-customer-ugc.mp4" } }]
     }
   ]
 }
