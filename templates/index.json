@@ -48,6 +48,7 @@
         "product": "majoon-e-muqavi",
         "show_product_card": false,
         "default_video_asset": "muqavi-customer-ugc.mp4",
+        "slide_width": 220,
         "heading_bold": "See what people",
         "heading_light": "say about us."
       }

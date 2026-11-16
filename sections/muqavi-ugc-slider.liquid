@@ -2,6 +2,13 @@
   assign product = section.settings.product
   assign variant = product.selected_or_first_available_variant
   assign slide_count = 0
+  assign ugc_slide_width = section.settings.slide_width | default: 220 | plus: 0
+  if ugc_slide_width < 160
+    assign ugc_slide_width = 160
+  endif
+  if ugc_slide_width > 320
+    assign ugc_slide_width = 320
+  endif
 
   for block in section.blocks
     assign video_asset_chk = block.settings.video_asset | strip
@@ -59,14 +66,25 @@
   .section-{{ section.id }}-ugc-padding .ugc-header--single .ugc-nav {
     display: none;
   }
+  .section-{{ section.id }}-ugc-padding .ugc-swiper-{{ section.id }} {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .section-{{ section.id }}-ugc-padding .ugc-swiper-{{ section.id }} .swiper-wrapper {
+    align-items: stretch;
+  }
   .section-{{ section.id }}-ugc-padding .ugc-slide {
-    border-radius: 14px;
+    width: {{ ugc_slide_width }}px;
+    max-width: min({{ ugc_slide_width }}px, 78vw);
+    border-radius: 12px;
     overflow: hidden;
     background: #fff;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     height: auto;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
   }
   .section-{{ section.id }}-ugc-padding .ugc-media {
     position: relative;
@@ -89,8 +107,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: none;
     background: rgba(0, 0, 0, 0.55);
@@ -166,9 +184,8 @@
     text-decoration: none;
     white-space: nowrap;
   }
-  .section-{{ section.id }}-ugc-padding .ugc-swiper--single {
-    max-width: 360px;
-    margin: 0 auto;
+  .section-{{ section.id }}-ugc-padding .ugc-swiper--single .swiper-wrapper {
+    justify-content: flex-start;
   }
 {%- endstyle -%}
 
@@ -313,22 +330,16 @@
 
     if (typeof Swiper === 'undefined') return;
     const slideTotal = root.querySelectorAll('.swiper-slide').length;
-    const swiperOpts = {
-      slidesPerView: slideTotal <= 1 ? 1 : 1.2,
-      spaceBetween: 16,
+    new Swiper(root, {
+      slidesPerView: 'auto',
+      spaceBetween: 14,
+      centeredSlides: false,
+      grabCursor: slideTotal > 1,
       navigation: {
         nextEl: '.ugc-next-{{ section.id }}',
         prevEl: '.ugc-prev-{{ section.id }}'
       }
-    };
-    if (slideTotal > 1) {
-      swiperOpts.breakpoints = {
-        750: { slidesPerView: 3.2, spaceBetween: 20 },
-        990: { slidesPerView: 4.2, spaceBetween: 24 },
-        1200: { slidesPerView: Math.min(5, slideTotal), spaceBetween: 24 }
-      };
-    }
-    new Swiper(root, swiperOpts);
+    });
   });
 </script>
 
@@ -350,6 +361,16 @@
       "label": "Default theme video filename",
       "info": "e.g. muqavi-customer-ugc.mp4 (used when block has no media)",
       "default": "muqavi-customer-ugc.mp4"
+    },
+    {
+      "type": "range",
+      "id": "slide_width",
+      "label": "Story card width",
+      "min": 180,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 220
     },
     { "type": "text", "id": "heading_bold", "label": "Heading (bold)", "default": "See what people" },
     { "type": "text", "id": "heading_light", "label": "Heading (light)", "default": "say about us." }
