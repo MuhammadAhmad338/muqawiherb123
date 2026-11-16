@@ -1,0 +1,148 @@
+{% comment %}
+  Majoon pack cards (1 / 2 / 3) with compare, sale price, and savings.
+  Maps to Shopify variants titled or optioned as "1 Pack", "2 Pack", "3 Pack" when present.
+{% endcomment %}
+{%- liquid
+  assign pack_names = '1 Pack,2 Pack,3 Pack' | split: ','
+  assign option_name = 'Pack'
+  if product.options_with_values.size > 0
+    assign option_name = product.options_with_values.first.name
+  endif
+  assign default_image = product.featured_media | default: product.featured_image
+-%}
+
+<fieldset class="js product-form__input product-form__input--pack">
+  <legend class="form__label pack-picker__heading">Select your pack</legend>
+  <div class="pack-picker majoon-pack-picker">
+    {%- for pack_label in pack_names -%}
+      {%- liquid
+        assign pack_variant = null
+        assign pack_index = forloop.index0
+        for variant in product.variants
+          assign opt1 = variant.option1 | default: ''
+          assign title_l = variant.title | downcase
+          assign pack_l = pack_label | downcase
+          if opt1 == pack_label or title_l == pack_l or title_l contains pack_l
+            assign pack_variant = variant
+            break
+          endif
+        endfor
+        if pack_variant == null and pack_index == 0
+          assign pack_variant = product.selected_or_first_available_variant
+        endif
+
+        assign option_value_id = ''
+        for product_option in product.options_with_values
+          for option_value in product_option.values
+            assign option_value_name = option_value | default: ''
+            if option_value.name
+              assign option_value_name = option_value.name
+            endif
+            if option_value_name == pack_label
+              if option_value.id
+                assign option_value_id = option_value.id
+              endif
+              break
+            endif
+          endfor
+        endfor
+
+        assign pack_price = 245000
+        assign pack_compare = 350000
+        if pack_index == 1
+          assign pack_price = 450000
+          assign pack_compare = 700000
+        elsif pack_index == 2
+          assign pack_price = 630000
+          assign pack_compare = 1050000
+        endif
+        if pack_variant
+          assign pack_price = pack_variant.price
+          if pack_variant.compare_at_price > pack_variant.price
+            assign pack_compare = pack_variant.compare_at_price
+          endif
+        endif
+        assign pack_save = pack_compare | minus: pack_price
+        if pack_save < 0
+          assign pack_save = 0
+        endif
+
+        assign pack_image = pack_variant.featured_image | default: default_image
+        assign input_id = section.id | append: '-majoon-pack-' | append: forloop.index0
+        assign is_checked = false
+        if pack_variant and pack_variant.id == product.selected_or_first_available_variant.id
+          assign is_checked = true
+        endif
+
+        assign has_three_packs = false
+        if product.variants.size >= 3
+          assign has_three_packs = true
+        endif
+        if is_checked == false and has_three_packs == false and pack_index == 0
+          assign is_checked = true
+        endif
+      -%}
+
+      <div class="pack-card{% if is_checked %} pack-card--selected{% endif %}{% if pack_variant == null %} pack-card--unavailable{% endif %}">
+        <input
+          type="radio"
+          class="pack-card__input"
+          id="{{ input_id }}"
+          name="options[{{ option_name | escape }}]"
+          value="{{ pack_label | escape }}"
+          form="{{ product_form_id }}"
+          {% if pack_variant %}
+            data-variant-id="{{ pack_variant.id }}"
+          {% endif %}
+          data-pack-price="{{ pack_price }}"
+          data-pack-compare="{{ pack_compare }}"
+          {% if option_value_id != blank %}
+            data-option-value-id="{{ option_value_id }}"
+          {% endif %}
+          {% if is_checked %}
+            checked
+          {% endif %}
+          {% if pack_variant == null %}
+            disabled
+            aria-disabled="true"
+          {% endif %}
+        >
+        <label class="pack-card__label" for="{{ input_id }}">
+          <span class="pack-card__body">
+            <span class="pack-card__media">
+              {%- if pack_image -%}
+                <img
+                  src="{{ pack_image | image_url: width: 320 }}"
+                  alt="{{ pack_label | escape }}"
+                  width="320"
+                  height="320"
+                  loading="lazy"
+                  class="pack-card__image"
+                >
+              {%- else -%}
+                <img
+                  src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}"
+                  alt="{{ pack_label | escape }}"
+                  width="320"
+                  height="320"
+                  loading="lazy"
+                  class="pack-card__image"
+                >
+              {%- endif -%}
+            </span>
+            <span class="pack-card__title">{{ pack_label }}</span>
+            <span class="pack-card__pricing">
+              {%- if pack_compare > pack_price -%}
+                <s class="pack-card__compare">{{ pack_compare | money }}</s>
+              {%- endif -%}
+              <span class="pack-card__price">{{ pack_price | money }}</span>
+            </span>
+          </span>
+          {%- if pack_save > 0 -%}
+            <span class="pack-card__save">SAVE {{ pack_save | money_without_trailing_zeros | upcase }}</span>
+          {%- endif -%}
+        </label>
+      </div>
+    {%- endfor -%}
+  </div>
+</fieldset>
