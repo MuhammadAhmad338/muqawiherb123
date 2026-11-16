@@ -6,6 +6,7 @@
   - product_form_id: {String} product form id.
   - section_id: {String} id of section to which this snippet belongs.
   - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+  - show_muqavi_whatsapp: {Boolean} show WhatsApp order + trust badges under buy buttons.
 
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
@@ -99,6 +100,9 @@
         </div>
       {%- endform -%}
     </product-form>
+    {%- if show_muqavi_whatsapp -%}
+      {% render 'product-pdp-whatsapp-trust', product: product %}
+    {%- endif -%}
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">

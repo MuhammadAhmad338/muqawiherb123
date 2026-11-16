@@ -830,9 +830,95 @@ color:#0F2613;
     color:#000;
 }
 .trst-ico img {
-    width: 300px;
-    height: 100px;
-    display:block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+}
+.muqavi-pdp-trust-block {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.muqavi-wa-order {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px 10px 10px;
+  background: linear-gradient(90deg, #1daf56 0%, #25c764 55%, #2fd070 100%);
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(29, 175, 86, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.muqavi-wa-order:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(29, 175, 86, 0.4);
+  color: #fff;
+}
+.muqavi-wa-order__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+.muqavi-wa-order__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: #fff;
+}
+.muqavi-wa-order__wa-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  line-height: 0;
+}
+.muqavi-wa-order__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.muqavi-wa-order__headline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.muqavi-wa-order__headline strong {
+  font-weight: 700;
+}
+.muqavi-wa-order__online {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.muqavi-wa-order__sub {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.muqavi-pdp-trust-icons.sc-trust-container {
+  justify-content: flex-start;
+  overflow: visible;
 }
 .sc-trust-container {
     display: flex;
