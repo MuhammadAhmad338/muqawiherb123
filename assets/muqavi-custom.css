@@ -1386,6 +1386,23 @@ border-top: .1rem solid #C1CDC0;
   font-weight: 700;
 }
 
+.muqavi-majoon-howto {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3d4a3a;
+}
+.muqavi-majoon-howto ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: disc;
+}
+.muqavi-majoon-howto li {
+  margin: 0 0 8px;
+}
+.muqavi-majoon-howto li:last-child {
+  margin-bottom: 0;
+}
+
 .muqavi-ingredients {
   margin-top: 4px;
   color: #3d4a3a;

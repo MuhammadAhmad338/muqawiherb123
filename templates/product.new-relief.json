@@ -37,7 +37,7 @@
         },
         "collapsible_howto": {
           "type": "collapsible_tab",
-          "settings": { "heading": "How to Use Relief+?", "icon": "none", "content": "", "page": "" }
+          "settings": { "heading": "How to Use", "icon": "none", "content": "", "page": "" }
         },
         "collapsible_returns": {
           "type": "collapsible_tab",

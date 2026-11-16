@@ -234,6 +234,7 @@
                         assign show_majoon_ingredients = false
                         assign show_majoon_description = false
                         assign show_majoon_benefits = false
+                        assign show_majoon_howto = false
                         if product.handle contains 'majoon'
                           if accordion_heading contains 'ingredient'
                             assign show_majoon_ingredients = true
@@ -241,6 +242,8 @@
                             assign show_majoon_description = true
                           elsif accordion_heading contains 'benefit'
                             assign show_majoon_benefits = true
+                          elsif accordion_heading contains 'how to'
+                            assign show_majoon_howto = true
                           endif
                         endif
                       -%}
@@ -249,6 +252,9 @@
                       {%- endif -%}
                       {%- if show_majoon_benefits -%}
                         {% render 'muqavi-majoon-benefits' %}
+                      {%- endif -%}
+                      {%- if show_majoon_howto -%}
+                        {% render 'muqavi-majoon-howto' %}
                       {%- endif -%}
                       {%- if show_majoon_ingredients -%}
                         <div class="muqavi-ingredients">
