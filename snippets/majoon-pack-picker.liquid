@@ -47,14 +47,17 @@
           endfor
         endfor
 
-        assign pack_price = 245000
-        assign pack_compare = 350000
+        # Fallback pack prices (used when the product has no matching variant):
+        # 1 Pack 6,999 | 2 Pack 11,999 | 3 Pack 16,999.
+        # Compare price = the same number of single packs bought separately.
+        assign pack_price = 699900
+        assign pack_compare = 1000000
         if pack_index == 1
-          assign pack_price = 450000
-          assign pack_compare = 700000
+          assign pack_price = 1199900
+          assign pack_compare = 1399800
         elsif pack_index == 2
-          assign pack_price = 630000
-          assign pack_compare = 1050000
+          assign pack_price = 1699900
+          assign pack_compare = 2099700
         endif
         if pack_variant
           assign pack_price = pack_variant.price
@@ -133,13 +136,13 @@
             <span class="pack-card__title">{{ pack_label }}</span>
             <span class="pack-card__pricing">
               {%- if pack_compare > pack_price -%}
-                <s class="pack-card__compare">{{ pack_compare | money }}</s>
+                <s class="pack-card__compare">{% render 'muqavi-price', cents: pack_compare %}</s>
               {%- endif -%}
-              <span class="pack-card__price">{{ pack_price | money }}</span>
+              <span class="pack-card__price">{% render 'muqavi-price', cents: pack_price %}</span>
             </span>
           </span>
           {%- if pack_save > 0 -%}
-            <span class="pack-card__save">SAVE {{ pack_save | money_without_trailing_zeros | upcase }}</span>
+            <span class="pack-card__save">SAVE {% render 'muqavi-price', cents: pack_save %}</span>
           {%- endif -%}
         </label>
       </div>
