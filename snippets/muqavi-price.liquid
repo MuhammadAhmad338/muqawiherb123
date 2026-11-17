@@ -1,0 +1,32 @@
+{% comment %}
+  Formats a price (in cents) with thousands separators, e.g. 699900 -> "6,999/-".
+  Accepts:
+  - cents: {Number} price in cents (e.g. variant.price)
+  - suffix: {String} optional, defaults to '/-'
+{% endcomment %}
+{%- liquid
+  assign price_suffix = suffix | default: '/-'
+  assign n = cents | divided_by: 100
+  assign out = ''
+  if n <= 0
+    assign out = '0'
+  endif
+  for i in (1..6)
+    if n <= 0
+      break
+    endif
+    assign chunk = n | modulo: 1000
+    assign n = n | divided_by: 1000
+    if n > 0
+      assign chunk_str = chunk | prepend: '00' | slice: -3, 3
+    else
+      assign chunk_str = chunk | append: ''
+    endif
+    if out == ''
+      assign out = chunk_str
+    else
+      assign out = chunk_str | append: ',' | append: out
+    endif
+  endfor
+  echo out | append: price_suffix
+-%}

@@ -4,7 +4,7 @@
   assign description_text = 'A traditional herbal tonic for vitality, stamina and strength'
   assign variant = product.selected_or_first_available_variant
   assign product_url = product.url | default: section.settings.button_link | default: routes.all_products_collection_url
-  assign button_label = 'ORDER NOW — CASH ON DELIVERY'
+  assign button_label = 'ORDER NOW'
 -%}
 
 {%- style -%}
@@ -220,9 +220,9 @@
 
         <div class="promo-price-wrap">
           {%- if product != blank and variant -%}
-            <span class="promo-price-sale">{{ variant.price | money_without_currency }}</span>
+            <span class="promo-price-sale">{% render 'muqavi-price', cents: variant.price %}</span>
             {%- if variant.compare_at_price > variant.price -%}
-              <span class="promo-price-compare">{{ variant.compare_at_price | money_without_currency }}</span>
+              <span class="promo-price-compare">{% render 'muqavi-price', cents: variant.compare_at_price %}</span>
             {%- endif -%}
           {%- else -%}
             <span class="promo-price-sale">{{ section.settings.fallback_price }}</span>
@@ -305,7 +305,7 @@
     { "type": "text", "id": "fallback_compare_price", "label": "Compare price if no product", "default": "3,500.00" },
     { "type": "text", "id": "general_label", "label": "Left column label", "default": "General Benefits" },
     { "type": "text", "id": "marital_label", "label": "Right column label", "default": "Benefits for Married Life" },
-    { "type": "text", "id": "button_label", "label": "Button", "default": "ORDER NOW — CASH ON DELIVERY" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "ORDER NOW" },
     { "type": "url", "id": "button_link", "label": "Button link if no product" }
   ],
   "blocks": [
