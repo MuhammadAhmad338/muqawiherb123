@@ -1,123 +1,94 @@
-<div id="faq" class="muqavi-faq-section section-{{ section.id }}-padding">
-  <div class="page-width">
-    {%- if section.settings.heading != blank -%}
-      <div class="muqavi-faq-header">
-        <h2 class="muqavi-faq-title">{{ section.settings.heading | escape }}</h2>
-        {%- if section.settings.subheading != blank -%}
-          <p class="muqavi-faq-subheading">{{ section.settings.subheading | escape }}</p>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
+{%- liquid
+  assign heading = section.settings.heading | default: 'Got Questions?'
+  assign heading_accent = section.settings.heading_accent
 
-    <div class="muqavi-faq-accordion-wrap">
-      {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks -%}
-          <details class="muqavi-faq-item" id="Details-{{ block.id }}-{{ section.id }}" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
-            <summary class="muqavi-faq-question">
-              <span class="muqavi-faq-q-text">{{ block.settings.question | escape }}</span>
-              <span class="muqavi-faq-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-              </span>
-            </summary>
-            <div class="muqavi-faq-answer rte">
-              {{ block.settings.answer }}
-            </div>
-          </details>
-        {%- endfor -%}
-      {%- else -%}
-        <!-- Fallback Default FAQs -->
-        <details class="muqavi-faq-item" open>
-          <summary class="muqavi-faq-question">
-            <span class="muqavi-faq-q-text">What is Majoon-e-Muqavi and what are its benefits?</span>
-            <span class="muqavi-faq-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </summary>
-          <div class="muqavi-faq-answer rte">
-            <p>Majoon-e-Muqavi is a traditional Unani herbal formulation enriched with 45+ natural ingredients including Ashwagandha, Salab Panja, Ginseng, Saffron, and pure honey. It is specifically formulated to naturally support male vitality, physical stamina, strength, and overall vitality without synthetic chemicals.</p>
-          </div>
-        </details>
+  capture default_faqs
+    echo 'What is Majoon-e-Muqavi used for?|||<p>Majoon-e-Muqavi is a traditional Unani herbal formulation designed to support male vitality, physical strength, stamina, sexual wellness, and overall well-being.</p>'
+    echo '~~~Does Majoon-e-Muqavi support male strength and stamina?|||<p>Majoon-e-Muqavi contains a blend of traditional herbal ingredients that have historically been valued for supporting male strength, stamina, and vitality.</p>'
+    echo '~~~Can Majoon-e-Muqavi help with sexual wellness?|||<p>Yes, it is traditionally formulated to support natural sexual desire, libido, and overall male intimate wellness.</p>'
+    echo '~~~Does Majoon-e-Muqavi help with bed timing?|||<p>Majoon-e-Muqavi is traditionally used to support male sexual wellness and stamina. Individual experiences may vary, and specific improvements in bed timing cannot be guaranteed.</p>'
+    echo '~~~Does Majoon-e-Muqavi support energy and physical performance?|||<p>Its traditional herbal ingredients are valued for supporting everyday vitality, physical strength, and overall wellness.</p>'
+    echo '~~~What ingredients are used in Majoon-e-Muqavi?|||<p>Majoon-e-Muqavi contains a blend of 45+ additional natural herbal ingredients, including Ashwagandha, Ginseng, Salab Panja, White Musli, Saffron, Shilajit, pure honey, and assorted dry fruits.</p>'
+    echo '~~~How should I use Majoon-e-Muqavi?|||<p>Take ½ teaspoon at night, approximately 30 minutes after dinner. Follow the recommended dosage and do not exceed it.</p>'
+    echo '~~~When is the best time to take Majoon-e-Muqavi?|||<p>The recommended time is at night, approximately 30 minutes after dinner, as mentioned in the product usage instructions.</p>'
+    echo '~~~How long does Majoon-e-Muqavi take to show results?|||<p>Results may vary from person to person depending on individual factors. Consistent use according to the recommended dosage is advised. Specific results or timelines are not guaranteed.</p>'
+    echo '~~~Is Majoon-e-Muqavi freshly prepared?|||<p>Yes! We prepare our orders fresh to maintain our product preparation and packaging standards. Every order is prepared with care before dispatch.</p>'
+  endcapture
+  assign default_faq_list = default_faqs | split: '~~~'
+-%}
 
-        <details class="muqavi-faq-item">
-          <summary class="muqavi-faq-question">
-            <span class="muqavi-faq-q-text">Are there any side effects? Is it safe for daily use?</span>
-            <span class="muqavi-faq-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </summary>
-          <div class="muqavi-faq-answer rte">
-            <p>Yes, it is 100% natural and safe for daily use. It is certified by PCSIR (Pakistan Council of Scientific and Industrial Research) with zero steroids, zero chemicals, and no side effects.</p>
-          </div>
-        </details>
-
-        <details class="muqavi-faq-item">
-          <summary class="muqavi-faq-question">
-            <span class="muqavi-faq-q-text">How should I use Majoon-e-Muqavi for best results?</span>
-            <span class="muqavi-faq-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </summary>
-          <div class="muqavi-faq-answer rte">
-            <p>Take 1 teaspoon (approx. 5-7 grams) daily with lukewarm milk, preferably before sleep or after breakfast. Consistent use for 3 to 4 weeks is recommended for noticeable, lasting results.</p>
-          </div>
-        </details>
-
-        <details class="muqavi-faq-item">
-          <summary class="muqavi-faq-question">
-            <span class="muqavi-faq-q-text">How long does delivery take across Pakistan?</span>
-            <span class="muqavi-faq-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </summary>
-          <div class="muqavi-faq-answer rte">
-            <p>We deliver nationwide across Pakistan in 2 to 4 business days. All orders are shipped via Cash on Delivery (COD) in 100% discreet packaging to ensure complete privacy.</p>
-          </div>
-        </details>
-
-        <details class="muqavi-faq-item">
-          <summary class="muqavi-faq-question">
-            <span class="muqavi-faq-q-text">How can I track my order or contact customer support?</span>
-            <span class="muqavi-faq-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line class="icon-line-v" x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </span>
-          </summary>
-          <div class="muqavi-faq-answer rte">
-            <p>You can reach our dedicated support team via WhatsApp at <a href="https://wa.me/923390091552" target="_blank">+92 339 0091552</a> or email us at <a href="mailto:support@muqaviherbsofficial.com">support@muqaviherbsofficial.com</a>.</p>
-          </div>
-        </details>
+<div id="faq" class="muqavi-faq-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="muqavi-faq__inner">
+    <div class="muqavi-faq__header">
+      <h2 class="muqavi-faq__title">
+        {{ heading | escape }}
+        {%- if heading_accent != blank %} <span>{{ heading_accent | escape }}</span>{% endif -%}
+      </h2>
+      {%- if section.settings.subheading != blank -%}
+        <p class="muqavi-faq__subheading">{{ section.settings.subheading | escape }}</p>
       {%- endif -%}
     </div>
 
-    {%- if section.settings.show_faq_button -%}
-      {%- liquid
-        assign prod = all_products['majoon-e-muqavi']
-        if section.settings.product != blank
-          assign prod = section.settings.product
-        endif
-        assign buy_url = prod.url | default: '/products/majoon-e-muqavi'
-      -%}
-      <div class="muqavi-faq-cta">
-        <a class="muqavi-faq-btn" href="{{ buy_url }}">{{ section.settings.button_label | default: 'Order Majoon-e-Muqavi' }}</a>
+    <div class="muqavi-faq__grid">
+      <div class="muqavi-faq__list">
+        {%- capture faq_icon -%}
+          <span class="muqavi-faq__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <line class="muqavi-faq__icon-v" x1="12" y1="4" x2="12" y2="20"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+            </svg>
+          </span>
+        {%- endcapture -%}
+
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <details class="muqavi-faq__item" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
+              <summary class="muqavi-faq__question">
+                <span>{{ block.settings.question | escape }}</span>
+                {{ faq_icon }}
+              </summary>
+              <div class="muqavi-faq__answer rte">{{ block.settings.answer }}</div>
+            </details>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for faq in default_faq_list -%}
+            {%- assign faq_parts = faq | split: '|||' -%}
+            <details class="muqavi-faq__item" {% if forloop.first and section.settings.open_first %}open{% endif %}>
+              <summary class="muqavi-faq__question">
+                <span>{{ faq_parts[0] | strip }}</span>
+                {{ faq_icon }}
+              </summary>
+              <div class="muqavi-faq__answer rte">{{ faq_parts[1] }}</div>
+            </details>
+          {%- endfor -%}
+        {%- endif -%}
       </div>
-    {%- endif -%}
+
+      <div class="muqavi-faq__media{% if section.settings.image == blank %} muqavi-faq__media--bundled{% endif %}">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1000
+            | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 990px) 460px, 100vw', alt: 'Majoon-e-Muqavi'
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}"
+            alt="Majoon-e-Muqavi jars and boxes"
+            width="1100"
+            height="1100"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <div class="muqavi-faq__media-bar">
+          <span class="muqavi-faq__media-tag">100% Natural &middot; Unani Formula</span>
+          <span class="muqavi-faq__media-rating">
+            <span class="muqavi-faq__stars" aria-hidden="true">★★★★★</span>
+            200+ Reviews
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -133,258 +104,198 @@
     }
   }
 
-  .muqavi-faq-section {
+  .muqavi-faq-{{ section.id }} {
     background: #ffffff;
-    border-top: 1px solid #eef2ed;
   }
-  .muqavi-faq-section .page-width {
-    max-width: 900px;
+  .muqavi-faq-{{ section.id }} .muqavi-faq__inner {
+    max-width: 1060px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
   }
-  .muqavi-faq-header {
+  .muqavi-faq-{{ section.id }} .muqavi-faq__header {
     text-align: center;
-    margin-bottom: 3.6rem;
+    margin-bottom: 3.2rem;
   }
-  .muqavi-faq-title {
-    font-size: clamp(2.4rem, 3.2vw, 3.6rem);
+  .muqavi-faq-{{ section.id }} .muqavi-faq__title {
+    margin: 0 0 0.8rem;
+    font-size: clamp(2.4rem, 3.4vw, 3.4rem);
     font-weight: 700;
-    color: #0f2613;
-    margin: 0 0 1rem;
+    line-height: 1.2;
     letter-spacing: -0.01em;
+    color: #121212;
   }
-  .muqavi-faq-subheading {
-    font-size: 1.6rem;
-    color: #4b5563;
-    max-width: 600px;
+  .muqavi-faq-{{ section.id }} .muqavi-faq__title span {
+    color: #c6983b;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__subheading {
     margin: 0 auto;
-    line-height: 1.6;
+    max-width: 560px;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #6b6b6b;
   }
-  .muqavi-faq-accordion-wrap {
+
+  .muqavi-faq-{{ section.id }} .muqavi-faq__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__list {
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 12px;
   }
-  .muqavi-faq-item {
-    background: #fbfdfa;
-    border: 1px solid #e2e8e0;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.25s ease;
+
+  .muqavi-faq-{{ section.id }} .muqavi-faq__item {
+    background: #fef1d6;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
-  .muqavi-faq-item[open] {
-    border-color: #c6983b;
-    box-shadow: 0 4px 18px rgba(15, 38, 19, 0.05);
-    background: #ffffff;
+  .muqavi-faq-{{ section.id }} .muqavi-faq__item[open] {
+    border-color: rgba(198, 152, 59, 0.45);
   }
-  .muqavi-faq-question {
+  .muqavi-faq-{{ section.id }} .muqavi-faq__question {
     list-style: none;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1.8rem 2.2rem;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 1.5rem 1.6rem;
     cursor: pointer;
+    font-size: 1.4rem;
     font-weight: 700;
-    font-size: 1.65rem;
-    color: #0f2613;
+    line-height: 1.4;
+    color: #121212;
     user-select: none;
   }
-  .muqavi-faq-question::-webkit-details-marker {
+  .muqavi-faq-{{ section.id }} .muqavi-faq__question::-webkit-details-marker {
     display: none;
   }
-  .muqavi-faq-q-text {
-    flex: 1;
-    padding-right: 1.6rem;
-    line-height: 1.4;
-  }
-  .muqavi-faq-icon {
+  .muqavi-faq-{{ section.id }} .muqavi-faq__icon {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #edf3ec;
-    color: #0f2613;
     flex-shrink: 0;
-    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    color: #c6983b;
   }
-  .muqavi-faq-item[open] .muqavi-faq-icon {
-    background: #c6983b;
+  .muqavi-faq-{{ section.id }} .muqavi-faq__icon-v {
+    transition: opacity 0.2s ease;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__item[open] .muqavi-faq__icon-v {
+    opacity: 0;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__answer {
+    padding: 0 1.6rem 1.6rem;
+    font-size: 1.35rem;
+    line-height: 1.65;
+    color: #3d4a3a;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__answer p {
+    margin: 0;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__answer p + p {
+    margin-top: 0.8rem;
+  }
+
+  .muqavi-faq-{{ section.id }} .muqavi-faq__media {
+    position: sticky;
+    top: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0f2613;
+    aspect-ratio: 4 / 5;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Bundled photo has a white border baked in — zoom slightly to crop it out */
+  .muqavi-faq-{{ section.id }} .muqavi-faq__media--bundled img {
+    transform: scale(1.18);
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__media-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 48px 18px 16px;
+    background: linear-gradient(180deg, rgba(15, 38, 19, 0) 0%, rgba(15, 38, 19, 0.92) 70%);
     color: #ffffff;
-    transform: rotate(45deg);
-  }
-  .muqavi-faq-answer {
-    padding: 0 2.2rem 2.2rem;
-    font-size: 1.55rem;
-    line-height: 1.75;
-    color: #374151;
-    border-top: 1px solid transparent;
-  }
-  .muqavi-faq-item[open] .muqavi-faq-answer {
-    border-top-color: #f1f5f0;
-    padding-top: 1.4rem;
-  }
-  .muqavi-faq-answer p {
-    margin: 0 0 1rem;
-  }
-  .muqavi-faq-answer p:last-child {
-    margin-bottom: 0;
-  }
-  .muqavi-faq-answer a {
-    color: #194421;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  .muqavi-faq-cta {
-    text-align: center;
-    margin-top: 3.6rem;
-  }
-  .muqavi-faq-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 34px;
-    border-radius: 50px;
-    background: linear-gradient(180deg, #ffe2a0 0%, #fdd271 50%, #c6983b 100%);
-    color: #0f2613;
+    font-size: 1.2rem;
     font-weight: 700;
-    font-size: 1.4rem;
-    text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    box-shadow: 0 4px 14px rgba(198, 152, 59, 0.25);
-    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
   }
-  .muqavi-faq-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(198, 152, 59, 0.35);
+  .muqavi-faq-{{ section.id }} .muqavi-faq__media-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    white-space: nowrap;
+  }
+  .muqavi-faq-{{ section.id }} .muqavi-faq__stars {
+    color: #fdd271;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 849px) {
+    .muqavi-faq-{{ section.id }} .muqavi-faq__grid {
+      grid-template-columns: 1fr;
+    }
+    .muqavi-faq-{{ section.id }} .muqavi-faq__media {
+      position: relative;
+      top: auto;
+      order: -1;
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 {%- endstyle -%}
 
 {% schema %}
 {
-  "name": "FAQ Section",
+  "name": "Muqavi FAQ",
   "tag": "section",
   "class": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Frequently Asked Questions"
-    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Got Questions?" },
+    { "type": "text", "id": "heading_accent", "label": "Heading (gold part)", "default": "We've Got Answers" },
     {
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Find answers to common questions about Majoon-e-Muqavi, usage, and orders."
+      "default": "Find quick answers about Majoon-e-Muqavi, usage, and support."
     },
     {
-      "type": "checkbox",
-      "id": "open_first",
-      "label": "Open first question by default",
-      "default": true
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Leave empty to use the bundled Majoon-e-Muqavi photo"
     },
-    {
-      "type": "checkbox",
-      "id": "show_faq_button",
-      "label": "Show CTA button",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
-      "default": "Order Majoon-e-Muqavi"
-    },
-    {
-      "type": "product",
-      "id": "product",
-      "label": "Product link"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 48
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 48
-    }
+    { "type": "checkbox", "id": "open_first", "label": "Open first question by default", "default": false },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
   ],
   "blocks": [
     {
       "type": "faq_item",
       "name": "Question & Answer",
       "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question",
-          "default": "Frequently asked question"
-        },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>Detailed answer explaining product usage, quality, or delivery.</p>"
-        }
+        { "type": "text", "id": "question", "label": "Question", "default": "Frequently asked question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer goes here.</p>" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "FAQ Section",
-      "blocks": [
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is Majoon-e-Muqavi and what are its benefits?",
-            "answer": "<p>Majoon-e-Muqavi is a traditional Unani herbal formulation enriched with 45+ natural ingredients including Ashwagandha, Salab Panja, Ginseng, Saffron, and pure honey. It is specifically formulated to naturally support male vitality, physical stamina, strength, and overall vitality without synthetic chemicals.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "Are there any side effects? Is it safe for daily use?",
-            "answer": "<p>Yes, it is 100% natural and safe for daily use. It is certified by PCSIR (Pakistan Council of Scientific and Industrial Research) with zero steroids, zero chemicals, and no side effects.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "How should I use Majoon-e-Muqavi for best results?",
-            "answer": "<p>Take 1 teaspoon (approx. 5-7 grams) daily with lukewarm milk, preferably before sleep or after breakfast. Consistent use for 3 to 4 weeks is recommended for noticeable, lasting results.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long does delivery take across Pakistan?",
-            "answer": "<p>We deliver nationwide across Pakistan in 2 to 4 business days. All orders are shipped via Cash on Delivery (COD) in 100% discreet packaging to ensure complete privacy.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "How can I track my order or contact customer support?",
-            "answer": "<p>You can reach our dedicated support team via WhatsApp at <a href=\"https://wa.me/923390091552\" target=\"_blank\">+92 339 0091552</a> or email us at <a href=\"mailto:support@muqaviherbsofficial.com\">support@muqaviherbsofficial.com</a>.</p>"
-          }
-        }
-      ]
-    }
+    { "name": "Muqavi FAQ" }
   ]
 }
 {% endschema %}
