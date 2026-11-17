@@ -542,6 +542,8 @@
                 {% render 'product-cs-rating', block: block %}
               {%- when 'muqavi_info_pills' -%}
                 {% render 'product-info-pills', block: block %}
+              {%- when 'muqavi_offer_box' -%}
+                {% render 'product-offer-box', block: block %}
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
@@ -1287,6 +1289,18 @@
       "name": "Benefit pills",
       "limit": 1,
       "settings": []
+    },
+    {
+      "type": "muqavi_offer_box",
+      "name": "Offer box",
+      "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "code_line", "label": "Discount code line", "default": "<p>Use code <strong>POWER10</strong> and get extra 10%</p>" },
+        { "type": "richtext", "id": "advance_line", "label": "Advance payment line", "default": "<p>Pay Advance to get More <strong>5% Discount</strong></p>" },
+        { "type": "text", "id": "perk_1", "label": "Perk 1", "default": "Free delivery across Pakistan" },
+        { "type": "text", "id": "perk_2", "label": "Perk 2", "default": "Cash on Delivery" },
+        { "type": "text", "id": "perk_3", "label": "Perk 3", "default": "Delivered in 2–4 working days" }
+      ]
     },
     {
       "type": "rating",

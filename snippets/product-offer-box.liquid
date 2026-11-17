@@ -1,0 +1,27 @@
+{% comment %}
+  Offer / discount box shown under the price on the product page.
+  Accepts:
+  - block: {Object} the muqavi_offer_box block
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign code_line = s.code_line | default: 'Use code <strong>POWER10</strong> and get extra 10%'
+  assign advance_line = s.advance_line | default: 'Pay Advance to get More <strong>5% Discount</strong>'
+-%}
+<div class="muqavi-offer-box" {{ block.shopify_attributes }}>
+  <div class="muqavi-offer-box__line muqavi-offer-box__line--main">
+    <span aria-hidden="true">🔥</span>
+    <div class="muqavi-offer-box__text">{{ code_line }}</div>
+  </div>
+  {%- if advance_line != blank -%}
+    <div class="muqavi-offer-box__line">
+      <span aria-hidden="true">💳</span>
+      <div class="muqavi-offer-box__text">{{ advance_line }}</div>
+    </div>
+  {%- endif -%}
+  <div class="muqavi-offer-box__perks">
+    <span><span aria-hidden="true">🚚</span> {{ s.perk_1 | default: 'Free delivery across Pakistan' }}</span>
+    <span><span aria-hidden="true">💵</span> {{ s.perk_2 | default: 'Cash on Delivery' }}</span>
+    <span><span aria-hidden="true">📦</span> {{ s.perk_3 | default: 'Delivered in 2–4 working days' }}</span>
+  </div>
+</div>

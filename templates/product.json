@@ -81,6 +81,10 @@
             "content": "",
             "page": ""
           }
+        },
+        "offer_box": {
+          "type": "muqavi_offer_box",
+          "settings": {}
         }
       },
       "block_order": [
@@ -88,6 +92,7 @@
         "rating_bar",
         "pills",
         "price",
+        "offer_box",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
