@@ -64,12 +64,19 @@
         {%- endif -%}
       </div>
 
-      <div class="muqavi-faq__media{% if section.settings.image == blank %} muqavi-faq__media--bundled{% endif %}">
-        {%- if section.settings.image != blank -%}
+      {%- liquid
+        assign faq_image = section.settings.image
+        if faq_image == blank and product != blank and product.featured_image != blank
+          assign faq_image = product.featured_image
+        endif
+        assign faq_image_alt = product.title | default: 'Majoon-e-Muqavi'
+      -%}
+      <div class="muqavi-faq__media{% if faq_image == blank %} muqavi-faq__media--bundled{% endif %}">
+        {%- if faq_image != blank -%}
           {{
-            section.settings.image
+            faq_image
             | image_url: width: 1000
-            | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 990px) 460px, 100vw', alt: 'Majoon-e-Muqavi'
+            | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 990px) 460px, 100vw', alt: faq_image_alt
           }}
         {%- else -%}
           <img
@@ -278,7 +285,7 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image",
-      "info": "Leave empty to use the bundled Majoon-e-Muqavi photo"
+      "info": "Leave empty to use the product's main image (on product pages), or the bundled Majoon-e-Muqavi photo elsewhere"
     },
     { "type": "checkbox", "id": "open_first", "label": "Open first question by default", "default": false },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
