@@ -779,6 +779,87 @@ color:#0F2613;
 .shopify-policy__container {
     max-width: 100ch;
 }
+
+/* ===== Dark green + gold theme for content pages & Shopify policy pages ===== */
+.muqavi-page-dark,
+main:has(> .shopify-policy__container),
+#MainContent:has(.shopify-policy__container) {
+    background: #0f2613;
+    color: #faf6e6;
+}
+#MainContent:has(.shopify-policy__container) {
+    padding: 48px 20px 64px;
+}
+.shopify-policy__container {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Gold gradient headings */
+.muqavi-page-dark .main-page-title,
+.muqavi-page-dark .rte h1,
+.muqavi-page-dark .rte h2,
+.muqavi-page-dark .rte h3,
+.muqavi-page-dark .rte h4,
+.muqavi-page-dark .rte h5,
+.muqavi-page-dark .rte h6,
+.shopify-policy__title h1,
+.shopify-policy__body h1,
+.shopify-policy__body h2,
+.shopify-policy__body h3,
+.shopify-policy__body h4,
+.shopify-policy__body h5,
+.shopify-policy__body h6 {
+    color: #fdd271;
+    background: linear-gradient(180deg, #FFE2A0 0%, #FDD271 50%, #C6983B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.muqavi-page-dark .main-page-title,
+.shopify-policy__title h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Body text, links and lists */
+.muqavi-page-dark .rte,
+.muqavi-page-dark .rte p,
+.muqavi-page-dark .rte li,
+.muqavi-page-dark .rte td,
+.muqavi-page-dark .rte th,
+.shopify-policy__body,
+.shopify-policy__body p,
+.shopify-policy__body li,
+.shopify-policy__body td,
+.shopify-policy__body th {
+    color: rgba(250, 246, 230, 0.88);
+}
+.muqavi-page-dark .rte strong,
+.shopify-policy__body strong {
+    color: #faf6e6;
+}
+.muqavi-page-dark .rte a,
+.shopify-policy__body a {
+    color: #fdd271;
+    text-decoration-color: rgba(253, 210, 113, 0.5);
+}
+.muqavi-page-dark .rte a:hover,
+.shopify-policy__body a:hover {
+    color: #ffe2a0;
+}
+.muqavi-page-dark .rte hr,
+.shopify-policy__body hr {
+    border-color: rgba(198, 152, 59, 0.35);
+}
+.muqavi-page-dark .rte table,
+.muqavi-page-dark .rte td,
+.muqavi-page-dark .rte th,
+.shopify-policy__body table,
+.shopify-policy__body td,
+.shopify-policy__body th {
+    border-color: rgba(198, 152, 59, 0.35);
+}
 .button:after, .shopify-challenge__button:after, .customer button:after, .shopify-payment-button__button--unbranded:after{
     box-shadow: none;
 }
