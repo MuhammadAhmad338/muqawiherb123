@@ -1,7 +1,12 @@
 {%- liquid
   assign wa_number = settings.whatsapp_number | default: '923390091552'
   assign wa_message = 'Hi, I want to order ' | append: product.title | append: ' from ' | append: request.origin | append: product.url
-  assign wa_href = 'https://wa.me/' | append: wa_number | append: '?text=' | append: wa_message | url_encode
+  assign wa_message_encoded = wa_message | url_encode
+  assign wa_href = 'https://wa.me/' | append: wa_number | append: '?text=' | append: wa_message_encoded
+  assign wa_display = '0339-0091552'
+  if settings.whatsapp_number != blank and settings.whatsapp_number != '923390091552'
+    assign wa_display = settings.whatsapp_number | replace_first: '92', '0'
+  endif
 -%}
 
 <div class="muqavi-pdp-trust-block">
@@ -33,6 +38,7 @@
         <span class="muqavi-wa-order__online">Online</span>
       </span>
       <span class="muqavi-wa-order__sub">👉 Order on WhatsApp</span>
+      <span class="muqavi-wa-order__number">📞 {{ wa_display }}</span>
     </span>
   </a>
 

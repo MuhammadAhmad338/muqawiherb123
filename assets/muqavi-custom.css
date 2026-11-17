@@ -1050,6 +1050,14 @@ main:has(> .shopify-policy__container),
   font-weight: 700;
   line-height: 1.25;
 }
+.muqavi-wa-order__number {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
 .muqavi-pdp-trust-icons.sc-trust-container {
   justify-content: flex-start;
   overflow: visible;
