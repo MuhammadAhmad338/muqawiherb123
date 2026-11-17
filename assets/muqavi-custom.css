@@ -1473,12 +1473,20 @@ border-top: .1rem solid #C1CDC0;
 
     /* Info pills: rounded cream chips, always two per row (all products) */
     .info-pills-block .info-pills-block__list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, max-content));
-      justify-items: start;
-      align-items: center;
-      gap: 12px;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      align-items: stretch;
+      gap: 10px;
       width: 100%;
+    }
+    .info-pills-block .info-pills-block__list > .info-pill {
+      width: 100%;
+      padding: 10px 14px 10px 12px;
+      border-radius: 999px;
+    }
+    .info-pills-block .info-pills-block__list > .info-pill .info-pill__text {
+      font-size: 13px;
+      line-height: 1.25;
     }
     .info-pill {
       display: inline-flex;
@@ -1577,9 +1585,9 @@ border-top: .1rem solid #C1CDC0;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
     @media screen and (max-width: 749px) {
-      .info-pills-block .info-pills-block__list { gap: 10px; }
-      .info-pill { padding: 10px 16px 10px 12px; }
-      .info-pill__text { font-size: 13.5px; }
+      .info-pills-block .info-pills-block__list { gap: 8px; }
+      .info-pills-block .info-pills-block__list > .info-pill { padding: 9px 12px 9px 10px; gap: 8px; }
+      .info-pills-block .info-pills-block__list > .info-pill .info-pill__text { font-size: 12px; }
     }
 
 .muqavi-majoon-desc {
