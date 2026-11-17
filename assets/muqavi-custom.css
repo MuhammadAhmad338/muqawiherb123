@@ -1615,6 +1615,7 @@ border-top: .1rem solid #C1CDC0;
 /* "Way to get the best results" usage block (product page) */
 .muqavi-usage {
   width: 100%;
+  margin: 20px 0 16px;
 }
 .muqavi-usage__heading {
   margin: 0 0 12px;

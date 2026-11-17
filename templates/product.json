@@ -85,10 +85,6 @@
         "offer_box": {
           "type": "muqavi_offer_box",
           "settings": {}
-        },
-        "usage": {
-          "type": "muqavi_usage",
-          "settings": {}
         }
       },
       "block_order": [
@@ -100,7 +96,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "usage",
         "description",
         "collapsible_description",
         "collapsible_benefits",
