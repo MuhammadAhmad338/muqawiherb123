@@ -1472,6 +1472,12 @@ border-top: .1rem solid #C1CDC0;
   
 
     /* Info pills: rounded cream chips, always two per row (all products) */
+    .info-pills-block {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      align-self: stretch;
+    }
     .info-pills-block .info-pills-block__list {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, max-content)) !important;
