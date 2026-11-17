@@ -1612,6 +1612,56 @@ border-top: .1rem solid #C1CDC0;
       .info-pills-block .info-pills-block__list > .info-pill .info-pill__text { font-size: 12px; }
     }
 
+/* "Way to get the best results" usage block (product page) */
+.muqavi-usage {
+  width: 100%;
+}
+.muqavi-usage__heading {
+  margin: 0 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.1);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #121212;
+}
+.muqavi-usage__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.muqavi-usage__thumb {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0f2613;
+}
+.muqavi-usage__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.muqavi-usage__body {
+  min-width: 0;
+}
+.muqavi-usage__title {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #121212;
+}
+.muqavi-usage__text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #6b6b6b;
+}
+
 /* Offer box under the price (product page) */
 .muqavi-offer-box {
   display: flex;

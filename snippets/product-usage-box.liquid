@@ -1,0 +1,28 @@
+{% comment %}
+  "Way to get the best results" usage block on the product page.
+  Accepts:
+  - block: {Object} the muqavi_usage block
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign usage_image = s.image
+  if usage_image == blank
+    assign usage_image = product.featured_image
+  endif
+-%}
+<div class="muqavi-usage" {{ block.shopify_attributes }}>
+  <h3 class="muqavi-usage__heading">{{ s.heading | default: 'Way to get the best results' | escape }}</h3>
+  <div class="muqavi-usage__row">
+    {%- if usage_image != blank -%}
+      <div class="muqavi-usage__thumb">
+        {{ usage_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: product.title, width: 80, height: 80 }}
+      </div>
+    {%- endif -%}
+    <div class="muqavi-usage__body">
+      <p class="muqavi-usage__title">{{ s.title | default: '½ Teaspoon · 30 Mins After Dinner' | escape }}</p>
+      <p class="muqavi-usage__text">
+        {{- s.text | default: 'Take ½ teaspoon of Majoon-e-Muqavi every night, approximately 30 minutes after dinner.' | escape -}}
+      </p>
+    </div>
+  </div>
+</div>
