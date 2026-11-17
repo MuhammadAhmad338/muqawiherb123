@@ -1488,10 +1488,10 @@ border-top: .1rem solid #C1CDC0;
     .info-pills-block .info-pills-block__list > .info-pill {
       width: 100%;
       max-width: 100%;
-      min-height: 48px;
-      padding: 10px 16px 10px 12px;
+      min-height: 46px;
+      padding: 10px 14px 10px 14px;
       gap: 10px;
-      border-radius: 28px;
+      border-radius: 999px;
       background: #faf6e6;
       border: 1px solid rgba(17, 24, 39, 0.1);
     }
