@@ -15,6 +15,39 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  /* Golden footer — same gradient as the gold headings/buttons */
+  .footer.gradient {
+    --gradient-background: linear-gradient(180deg, #FFE2A0 0%, #FDD271 50%, #C6983B 100%);
+    --color-background: 253, 210, 113;
+    --color-foreground: 15, 38, 19;
+    --color-link: 15, 38, 19;
+    --color-button: 15, 38, 19;
+    --color-button-text: 253, 210, 113;
+    background: linear-gradient(180deg, #FFE2A0 0%, #FDD271 50%, #C6983B 100%);
+    color: #0f2613;
+    border-top: none;
+  }
+  .footer.gradient .footer-block__heading,
+  .footer.gradient .footer-block__details-content a,
+  .footer.gradient .list-menu__item--link,
+  .footer.gradient .footer-block__details-content,
+  .footer.gradient .copyright__content,
+  .footer.gradient .copyright__content a,
+  .footer.gradient .footer__content-bottom,
+  .footer.gradient .list-social__link,
+  .footer.gradient .rte,
+  .footer.gradient .rte p {
+    color: #0f2613;
+  }
+  .footer.gradient .list-menu__item--link:hover,
+  .footer.gradient .copyright__content a:hover {
+    color: #194421;
+    text-decoration: underline;
+  }
+  .footer.gradient .footer__content-bottom {
+    border-top-color: rgba(15, 38, 19, 0.2);
+  }
+
   @media screen and (min-width: 750px) {
     .footer {
       margin-top: {{ section.settings.margin_top }}px;
