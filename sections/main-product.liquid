@@ -151,19 +151,14 @@
                 {%- endcomment -%}
                 {%- if product.handle contains 'majoon' -%}
                   {%- liquid
-                    assign has_offer_block = false
                     assign has_picker_block = false
                     for b in section.blocks
-                      if b.type == 'muqavi_offer_box'
-                        assign has_offer_block = true
-                      elsif b.type == 'variant_picker'
+                      if b.type == 'variant_picker'
                         assign has_picker_block = true
                       endif
                     endfor
                   -%}
-                  {%- unless has_offer_block -%}
-                    {% render 'product-offer-box' %}
-                  {%- endunless -%}
+                  {% render 'product-offer-box' %}
                   {%- unless has_picker_block -%}
                     {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
                   {%- endunless -%}
@@ -566,7 +561,10 @@
               {%- when 'muqavi_info_pills' -%}
                 {% render 'product-info-pills', block: block %}
               {%- when 'muqavi_offer_box' -%}
-                {% render 'product-offer-box', block: block %}
+                {%- comment -%} Majoon already gets the box right under the price. {%- endcomment -%}
+                {%- unless product.handle contains 'majoon' -%}
+                  {% render 'product-offer-box', block: block %}
+                {%- endunless -%}
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
