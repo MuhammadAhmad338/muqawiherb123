@@ -4,7 +4,6 @@
   - block: {Object} the muqavi_offer_box block
 {% endcomment %}
 {%- liquid
-  assign s = block.settings
   # Fixed wording (from Zaid) so old saved block text on the live store can't override it.
   assign code_line = 'Use code <strong>POWER10</strong> to get <strong>Extra 10%</strong>'
   assign advance_line = 'Get More <strong>5% off</strong> On Advance payment'
@@ -20,9 +19,4 @@
       <div class="muqavi-offer-box__text">{{ advance_line }}</div>
     </div>
   {%- endif -%}
-  <div class="muqavi-offer-box__perks">
-    <span><span aria-hidden="true">🚚</span> {{ s.perk_1 | default: 'Free delivery across Pakistan' }}</span>
-    <span><span aria-hidden="true">💵</span> {{ s.perk_2 | default: 'Cash on Delivery' }}</span>
-    <span><span aria-hidden="true">📦</span> {{ s.perk_3 | default: 'Delivered in 2–4 working days' }}</span>
-  </div>
 </div>
