@@ -184,8 +184,23 @@
   display: none !important;
 }
 
+/* Add to cart — shown above Buy It Now, dark green so it differs from the gold Buy It Now */
 .muqavi-product .product-form__buttons .product-form__submit[name='add'] {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  background: #0f2613 !important;
+  color: #fdd271 !important;
+  border: 1px solid #0f2613 !important;
+  animation: none;
+}
+.muqavi-product .product-form__buttons .product-form__submit[name='add']:hover:not([disabled]) {
+  background: #194421 !important;
+}
+.muqavi-product .product-form__buttons .product-form__submit[name='add'][disabled] {
+  opacity: 0.6;
 }
 
 .muqavi-product .shopify-payment-button {
