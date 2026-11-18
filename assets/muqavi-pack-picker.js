@@ -20,15 +20,27 @@ function syncMajoonPackSelection(input) {
   const priceRoot = document.querySelector('[id^="price-"]');
   if (!priceRoot) return;
 
-  const saleEl = priceRoot.querySelector('.price-item--sale');
-  const compareEl = priceRoot.querySelector('.price-item--regular s, s.price-item--regular');
-  if (saleEl && window.Shopify?.formatMoney) {
-    saleEl.textContent = window.Shopify.formatMoney(Number(price), window.theme?.moneyFormat);
+  const priceEl = priceRoot.querySelector('.price');
+  const saleEl = priceRoot.querySelector('.price__sale .price-item--sale');
+  const compareEl = priceRoot.querySelector('.price__sale s.price-item--regular');
+  const regularEl = priceRoot.querySelector('.price__regular .price-item--regular');
+  const hasCompare = compare && Number(compare) > Number(price);
+
+  if (hasCompare && saleEl && compareEl) {
+    // Show "compare (struck through) + sale price"
+    saleEl.textContent = formatPackMoney(price);
+    compareEl.textContent = formatPackMoney(compare);
+    priceEl?.classList.add('price--on-sale');
+  } else {
+    if (regularEl) regularEl.textContent = formatPackMoney(price);
+    if (saleEl) saleEl.textContent = formatPackMoney(price);
+    priceEl?.classList.remove('price--on-sale');
   }
-  if (compareEl && compare && Number(compare) > Number(price) && window.Shopify?.formatMoney) {
-    compareEl.textContent = window.Shopify.formatMoney(Number(compare), window.theme?.moneyFormat);
-    priceRoot.querySelector('.price')?.classList.add('price--on-sale');
-  }
+}
+
+function formatPackMoney(cents) {
+  const amount = Number(cents) / 100;
+  return 'Rs.' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 document.addEventListener('change', (e) => {
