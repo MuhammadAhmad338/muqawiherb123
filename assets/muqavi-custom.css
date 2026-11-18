@@ -1754,6 +1754,34 @@ border-top: .1rem solid #C1CDC0;
 .muqavi-offer-box__text strong {
   white-space: nowrap;
 }
+@media screen and (min-width: 750px) {
+  .muqavi-offer-box {
+    gap: 6px;
+    padding: 10px 14px;
+  }
+  .muqavi-offer-box__line,
+  .muqavi-offer-box__line--main {
+    gap: 6px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    align-items: center;
+  }
+  .muqavi-offer-box__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .muqavi-offer-box__line--main strong {
+    padding: 0 5px;
+    letter-spacing: 0.02em;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1100px) {
+  .muqavi-offer-box__line,
+  .muqavi-offer-box__line--main {
+    font-size: 12.5px;
+  }
+}
 @media screen and (max-width: 749px) {
   .muqavi-offer-box {
     gap: 6px;
