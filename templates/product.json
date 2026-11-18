@@ -122,6 +122,52 @@
         "product": "majoon-e-muqavi-1"
       }
     },
+    "struggles": {
+      "type": "muqavi-struggles",
+      "blocks": {
+        "s1": {
+          "type": "card",
+          "settings": {
+            "image_asset": "muqavi-struggle-1.jpg",
+            "alt": "Why do you struggle with intimate performance?"
+          }
+        },
+        "s2": {
+          "type": "card",
+          "settings": {
+            "image_asset": "muqavi-struggle-2.jpg",
+            "alt": "Why has your sexual desire decreased?"
+          }
+        },
+        "s3": {
+          "type": "card",
+          "settings": {
+            "image_asset": "muqavi-struggle-3.jpg",
+            "alt": "Why does your stamina feel weaker?"
+          }
+        },
+        "s4": {
+          "type": "card",
+          "settings": {
+            "image_asset": "muqavi-struggle-4.jpg",
+            "alt": "Why do you feel low on energy?"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "kicker": "Every man has felt this, but rarely says it",
+        "heading": "You're Not Alone!",
+        "heading_accent": "8 Out of 10 Men Face Challenges Related to Stamina & Intimate Wellness",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "customer_reviews": {
       "type": "muqavi-testimonials",
       "blocks": {
@@ -197,6 +243,7 @@
   "order": [
     "main",
     "pcsir",
+    "struggles",
     "customer_reviews",
     "faq"
   ]
