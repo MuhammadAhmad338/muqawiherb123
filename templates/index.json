@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/new.jpg",
-            "link": "shopify://products/majoon-e-muqavi"
+            "link": "shopify://products/majoon-e-muqavi-1"
           }
         }
       },
@@ -45,7 +45,7 @@
         "s1"
       ],
       "settings": {
-        "product": "majoon-e-muqavi",
+        "product": "majoon-e-muqavi-1",
         "show_product_card": false,
         "default_video_asset": "muqavi-customer-ugc.mp4",
         "slide_width": 220,
@@ -100,7 +100,7 @@
     "majoon_banner": {
       "type": "muqavi-majoon-promo",
       "settings": {
-        "product": "majoon-e-muqavi"
+        "product": "majoon-e-muqavi-1"
       }
     },
     "promo": {
@@ -123,7 +123,7 @@
       },
       "block_order": ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "m1", "m2", "m3", "m4", "m5", "m6", "m7"],
       "settings": {
-        "product": "majoon-e-muqavi",
+        "product": "majoon-e-muqavi-1",
         "title": "Majoon-e-Muqavi — Traditional Power Formula",
         "description": "A traditional herbal tonic for vitality, stamina and strength",
         "general_label": "General Benefits",
@@ -257,7 +257,7 @@
         "closing_line": "Muqavi Herbs – Bringing Traditional Herbal Wellness to Modern Life.",
         "show_product_button": true,
         "button_label": "Explore Majoon-e-Muqavi",
-        "product": "majoon-e-muqavi",
+        "product": "majoon-e-muqavi-1",
         "show_contact": false,
         "padding_top": 48,
         "padding_bottom": 48

@@ -87,14 +87,17 @@
     endif
   endif
 
-  assign majoon_product = all_products['majoon-e-muqavi']
+  assign majoon_product = all_products['majoon-e-muqavi-1']
+  if majoon_product == blank
+    assign majoon_product = all_products['majoon-e-muqavi']
+  endif
   if section != blank and section.settings.product != blank
     assign majoon_product = section.settings.product
   endif
   if majoon_product == blank
     assign majoon_product = collections['all'].products.first
   endif
-  assign cta_url = majoon_product.url | default: '/products/majoon-e-muqavi'
+  assign cta_url = majoon_product.url | default: '/products/majoon-e-muqavi-1'
 
   assign prod_img_1 = nil
   assign prod_img_2 = nil
