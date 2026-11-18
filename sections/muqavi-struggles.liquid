@@ -1,49 +1,32 @@
 {%- style -%}
   .muqavi-struggles-{{ section.id }} {
-    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
     text-align: center;
   }
   .muqavi-struggles-{{ section.id }} .muqavi-struggles__inner {
-    max-width: 1100px;
+    max-width: 1300px;
     margin: 0 auto;
-  }
-  .muqavi-struggles-{{ section.id }} .muqavi-struggles__kicker {
-    display: inline-block;
-    margin: 0 0 14px;
-    padding: 6px 16px;
-    background: #ffe2a0;
-    color: #2f723c;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.9px;
-    text-transform: uppercase;
-    line-height: 1.4;
   }
   .muqavi-struggles-{{ section.id }} h2 {
     margin: 0 auto 28px;
-    max-width: 22em;
-    color: #112d16;
-    font-size: clamp(24px, 3.4vw, 38px);
-    font-weight: 500;
-    letter-spacing: -0.5px;
-    line-height: 1.25;
-  }
-  .muqavi-struggles-{{ section.id }} h2 span {
-    color: #2f723c;
+    color: #1d4a24;
+    font-size: clamp(22px, 3.2vw, 40px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
   .muqavi-struggles-{{ section.id }} .muqavi-struggles__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
   }
   .muqavi-struggles-{{ section.id }} .muqavi-struggles__card {
     margin: 0;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     line-height: 0;
     background: #112d16;
-    box-shadow: 0 10px 24px rgba(17, 45, 22, 0.14);
   }
   .muqavi-struggles-{{ section.id }} .muqavi-struggles__card img {
     display: block;
@@ -52,36 +35,55 @@
     aspect-ratio: 1200 / 896;
     object-fit: cover;
   }
+  .muqavi-struggles-{{ section.id }} .muqavi-struggles__text {
+    margin: 32px auto 0;
+    max-width: 52em;
+    color: #000;
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+  }
+  .muqavi-struggles-{{ section.id }} .muqavi-struggles__btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 24px;
+    background: #f4f3ea;
+    color: #1d4a24;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .muqavi-struggles-{{ section.id }} .muqavi-struggles__btn:hover {
+    background: #e9e7d6;
+  }
+  @media screen and (max-width: 989px) {
+    .muqavi-struggles-{{ section.id }} .muqavi-struggles__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
   @media screen and (max-width: 768px) {
-    .muqavi-struggles-{{ section.id }} {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-    .muqavi-struggles-{{ section.id }} .muqavi-struggles__kicker {
-      font-size: 10px;
-    }
     .muqavi-struggles-{{ section.id }} h2 {
-      font-size: 24px;
       margin-bottom: 20px;
     }
-    .muqavi-struggles-{{ section.id }} .muqavi-struggles__grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
+    .muqavi-struggles-{{ section.id }} .muqavi-struggles__text {
+      margin-top: 22px;
+    }
+    .muqavi-struggles-{{ section.id }} .muqavi-struggles__btn {
+      font-size: 14px;
+      padding: 12px 18px;
     }
   }
 {%- endstyle -%}
 
 <section class="muqavi-struggles-{{ section.id }}">
   <div class="muqavi-struggles__inner">
-    {%- if section.settings.kicker != blank -%}
-      <p class="muqavi-struggles__kicker">{{ section.settings.kicker }}</p>
-    {%- endif -%}
-
     {%- if section.settings.heading != blank -%}
-      <h2>
-        {{ section.settings.heading }}
-        {%- if section.settings.heading_accent != blank %} <span>{{ section.settings.heading_accent }}</span>{%- endif -%}
-      </h2>
+      <h2>{{ section.settings.heading }}</h2>
     {%- endif -%}
 
     <div class="muqavi-struggles__grid">
@@ -91,7 +93,7 @@
             {{
               block.settings.image
               | image_url: width: 1200
-              | image_tag: alt: block.settings.alt, loading: 'lazy', widths: '400, 600, 900, 1200', sizes: '(max-width: 768px) 100vw, 550px'
+              | image_tag: alt: block.settings.alt, loading: 'lazy', widths: '400, 600, 900, 1200', sizes: '(max-width: 989px) 50vw, 320px'
             }}
           {%- elsif block.settings.image_asset != blank -%}
             <img
@@ -105,6 +107,16 @@
         </figure>
       {%- endfor -%}
     </div>
+
+    {%- if section.settings.text != blank -%}
+      <p class="muqavi-struggles__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a class="muqavi-struggles__btn" href="{{ section.settings.button_link | default: '#MainContent' }}">
+        {{- section.settings.button_label -}}
+      </a>
+    {%- endif -%}
   </div>
 </section>
 
@@ -115,21 +127,26 @@
   "settings": [
     {
       "type": "text",
-      "id": "kicker",
-      "label": "Badge text",
+      "id": "heading",
+      "label": "Heading",
       "default": "Every man has felt this, but rarely says it"
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "You're Not Alone!"
+      "id": "text",
+      "label": "Text below images",
+      "default": "You're Not Alone! 8 Out of 10 Men Face Challenges Related to Stamina & Intimate Wellness"
     },
     {
       "type": "text",
-      "id": "heading_accent",
-      "label": "Heading accent",
-      "default": "8 Out of 10 Men Face Challenges Related to Stamina & Intimate Wellness"
+      "id": "button_label",
+      "label": "Button label",
+      "default": "That's where Majoon-e-Muqavi can help"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link (defaults to top of product)"
     },
     {
       "type": "range",
