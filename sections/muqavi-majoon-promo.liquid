@@ -1,7 +1,10 @@
 {%- liquid
   assign product = section.settings.product
+  if product == blank
+    assign product = all_products['majoon-e-muqavi-1']
+  endif
   assign variant = product.selected_or_first_available_variant
-  assign product_url = product.url | default: section.settings.button_link | default: routes.all_products_collection_url
+  assign product_url = product.url | default: '/products/majoon-e-muqavi-1'
 -%}
 
 {%- style -%}
