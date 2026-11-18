@@ -130,8 +130,20 @@
               else
                 assign pack_image_src = 'majoon-e-muqavi-product.jpg' | asset_url
               endif
+
+              # Pack 2 / Pack 3 use their own "Pack of 2" / "Pack of 3" banner images.
+              assign media_class = 'pack-card__media--stack pack-card__media--stack-' | append: stack_count
+              if pack_index == 1
+                assign pack_image_src = 'majoon-pack-2.jpg' | asset_url
+                assign stack_count = 1
+                assign media_class = 'pack-card__media--banner'
+              elsif pack_index == 2
+                assign pack_image_src = 'majoon-pack-3.jpg' | asset_url
+                assign stack_count = 1
+                assign media_class = 'pack-card__media--banner'
+              endif
             -%}
-            <span class="pack-card__media pack-card__media--stack pack-card__media--stack-{{ stack_count }}">
+            <span class="pack-card__media {{ media_class }}">
               {%- for n in (1..stack_count) -%}
                 <img
                   src="{{ pack_image_src }}"

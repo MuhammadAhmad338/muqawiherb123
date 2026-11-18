@@ -132,6 +132,24 @@
   z-index: 2;
 }
 
+/* Pack 2 / Pack 3 banner images — same size as the Pack 1 image */
+.new-relief .pack-card__media--banner {
+  max-width: 120px;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.new-relief .pack-card__media--banner .pack-card__image {
+  width: 75%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(15, 38, 19, 0.25);
+}
+
 .new-relief .pack-card__title {
   font-size: 1.3rem;
   font-weight: 600;
