@@ -5,8 +5,9 @@
 {% endcomment %}
 {%- liquid
   assign s = block.settings
-  assign code_line = s.code_line | default: 'Use code <strong>POWER10</strong> and get extra 10%'
-  assign advance_line = s.advance_line | default: 'Pay Advance to get More <strong>5% Discount</strong>'
+  # Fixed wording (from Zaid) so old saved block text on the live store can't override it.
+  assign code_line = 'Use code <strong>POWER10</strong> to get <strong>Extra 10%</strong>'
+  assign advance_line = 'Get More <strong>5% off</strong> On Advance payment'
 -%}
 <div class="muqavi-offer-box" {{ block.shopify_attributes }}>
   <div class="muqavi-offer-box__line muqavi-offer-box__line--main">
