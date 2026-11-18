@@ -1743,6 +1743,48 @@ border-top: .1rem solid #C1CDC0;
 .muqavi-offer-box__perks > span {
   white-space: nowrap;
 }
+.muqavi-offer-box__line > span[aria-hidden] {
+  flex: 0 0 auto;
+  line-height: inherit;
+}
+.muqavi-offer-box__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.muqavi-offer-box__text strong {
+  white-space: nowrap;
+}
+@media screen and (max-width: 749px) {
+  .muqavi-offer-box {
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+  .muqavi-offer-box__line {
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .muqavi-offer-box__line--main {
+    font-size: 13.5px;
+  }
+  .muqavi-offer-box__line--main strong {
+    padding: 0 5px;
+    letter-spacing: 0.02em;
+  }
+}
+@media screen and (max-width: 360px) {
+  .muqavi-offer-box {
+    padding: 9px 10px;
+  }
+  .muqavi-offer-box__line,
+  .muqavi-offer-box__line--main {
+    font-size: 12.5px;
+  }
+  .muqavi-offer-box__line--main strong {
+    padding: 0 4px;
+  }
+}
 
 .muqavi-majoon-desc {
   font-size: 14px;
