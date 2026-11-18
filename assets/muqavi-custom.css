@@ -124,6 +124,37 @@
     .muqavi-product .cs-rating__caption p {
       margin: 0;
     }
+    /* Keep the gold fill stars the exact same size/position as the grey base stars
+       (the fill box is clipped to e.g. 93.6% — stars must be cut off, not squeezed) */
+    .muqavi-stars--bar .muqavi-stars__base svg,
+    .muqavi-stars--bar .muqavi-stars__fill svg {
+      flex: 0 0 auto;
+      display: block;
+    }
+    /* Rating row: stars · score | caption on one line */
+    .muqavi-product .cs-rating {
+      flex-wrap: nowrap;
+      gap: 1rem;
+    }
+    .muqavi-product .cs-rating__stars-wrap {
+      flex-shrink: 0;
+      gap: 0.6rem;
+    }
+    .muqavi-product .cs-rating__score {
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+    .muqavi-product .cs-rating__divider {
+      flex-shrink: 0;
+      height: 1.8rem;
+    }
+    .muqavi-product .cs-rating__caption {
+      min-width: 0;
+      font-size: 1.45rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     @media (max-width: 749px) {
       .muqavi-product .cs-rating__score,
       .muqavi-product .cs-rating__caption {
