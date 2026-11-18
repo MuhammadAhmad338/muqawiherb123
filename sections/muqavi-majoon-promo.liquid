@@ -101,7 +101,7 @@
   }
   .majoon-promo-{{ section.id }} .majoon-promo__cols li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     color: #fff;
     font-size: 14px;
@@ -114,6 +114,8 @@
     height: 22px;
     min-width: 22px;
     flex: 0 0 22px;
+    /* centre the tick on the first line of text (line-height is 1.2em) */
+    margin-top: calc((1.2em - 22px) / 2);
   }
   .majoon-promo-{{ section.id }} .majoon-promo__btn {
     display: inline-flex;

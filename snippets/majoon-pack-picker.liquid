@@ -112,26 +112,36 @@
         >
         <label class="pack-card__label" for="{{ input_id }}">
           <span class="pack-card__body">
-            <span class="pack-card__media">
-              {%- if pack_image -%}
+            {%- liquid
+              # A variant with its own image (e.g. a 3-jar photo) shows that image once.
+              # Otherwise the product image is repeated 1x / 2x / 3x to show the pack size.
+              assign pack_count = pack_index | plus: 1
+              assign has_own_image = false
+              if pack_variant.featured_image != blank and pack_variant.featured_image.id != product.featured_image.id
+                assign has_own_image = true
+              endif
+              if has_own_image
+                assign stack_count = 1
+              else
+                assign stack_count = pack_count
+              endif
+              if pack_image
+                assign pack_image_src = pack_image | image_url: width: 320
+              else
+                assign pack_image_src = 'majoon-e-muqavi-product.jpg' | asset_url
+              endif
+            -%}
+            <span class="pack-card__media pack-card__media--stack pack-card__media--stack-{{ stack_count }}">
+              {%- for n in (1..stack_count) -%}
                 <img
-                  src="{{ pack_image | image_url: width: 320 }}"
-                  alt="{{ pack_label | escape }}"
+                  src="{{ pack_image_src }}"
+                  alt="{% if forloop.first %}{{ pack_label | escape }}{% endif %}"
                   width="320"
                   height="320"
                   loading="lazy"
-                  class="pack-card__image"
+                  class="pack-card__image pack-card__stack-img pack-card__stack-img--{{ forloop.index }}"
                 >
-              {%- else -%}
-                <img
-                  src="{{ 'majoon-e-muqavi-product.jpg' | asset_url }}"
-                  alt="{{ pack_label | escape }}"
-                  width="320"
-                  height="320"
-                  loading="lazy"
-                  class="pack-card__image"
-                >
-              {%- endif -%}
+              {%- endfor -%}
             </span>
             <span class="pack-card__title">{{ pack_label }}</span>
             <span class="pack-card__pricing">
