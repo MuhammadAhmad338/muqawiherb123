@@ -1,9 +1,10 @@
 {% comment %}
-  Dark green scrolling strip on the product page (below the main product area).
+  Dark green scrolling announcement bar on product pages, right under the header
+  (rendered from layout/theme.liquid).
   The item list is printed twice so the -50% scroll loops seamlessly.
 {% endcomment %}
 {%- liquid
-  assign marquee_items = 'No artificial hormones or stimulants|No additives or preservatives|Non-addictive formulation|100% natural & safe|For energy, strength & vitality' | split: '|'
+  assign marquee_items = 'Non-Addictive Formulation|100% Natural & Safe|For Energy, Strength & Vitality|No Artificial Hormones or Stimulants|No Additives or Preservatives' | split: '|'
 -%}
 <style>
   .muqavi-pdp-marquee {
@@ -11,7 +12,7 @@
     color: #fff;
     overflow: hidden;
     padding: 14px 0;
-    margin: 8px 0 0;
+    margin: 0;
   }
   .muqavi-pdp-marquee__track {
     display: flex;
