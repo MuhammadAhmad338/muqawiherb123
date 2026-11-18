@@ -1,0 +1,39 @@
+{% comment %}
+  Gold scrolling sale bar shown under the header on product pages
+  (same look as the homepage "Muqavi marquee" section).
+  Accepts:
+  - text: {String} optional, overrides the default sale text
+{% endcomment %}
+{%- assign sale_text = text | default: '11:11 Sale is Live Now with Free Delivery ✨' -%}
+<style>
+  .muqavi-sale-marquee {
+    padding: 13px 0;
+    background-color: #ffe2a0;
+    color: #0f2613;
+    overflow: hidden;
+  }
+  .muqavi-sale-marquee__track {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    white-space: nowrap;
+    animation: muqavi-sale-marquee 22s linear infinite;
+  }
+  .muqavi-sale-marquee__item {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  @keyframes muqavi-sale-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
+<div class="muqavi-sale-marquee" role="marquee" aria-label="{{ sale_text | escape }}">
+  <div class="muqavi-sale-marquee__track" aria-hidden="true">
+    {%- for i in (1..8) -%}
+      <span class="muqavi-sale-marquee__item">{{ sale_text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
