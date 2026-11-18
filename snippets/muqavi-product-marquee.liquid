@@ -1,0 +1,74 @@
+{% comment %}
+  Dark green scrolling strip on the product page (below the main product area).
+  The item list is printed twice so the -50% scroll loops seamlessly.
+{% endcomment %}
+{%- liquid
+  assign marquee_items = 'No artificial hormones or stimulants|No additives or preservatives|Non-addictive formulation|100% natural & safe|For energy, strength & vitality' | split: '|'
+-%}
+<style>
+  .muqavi-pdp-marquee {
+    background: #224222;
+    color: #fff;
+    overflow: hidden;
+    padding: 14px 0;
+    margin: 8px 0 0;
+  }
+  .muqavi-pdp-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: muqavi-pdp-marquee 30s linear infinite;
+  }
+  .muqavi-pdp-marquee:hover .muqavi-pdp-marquee__track {
+    animation-play-state: paused;
+  }
+  .muqavi-pdp-marquee__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+  }
+  .muqavi-pdp-marquee__item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .muqavi-pdp-marquee__item::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    margin: 0 22px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  @keyframes muqavi-pdp-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media screen and (max-width: 749px) {
+    .muqavi-pdp-marquee { padding: 11px 0; }
+    .muqavi-pdp-marquee__item { font-size: 12px; }
+    .muqavi-pdp-marquee__item::after { margin: 0 14px; width: 5px; height: 5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .muqavi-pdp-marquee__track { animation-duration: 90s; }
+  }
+</style>
+
+<div class="muqavi-pdp-marquee" role="marquee" aria-label="{{ marquee_items | join: ', ' | escape }}">
+  <div class="muqavi-pdp-marquee__track" aria-hidden="true">
+    {%- for copy in (1..2) -%}
+      <div class="muqavi-pdp-marquee__group">
+        {%- for item in marquee_items -%}
+          <span class="muqavi-pdp-marquee__item">{{ item }}</span>
+        {%- endfor -%}
+        {%- for item in marquee_items -%}
+          <span class="muqavi-pdp-marquee__item">{{ item }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
